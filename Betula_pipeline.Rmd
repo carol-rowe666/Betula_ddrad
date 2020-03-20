@@ -1,0 +1,5040 @@
+---
+title: "Betula"
+author: "Carol Rowe"
+date: "5/5/2017"
+---
+# {.tabset}  
+  
+## Software Versions  
+####University of Utah's CHPC:  
+Python 2.7.13 :: Continuum Analytics, Inc.  
+ipyrad-0.7.28  
+conda 4.5.5  
+blast 2.3.0+  
+Structure Version 2.3.4 (Jul 2012)  
+perl 5, version 16, subversion 3 (v5.16.3) built for x86_64-linux-thread-multi
+(with 33 registered patches  
+
+**Jaccard** and **vcf2hetAlleleDepth.py**  
+python/3.6.3  
+  
+NOTE: When updating from ipyrad-0.6.27 to ipyrad-0.7.28 I initially ran:  
+**conda update conda**  
+**conda install -c ipyrad ipyrad**
+However, when running **ipyrad -n Betula_181_70pc**, I got an error message: ImportError: /lib64/libm.so.6: version `GLIBC_2.23' not found (required by....  
+To resolve this:  
+**conda remove ipyrad pysam samtools bcftools htslib**  
+**conda install ipyrad -c ipyrad**  
+**conda install htslib=1.3.1 -c bioconda**  
+<br><br>   
+  
+####Other software ran from MacBook Air with OSX Yosemite Version 10.10.5  
+#####Python 3.5.2  
+python modules:  
+&nbsp;&nbsp;&nbsp;&nbsp;pandas==0.20.3  
+&nbsp;&nbsp;&nbsp;&nbsp;matplotlib==1.5.1  
+&nbsp;&nbsp;&nbsp;&nbsp;seaborn==0.8.1  
+&nbsp;&nbsp;&nbsp;&nbsp;toyplot==0.16.0.dev0  
+
+#####R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"  
+R modules:  
+&nbsp;&nbsp;&nbsp;&nbsp;ape 4.1  
+&nbsp;&nbsp;&nbsp;&nbsp;adegenet 2.0.1  
+&nbsp;&nbsp;&nbsp;&nbsp;genetics 1.3.8.1  
+&nbsp;&nbsp;&nbsp;&nbsp;ggplot2 2.2.1  
+&nbsp;&nbsp;&nbsp;&nbsp;seqinr 3.3-3  
+  
+####Other software ran from MacBook Air with OS Mojave 10.14.4  
+#####Python Python 3.7.1  
+python modules:  
+&nbsp;&nbsp;&nbsp;&nbsp;Cartopy==0.17.0  
+&nbsp;&nbsp;&nbsp;&nbsp;numpy==1.15.4  
+&nbsp;&nbsp;&nbsp;&nbsp;pandas==0.23.4  
+&nbsp;&nbsp;&nbsp;&nbsp;seaborn==0.9.0  
+&nbsp;&nbsp;&nbsp;&nbsp;toyplot==0.18.0  
+  
+  
+#### JGI taxonomy server  
+https://taxonomy.jgi-psf.org/  
+Welcome to the JGI taxonomy server!  
+This service provides taxonomy information from NCBI taxID numbers, gi numbers, organism names, and accessions.  
+The output is formatted as a Json object.  
+  
+## CITATIONS  
+###University of Utah CHPC  
+<br><br>  
+  
+###CLUMPAK  
+http://clumpak.tau.ac.il/index.html  
+"CLUMPAK: a program for identifying clustering modes and packaging population structure inferences across K".  
+Kopelman, Naama M; Mayzel, Jonathan; Jakobsson, Mattias; Rosenberg, Noah A; Mayrose, Itay. Molecular Ecology Resources 15(5): 1179-1191, doi: 10.1111/1755-0998.12387  
+<br><br>  
+  
+### STRUCTURE  
+by Pritchard, Stephens and Donnelly (2000) and Falush, Stephens and Pritchard (2003)  
+Code by Pritchard, Falush and Hubisz  
+<br><br>  
+  
+### gbs2ploidy  
+####vcf2hetAlleleDepth.py  
+https://github.com/carol-rowe666/vcf2hetAlleleDepth.git  
+  
+#### gbs2ploidy  
+Gompert Z, Mock KE (2017) Detection of individual ploidy levels with genotyping-by-sequencing (GBS) analysis. Molecular Ecology Resources 17(6): 1156–1167.)  
+  
+
+  
+## SAMPLE SUMMARY  
+255 collection samples (204 ingroup + 51 outgroup = 255)  
+71 voucher speciemns  
+238 samples extracted  
+208 samples in library prep (202 ingroup + 1 replicate + 5 outgroup = 208)  
+23 samples failed on Illumina run (failures: 1 replicate + 1 outgroup + 21 ingroup = 23)  
+185 samples remaining for analyses: 181 ingroup samples + 4 outgroup samples  
+
+## ANALYSES SUMMARY  
+###1) DAPC on all successful samples: 208 - 23 failures = 185 Samples  
+min_samples_locus = 104 (>=50% of samples)  
+Removed 23 failure samples. Now have 185 samples.  
+4826 loci  
+DAPC "ideal" K=3  
+**cluster1:**  
+else - including two outgroups and 4 ALB samples  
+**cluster2:**  
+YB_5B and YB_B2_A (outroups)  
+**cluster3:**  
+ALB 1,2,3,5 (Alberta,CANADA) (4 samples)  
+all BP (Skagway, AK) samples (20 samples) (some not 100%)  
+all MNSE (Minnesota) samples (7 samples)  
+all NB (New Hampshire) samples (5 samples)  
+  
+At K=4 and K=5, samples 8554a-e then 8552a-e parse out, respectively  
+<br>  
+  
+###2) DAPC and STRUCTURE on 181 ingroup samples  
+min_samples_locus = 127 (>70% of samples)  
+3375 loci  
+  
+DAPC - BIC shows K=2 as ideal  
+See same pattern in DAPC as to STRUCTURE.  
+**Where K=4:**    
+**blue cluster**:  
+8552a-e  (5 samples)  
+**red cluster**:  
+ALB 1,2,3,5 (Alberta,CANADA) (4 samples)  
+all BP (Skagway, AK) samples (20 samples)  
+all MNSE (Minnesota) samples (7 samples)  
+all NB (New Hampshire) samples (5 samples)  
+8553b with 62% similarity  
+**purple cluster**:  
+8555a-e (5 samples)  
+**grey cluster**:  
+else, including the remaining 4 ALB samples  
+<br>  
+  
+####3) BLAST  
+Used .loci output file from step 2) above except with min_samples_locus lowered to >50% samples  
+In lowering the min_samples_locus of the ipyrad file, hope is to get more loci to increase the chance of finding contaminants in our data.  
+Excellent - hits are coming out with other plants.  
+  
+Sample 1030_1 had a total of 6,454 loci. Of those loci, 1236 were "hits" in the BLAST search.  
+  
+**1236 loci in samle 1030_1**  
+sskingdom  
+Bacteria        6  
+Eukaryota    1230  
+<br>    
+**Top genera hits with counts for 1030_1**  
+GENUS&nbsp;&nbsp;&nbsp;&nbsp;COUNT             
+Juglans&nbsp;&nbsp;&nbsp;      363  
+Quercus&nbsp;&nbsp;      318  
+Betula&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       158  
+Prunus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        29  
+Ziziphus&nbsp;&nbsp;&nbsp;&nbsp;      28  
+Vitis&nbsp;&nbsp;         24  
+Populus&nbsp;&nbsp;       19  
+Citrus&nbsp;&nbsp;        17  
+Theobroma&nbsp;&nbsp;     16  
+Corylus&nbsp;&nbsp;       15  
+<br>    
+**Following is where duplicates are removed.....**  
+**Grouped by (unique) SUPERKINGDOM**  
+SUPERKINGDOM  
+sk:Eukaryota    106  
+sk:Bacteria       3  
+  
+**Grouped by KINGDOM**  
+NOTE: 3 samples without kingdom label  
+KINGDOM  
+k:Viridiplantae    106  
+  
+**Grouped by PHYLUM**  
+PHYLUM  
+p:Proteobacteria      3  
+p:Streptophyta      106  
+  
+**Grouped by FAMILY - top 6 hits**  
+FAMILY  
+f:Fabaceae             12  
+f:Betulaceae            9  
+f:Rosaceae              9  
+f:Salicaceae            5  
+f:Malvaceae             5  
+f:Brassicaceae          5  
+  
+**Grouped by GENUS - top 6 hits**  
+GENUS  
+g:Prunus              5  
+g:Betula              4  
+g:Populus             4  
+g:Vigna               3  
+g:Corylus             3  
+g:Quercus             3  
+<br>      
+  
+###4) gbs2ploidy   
+Either very distinct 1:1 ratio ("diploids"), or other, polyploid ratios.  
+  
+DIPLOID        140  
+NOT_DIPLOID     26  
+AMBIGUOUS       15    
+  
+General categories as:  
+(number samples is number from location, not necessarily number that were called to the corresponding ploidy level)  
+  
+BP: Skagway, AK (Surdyk & Belt) 25 samples: **POLYPLOID**  
+8552-8578: Alaska (McKernan) 135 samples: **"DIPLOIDS"**  
+1028-1031: Alaska (Wolf) 20 samples: **"DIPLOIDS"**  
+Ken: Alaska (Barnes) 2 samples: **"DIPLOIDS"**  
+ALB: Alberta, Canada (Rai) 8 samples: **4 "DIPLOIDS" and 4 POLYPLOID**  
+NB: New Hampshire (Goulet) 5 samples: **POLYPLOID**  
+MNSE: Minnesota (Eggers) 7 samples: **POLYPLOID**   
+YB: Outgroup 4 samples: **2 "DIPLOIDS" and 2 POLYPLOID**  
+(mixed: YB_B2_A, YB_5B; "diploids": YB_1I, and YB_4D)  
+<br>  
+  
+###5) DAPC and STRUCTURE on "diploid" samples  
+min_samples_locus = 103 (>70% of samples)  
+9994 loci  
+  
+####DAPC  
+On DAPC: seems K=1 or K=2 is "ideal" given BIC  
+at K=2, 8552a-e separate from remaining.  
+at K=3, 8554a-e then separates out.  
+NOTE: outgroup "diploids" (YB_1I and YB_4D) do NOT separate out!!!  
+  
+####STRUCTURE  
+**K=2**  
+The 2 outgroup Betula alleghaniensis samples (YB_ samples) come out immediately.  
+Note, sample **8553b** displays 28.6% simmilarity to the outgroup "diploid" samples.  
+  
+**K=4**  
+Two more groups appear. Just as you see in all the other analyses:  
+8552a-e  
+8555a-e  
+These samples, along with several others, are located near Ankorage, AK.  
+**8553b** with 49% similarity with outgroup "diploids" (YB_1I and YB_4D)  
+  
+**K=6**  
+At K=6, the four 8553 samples appear as a group.  
+<br>  
+  
+###6) Regression of %missing from STRUCTURE/CLUMPAK output  
+Used dipliods output file.  
+Results found within the diploids analysis section.  
+  
+No real association. VERY slight regression due to 2 outlier samples.  
+<br>  
+  
+###7) DAPC with 181 samples as in step2, but at **86% threshold**  
+min_samples_locus = 127 (>70% of samples)  
+3363 loci  
+  
+DAPC - BIC shows K=2 as ideal  
+  
+Same exact as in step 2 (and all throughout these analyses).  
+  
+###8) Jaccard cluster comparisons  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Jacc_Clust_compare_Bet.png)  
+ 
+ 
+  
+## Samples and DNA extactions  
+### Samples:  
+There are 255 Betula samples in our collections (including *Betula allaghaniensis*):  
+  
+BP: Skagway, AK (Surdyk & Belt) 5 sites with 5 samples per site = 25  
+8552-8578: Alaska (McKernan) 27 sites with 5 samples per site = 135  
+1028-1031: Alaska (Wolf) 4 sites with 5 samples per site = 20  
+FBK & Ken: Alaska (Barnes) = 4   # FBK samples may be planted?   
+ALB: Alberta, Canada (Rai) = 8  
+NB: New Hampshire (Goulet) = 5  
+MNSE: Minnesota (Eggers) = 7  
+____________________________  
+TOTAL INGROUP = 204  
+  
+OUTGROUPS: *Betula allaghaniensis*  
+YB: from NH, VT, and NY; 5 sites with 10 samples per site (plus 1 additional sample) = 51  
+  
+### Extractions:  
+Qiagen DNeasy 96 Plant Kit (Cat. No. 69181; Qiagen Inc., Valencia, California, USA,)  
+  
+Given the number of samples we have and the plate format of the extraction kit, we extracted 2.5 plates of samples (240 wells - 2 blanks (for negative controls) = 238 samples extracted).  
+  
+NOTE: Not all extracted samples were used in the library prep!  
+  
+OUTGROUP SAMPLE SELECTION:  
+Since the yellow birch, *Betula allaghaniensis*, is an outside group, we will randomly select a subset of these samples. I purposely chose the two samples with voucher specimens and then used a random number generator to select another 8 samples. A total of 10 yellow birch samples will be extracted.  
+  
+IN-GROUP REPLICATES:  
+There are now 214 in-group Betula samples + 10 outgroup samples to be loaded into plates for extraction. Given available space on our 96-well extraction plates (extracting 2.5 palates with one cell blank on each of the 2 full plates), there are 24 replicates needed to fill the remaining wells.  
+  
+Random sample selections were made:  
+5 replicates: 1 replicate from each of the 5 Wolf collection sites  
+16 replicates: from the 135 McKernan collections  
+3 replicates: from the 25 Surdyk collections  
+  
+  
+FOR LOADING EXTRACTION PLATES:  
+Betula_GBS_samples.txt is an OREDERED list of samples to be extracted. Samples should NOT be loaded into extraction plates in an ordered pattern.  
+To reduce the chance of systematic error in extractions, the following was run from command line in order to randomly shuffle the samples:  
+```{bash eval=FALSE}
+gshuf -n 214 ./Betula_GBS_samples.txt > leaf_stuff.txt
+```
+  
+TO GET THE SAMPLES INTO AN EASY-TO-FOLLOW 96-WELL PLATE FORMAT:  
+Used the following R function (plateLayout) from the internet:   http://stackoverflow.com/questions/20843272/generating-a-96-or-384-well-plate-layout-in-r  
+by JClarke09. That's the only info I could find to credit this person. THANKS for saving me time!  
+This code results in a nice 96-well plate format to facililitate getting the samples into the correct wells for extraction.  
+```{r eval=FALSE}
+plateLayout <- function(numOfSamples, plateFormat = 96, direction = "DOWN"){
+  #This assumes that each well will be filled in order.
+
+#Calculate the number of plates required
+platesRequired <- ceiling(numOfSamples/plateFormat)
+rowLetter <- character(0)
+colNumber <- numeric(0)
+plateNumber <- numeric(0)
+
+#define the number of columns and number of rows based on plate format (96 or 384 well plate)
+switch(as.character(plateFormat),
+       "96" = {numberOfColumns = 12; numberOfRows = 8},
+       "384" = {numberOfColumns = 24; numberOfRows = 16})
+
+#The following will work if the samples are going DOWN
+if(direction == "DOWN"){
+  for(k in 1:platesRequired){
+    rowLetter <- c(rowLetter, rep(LETTERS[1:numberOfRows], length.out = plateFormat))  
+  for(i in 1:numberOfColumns){
+    colNumber <- c(colNumber, rep(i, times = numberOfRows))
+    }
+plateNumber <- c(plateNumber, rep(k, times = plateFormat))
+  }  
+plateLayout <- paste0(rowLetter, colNumber)
+plateLayout <- data.frame(plateNumber,plateLayout)
+plateLayout <- plateLayout[1:numOfSamples,]
+return(plateLayout)
+}
+
+#The following will work if the samples are going ACROSS 
+if(direction == "ACROSS"){
+  for(k in 1:platesRequired){
+    colNumber <- c(colNumber, rep(1:numberOfColumns, times = numberOfRows))
+    for(i in 1:numberOfRows){
+      rowLetter <- c(rowLetter, rep(LETTERS[i], times = numberOfColums))
+      }
+    plateNumber <- c(plateNumber, rep(k, times = plateFormat))
+    }
+  plateLayout <- paste0(rowLetter, colNumber)
+  plateLayout <- data.frame(plateNumber, plateLayout)
+  plateLayout <- plateLayout[1:numOfSamples,]
+  return(plateLayout)
+  }
+}
+
+# AND NOW RUN THE ABOVE CODE:
+#load whatever data you're going to use to get a plate layout on (sample ID's or names or whatever)
+# I changed the leaf_stuff.txt to Betula_rand_Samples.csv with "Sample" as the header, since it was easier for me to import a .csv file
+pathway = '/path/to/file/Betula_rand_Samples.csv'
+my_data <- read.csv(pathway)
+outpath = '/path/to/file/Betula_Plate.csv'
+
+# Now call the function from above:
+plateLayoutDataFrame <- data.frame(my_data$Sample, plateLayout(nrow(my_data)), plateFormat = 96, direction = "DOWN")
+write.csv(plateLayoutDataFrame, outpath)
+
+```
+  
+## Voucher Specimens  
+63 Voucher specimens are housed in UTC:  
+Intermountain Herbarium  
+Utah State University  
+5305 Old Main Hill  
+Logan, Utah 84322-5305  
+  
+8 Voucher specimens in ALTA:  
+Vascular Plant Herbarium  
+University of Alberta  
+Ring House #1  
+Edmonton, Alberta, Canada T6G 2E1  
+  
+###71 Voucher specimens total:  
+1 from each collection (1028-1031: Alaska (Wolf) = 20 samples ) : **20 vouchers** [UTC00280158-UTC00280177]  
+1 from each of 27 collection sites (8552-8578: Alaska (McKernan) = 135 samples ) : **27 vouchers** [UTC00280188-UTC00280214]  
+1 from each collection (NB: New Hampshire (Goulet) = 5 samples) : **5 vouchers** [UTC00280215-UTC00280219]  
+1 from each collection (MNSE: Minnesota (Eggers) = 7 samples ) : **7 vouchers** [UTC00281266-[UTC00281272]  
+1 from FBK (Alaska (Barnes) = 4 samples) : **1 voucher** [UTC00280220]  
+3 from outgroup (YB: NH and VT = 56 samples) : **3 vouchers** [UTC00280468, UTC00280469, UTC00280174]  
+1 from each collection (ALB: Alberta, Canada (Rai) = 8 samples) : **8 vouchers** at ALTA [ALTA141270-ALTA141277] 
+ 
+  
+## Library Prep & Sequencing  
+### Library Prep  
+To ensure proper coverage, we selected **208 samples** for the library prep.  
+We have 204 samples of interest, but 2 of those samples (FBK samples) are suspected to have been planted rather than wild. Hence, we used 202 in-group samples plus a single replicate (sample 1030_3) for 203 samples. Then, we selected 5 out-group samples. 203 + 5 = 208 samples for the library prep.  
+  
+Library prep using double digest with EcoRI and MseI as per Parchman et al. 2012 and Gompert et al. 2012.  
+**BluePipin size selection: 250-350bp**  
+  
+Gompert Z, Lucas LK, Nice CC, Fordyce JA, Forister ML, Buerkle CA. 2012. Genomic regions with a history of divergent selection affect fitness of hybrids between two butterfly species. Evolution 66: 2167-2181.  
+  
+Parchman, T. L., Z. Gompert, J. Mudge, F. D. Schilkey, C. W. Benkman, and  C. Buerkle. 2012. Genome‐wide association genetics of an adaptive trait in lodgepole pine. Molecular ecology 21: 2991-3005.
+  
+### Sequencing  
+GSAF sequencing:  
+In-house library prep (2018-03-21 through 2018-03-26)  
+208 samples sent to GSAF for single lane HiSeq2500 SR100bp  
+(See Barcode File for list of sample names.)  
+  
+## Barcode Files  
+**3 files (+1 for USU test)**  
+  
+###Filename: Betula_gsaf_Bcode.txt  
+####Number samples: 208  
+  
+8573e	attctggaa  
+8563c	ctggatgaa  
+BP_17	cttcaataa  
+1029_3	ataagaacca  
+ALB_1	gtcctaacca  
+1031_4	cttattacca  
+BP_19	cagagagcca  
+BP_20	ctatcggcca  
+1028_3	aagttgctaa  
+1030_1	tgcaacttaa  
+8554c	cttgccga  
+8570c	acgttcga  
+NB_2	ctgatgga  
+8564a	actgaata  
+8572e	gtagcata  
+8559a	gccttata  
+ALB_4	aatccaga  
+1028_1	ggaataga  
+BP_02	aaggaataa  
+8558d	gatagataa  
+8566d	gcgctataa  
+BP_04	gtaacctaa  
+8574b	acctagtaa  
+BP_25	gctgcgtaa  
+8560d	agcaatgaa  
+8553a	caacttgaa  
+8564b	cgctcaacca  
+8567b	cctcgaacca  
+8559d	ctgcagacca  
+8567c	accgttacca  
+BP_05	cattacgcca  
+8576e	tgagctgcca  
+8559b	atagtcgtaa  
+8564c	aagccaacca  
+1030_4	gaccgcga  
+8562b	tataagga  
+BP_15	tggactga  
+8568d	tagtaata  
+ALB_5	atccgata  
+ALB_2	tgctgcta  
+8571c	cctagaga  
+8577d	ttcgtaga  
+BP_13	ttctcataa  
+1028_5	ccaggataa  
+8556a	agattataa  
+8552e	cagtcctaa  
+8554a	tggacgtaa  
+8560e	ctcaggtaa  
+8574d	acctcgtcca  
+8576d	aagaggta  
+8555a	aattggagca  
+8570b	aactctcgca  
+8561a	aatataac  
+BP_09	cttaagac  
+8561b	aggacgac  
+8558e	cgcttgac  
+8571b	ccagtcta  
+8557e	aggcgcagca  
+BP_10	cctccaac  
+8567a	cctatacca  
+Ken1	actccgcca  
+1028_4	cggaggcca  
+BP_07	gcgttgcca  
+8568c	gatcgtcca  
+BP_11	taacggtaa  
+8561e	ttcaatta  
+8563d	gtcagacca  
+8576c	aatgcaggca  
+8558a	ttaattggca  
+YB_B3_V	agaacttgca  
+8578d	ttatgcatca  
+8572b	gcttgcctca  
+8565e	cgaggaagca  
+8554d	catctcagca  
+8554e	caggaacgca  
+8578a	acctgaac  
+8561d	gcggtaac  
+8577c	gacgagac  
+1031_1	tattggac  
+8559c	taggctac  
+ALB_3	atatagta  
+8574c	ccgcgtta  
+8563b	ttgcgaac  
+1031_3	cttgagcca  
+8574a	ggagcgcca  
+8573a	ataatgcca  
+BP_24	tagactcca  
+1030_2	ctccttcca  
+1031_2	aatccttaa  
+8576a	ggttaacca  
+NB_4	agacgacca  
+ALB_8	ttggacggca  
+ALB_7	cataattgca  
+8569a	caattaatca  
+8555d	tattctatca  
+8553c	agcatgctca  
+MNSE_05	gtcattac  
+8570e	gaaggagca  
+8553b	cgtaacgca  
+8569b	acgaccgca  
+8573b	actactcc  
+BP_21	ctcggtcc  
+1029_2	ccattagc  
+8557d	atagacgc  
+BP_16	actaatctca  
+8568e	tccaaggtca  
+NB_1	ggcgtattca  
+MNSE_07	tcgatgcc  
+YB_1I	tggcaggca  
+8563a	tccgctgca  
+8565d	cgcgcatca  
+8559e	acttgatca  
+8556c	caacttac  
+8578e	gcaagacc  
+8577e	ccagagcc  
+MNSE_01	agcctcgca  
+8556e	atactcaaga  
+8569d	aggattaaga  
+MNSE_02	tatacggaga  
+8565a	ttcagctaga  
+8575c	aactcagca  
+1029_1	atggtagca  
+8575b	gtctacgca  
+8562d	acgtccaaga  
+8575a	ggacctcc  
+NB_5	ggcgcagc  
+8572a	cgcaacgc  
+8571e	gcttacgc  
+YB_4D	attcgcgtca  
+8557b	catatggtca  
+8556b	cgaaccaaga  
+8554b	cagtatcc  
+8572c	gatacggca  
+8566a	cggtctgca  
+8560c	ttgcgatca  
+8564d	agagactca  
+1030_5	gatcaacc  
+BP_22	agccagcc  
+8555c	ttatcgcc  
+8565c	ccagtcgca  
+8571a	cagaagaaga  
+8562c	agataagaga  
+8555b	cgcgaataga  
+8563e	tcaacgacga  
+NB_3	gagaccgc  
+8558b	aactcggc  
+8570a	ccgaattca  
+8572d	agtcattgga  
+BP_03	acggcctc  
+8562e	ctcataaga  
+8561c	cgaaccaga  
+YB_5B	cctggcaga  
+8569c	gccggctca  
+8565b	gagatctca  
+8552a	atatgctgga  
+8573c	ggttgatc  
+8577a	ccagttctga  
+8560b	acgccgttga  
+8578c	gccgacgata  
+ALB_6	ccgcctacta  
+8557a	ctctgatcga  
+8552c	caggttagga  
+8566e	cggcaatc  
+8553d	tagcatatga  
+8560a	attagctc  
+MNSE_03	gcgaattc  
+8558c	ctaataag  
+BP_12	ggcggcag  
+8568b	gttccggc  
+MNSE_06	ctaactgc  
+BP_06	gaatattca  
+BP_08	catgactc  
+8578b	aatcgaaga  
+8552d	gaggtaaga  
+1029_5	gtccgcaga  
+YB_B2_A	aacttcaga  
+8552b	ctatgctca  
+8570d	ggcaagtca  
+8577b	ggaatctgga  
+8575e	ggctcaaga  
+8569e	cggtccttga  
+8571d	tgcggcaata  
+8576b	tataactata  
+Ken2	tgagtaccta  
+BP_14	attggaagga  
+1031_5	atgcttgc  
+8556d	ctctcatc  
+MNSE_04	ttatatctga  
+BP_18	tgactctc  
+8575d	gattcaag  
+8574e	acgagcag  
+BP_23	tctacgag  
+8568a	acgaagaga  
+8573d	caaggatcta  
+8566c	tcctactcta  
+8564e	agaccgtcta  
+8557c	ctacttagta  
+8566b	gtcgctggta  
+8567d	cgcattggta  
+1030_3rep	tgccgactta  
+8562a	ctaaggccta  
+1028_2	cgatatag  
+BP_01	cggagacg  
+8567e	accatacg  
+8555e	ggtaaccg  
+8553e	atgaagcg  
+1029_4	catatgcg  
+1030_3	tcctcagg  
+  
+  
+###Filename: Betula_181_Bcode.txt  
+####Number samples: 181  
+####Contents: same as Betula_gsaf_Bcode.txt except with failed (very low coverage) and outgroups removed.  
+#####Follwing were removed:  
+**Failed Samples**  
+BP_15  
+BP_11  
+YB_B3_V  
+8556e  
+8557b  
+BP_12  
+BP_23  
+8568a  
+8573d  
+8566c  
+8564e  
+8557c  
+8566b  
+8567d  
+1030_3rep  
+8562a   
+1028_2  
+BP_01  
+8567e  
+8555e  
+8553e  
+1029_4  
+1030_3  
+  
+**OOUTGROUPS (that did NOT fail)**  
+YB_1I    
+YB_4D  
+YB_5B  
+YB_B2_A  
+  
+  
+###Filename: Betula_diploid_Bcode.txt  
+####Number samples: 147  
+####Contents: samples with 1:1 (diploid-like) ploidy level from gbs2ploidy analysis.  
+8573e	attctggaa  
+8563c	ctggatgaa  
+1029_3	ataagaacca  
+1031_4	cttattacca  
+1028_3	aagttgctaa  
+1030_1	tgcaacttaa  
+8554c	cttgccga  
+8570c	acgttcga  
+8564a	actgaata  
+8572e	gtagcata  
+8559a	gccttata  
+ALB_4	aatccaga  
+1028_1	ggaataga  
+8558d	gatagataa  
+8566d	gcgctataa  
+8574b	acctagtaa  
+8560d	agcaatgaa  
+8553a	caacttgaa  
+8564b	cgctcaacca  
+8567b	cctcgaacca  
+8559d	ctgcagacca  
+8567c	accgttacca  
+8576e	tgagctgcca  
+8559b	atagtcgtaa  
+8564c	aagccaacca  
+1030_4	gaccgcga  
+8562b	tataagga  
+8568d	tagtaata  
+8571c	cctagaga  
+8577d	ttcgtaga  
+1028_5	ccaggataa  
+8556a	agattataa  
+8552e	cagtcctaa  
+8554a	tggacgtaa  
+8560e	ctcaggtaa  
+8574d	acctcgtcca  
+8576d	aagaggta  
+8555a	aattggagca  
+8570b	aactctcgca  
+8561a	aatataac  
+8561b	aggacgac  
+8558e	cgcttgac  
+8571b	ccagtcta  
+8557e	aggcgcagca  
+8567a	cctatacca  
+Ken1	actccgcca  
+1028_4	cggaggcca  
+8568c	gatcgtcca  
+8561e	ttcaatta  
+8563d	gtcagacca  
+8576c	aatgcaggca  
+8558a	ttaattggca  
+8578d	ttatgcatca  
+8572b	gcttgcctca  
+8565e	cgaggaagca  
+8554d	catctcagca  
+8554e	caggaacgca  
+8578a	acctgaac  
+8561d	gcggtaac  
+8577c	gacgagac  
+1031_1	tattggac  
+8559c	taggctac  
+8574c	ccgcgtta  
+8563b	ttgcgaac  
+1031_3	cttgagcca  
+8574a	ggagcgcca  
+8573a	ataatgcca  
+1030_2	ctccttcca  
+1031_2	aatccttaa  
+8576a	ggttaacca  
+ALB_8	ttggacggca  
+ALB_7	cataattgca  
+8569a	caattaatca  
+8555d	tattctatca  
+8553c	agcatgctca  
+8570e	gaaggagca  
+8553b	cgtaacgca  
+8569b	acgaccgca  
+8573b	actactcc  
+1029_2	ccattagc  
+8557d	atagacgc  
+8568e	tccaaggtca  
+YB_1I	tggcaggca  
+8563a	tccgctgca  
+8565d	cgcgcatca  
+8559e	acttgatca  
+8556c	caacttac  
+8578e	gcaagacc  
+8577e	ccagagcc  
+8569d	aggattaaga  
+8565a	ttcagctaga  
+8575c	aactcagca  
+1029_1	atggtagca  
+8575b	gtctacgca  
+8562d	acgtccaaga  
+8575a	ggacctcc  
+8572a	cgcaacgc  
+8571e	gcttacgc  
+YB_4D	attcgcgtca  
+8556b	cgaaccaaga  
+8554b	cagtatcc  
+8572c	gatacggca  
+8566a	cggtctgca  
+8560c	ttgcgatca  
+8564d	agagactca  
+1030_5	gatcaacc  
+8555c	ttatcgcc  
+8565c	ccagtcgca  
+8571a	cagaagaaga  
+8562c	agataagaga  
+8555b	cgcgaataga  
+8563e	tcaacgacga  
+8558b	aactcggc  
+8570a	ccgaattca  
+8572d	agtcattgga  
+8562e	ctcataaga  
+8561c	cgaaccaga  
+8569c	gccggctca  
+8565b	gagatctca  
+8552a	atatgctgga  
+8573c	ggttgatc  
+8577a	ccagttctga  
+8560b	acgccgttga  
+8578c	gccgacgata  
+ALB_6	ccgcctacta  
+8557a	ctctgatcga  
+8552c	caggttagga  
+8566e	cggcaatc  
+8553d	tagcatatga  
+8560a	attagctc  
+8558c	ctaataag  
+8568b	gttccggc  
+8578b	aatcgaaga  
+8552d	gaggtaaga  
+1029_5	gtccgcaga  
+8552b	ctatgctca  
+8570d	ggcaagtca  
+8577b	ggaatctgga  
+8575e	ggctcaaga  
+8569e	cggtccttga  
+8571d	tgcggcaata  
+8576b	tataactata  
+Ken2	tgagtaccta  
+1031_5	atgcttgc  
+8556d	ctctcatc  
+8575d	gattcaag  
+8574e	acgagcag  
+    
+  
+## ipyrad params files  
+**(4 different files + example slurm file at end)**    
+  
+###ipyrad: Round_1  
+####params-Betula_gsaf.txt
+all 208 samples  
+See params file in ipyrad Round_2.  
+Only differences are:  
+  
+**Betula_gsaf**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## [0] [assembly_name]  
+**./Betula_gsaf_Bcode.txt**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [3] [barcodes_path]  
+**104**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [21] [min_samples_locus] - 50% samples  
+**4, 4**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [23] [max_Indels_locus]  
+  
+###ipyrad: Round_2  
+NOTE: for just the BLAST analysis, min_samples_locus was set to 91 (>50%)  
+Otherwise: min_samples_locus is 127 (>= 70%)  
+####params-Betula_181_70pc.txt  
+  181 samples: removed 27 samples (failed and outgroup samples) from original.  
+  min_samples_per_locus set to 70% of samples (127)
+  
+------- ipyrad params file (v.0.7.28)-------------------------------------------  
+**Betula_181_70pc**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps  
+**./**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [1] [project_dir]: Project dir (made in curdir if not present)  
+**./Betula_S1_L001_R1_001.fastq.gz**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [2] [raw_fastq_path]: Location of raw non-demultiplexed fastq files  
+**./Betula_181_Bcode.txt**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [3] [barcodes_path]: Location of barcodes file  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files  
+**denovo**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [5] [assembly_method]: Assembly method (denovo, reference, denovo+reference, denovo-reference)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [6] [reference_sequence]: Location of reference sequence file  
+**ddrad**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc.  
+**CAATTC,GTAA**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [8] [restriction_overhang]: Restriction overhang (cut1,) or (cut1, cut2)  
+**4**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [9] [max_low_qual_bases]: Max low quality base calls (Q<20) in a read  
+**33**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [10] [phred_Qscore_offset]: phred Q score offset (33 is default and very standard)  
+**6**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [11] [mindepth_statistical]: Min depth for statistical base calling  
+**6**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [12] [mindepth_majrule]: Min depth for majority-rule base calling  
+**10000**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [13] [maxdepth]: Max cluster depth within samples  
+**0.90**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [14] [clust_threshold]: Clustering threshold for de novo assembly  
+**1**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [15] [max_barcode_mismatch]: Max number of allowable mismatches in barcodes  
+**2**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [16] [filter_adapters]: Filter for adapters/primers (1 or 2=stricter)  
+**40**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [17] [filter_min_trim_len]: Min length of reads after adapter trim  
+**2**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [18] [max_alleles_consens]: Max alleles per site in consensus sequences  
+**2, 2**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [19] [max_Ns_consens]: Max N's (uncalled bases) in consensus (R1, R2)  
+**4, 4**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [20] [max_Hs_consens]: Max Hs (heterozygotes) in consensus (R1, R2)  
+**127**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [21] [min_samples_locus]: Min # samples per locus for output  
+**20, 20**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [22] [max_SNPs_locus]: Max # SNPs per locus (R1, R2)  
+**5, 5**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [23] [max_Indels_locus]: Max # of indels per locus (R1, R2)  
+**0.5**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [24] [max_shared_Hs_locus]: Max # heterozygous sites per locus (R1, R2)  
+**0, 0**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [25] [edit_cutsites]: Edit cut-sites (R1, R2) (see docs)  
+**0, 0, 0, 0**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [26] [trim_overhang]: Trim overhang (see docs) (R1>, \<R1, R2>, \<R2)  
+**\***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [27] [output_formats]: Output formats (see docs)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [28] [pop_assign_file]: Path to population assignment file
+  
+  
+#####NOTES on params file:  
+- Because barcodes were designed to differ by at least 3 bp, we allowed for a single mis-match in the barcode match in ipyrad.  
+- Set the [min_samples_locus] to 127, which is at least 70% of the 181 samples. (0.7x181=126.7)  
+  
+  
+###ipyrad: Round_3  
+####params-Betula_diploids.txt
+**"Diploids"" only**  
+  
+See Round_2. Changes are:  
+**./Betula_diploid_Bcode.txt**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [3] [barcodes_path]  
+**103**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [21] [min_samples_locus] - 70% samples  
+  
+###ipyrad: Round_4
+####params-Bet_181_86pct.txt  
+  
+See Round_2. Changes are:  
+**0.86**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;## [14] [clust_threshold]:
+  
+  
+### example ipyrad SLURM: (Betula_ipy_SLURM.sh)  
+```{bash, eval=FALSE}
+#!/bin/bash
+#SBATCH --account=your_account  # Enter your account info
+#SBATCH --partition=your_partition  # Which partition to use (or -p)
+#SBATCH --time=72:00:00  # Beware of max time limits!
+#SBATCH --nodes=1  # Number of nodes (or -N). Default is 1
+#SBATCH --ntasks=1  # number of MPI tasks (or -n)
+#SBATCH --mail-user=your_email_address  # email address
+#SBATCH --mail-type=ALL  # Alerts sent when job begins, ends, or aborts
+#SBATCH -o slurm-%j.out-%N	 # name of the stdout, using the job number (%j) and the first node (%N)
+#SBATCH -e slurm-%j.err-%N	 # name of the stderr, using job and first node values
+#
+# Set up whatever package we need to run with
+#
+#
+# Set temporary working (scratch) directory.
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/pathway/to/Betula_181_70pc
+cp -r $WORKDIR/* $SCRDIR/.
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+$HOME/miniconda2/bin/ipyrad -p params-Betula_181_70pc.txt -s 1234567
+#
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+
+```
+  
+    
+###NOTES on Betula_ipy_SLURM.sh:  
+- I wrote the above script as if I ran all the steps at once. I typically run each ipyrad step separately, and then assess the output from each step - Great way to understand your data and to catch any potential problems.    
+   
+   
+   
+## BLAST  
+Used .loci output file from step 2 of the ANALYSES SUMMARY tab. (See the ANALYSES SUMMARY tab: 2) DAPC and STRUCTURE on 181 ingroup samples), **except with min_samples_locus lowered to >50% samples**. (As opposed to >70% of samples)  
+In lowering the min_samples_locus of the ipyrad file, hope is to get more loci to increase the chance of finding contaminants in our data.  
+  
+### BLAST workflow:  
+  
+####1) create a file containing all sample names  
+OUTPUT FILE: Betula_181_samps.txt  
+  
+####2) convert .loci file to .fasta file for each sample AND make a file containing number of loci and sample name  
+SCRIPT: loci_to_fasta.sh  
+OUPUT FILE: ./Betula_fasta/Betula_$sample.fa  
+OUTPUT FILE: ./Betula_fasta/Betula_loci_counts.txt  
+  
+####3) BLAST search  
+SCRIPT: BLAST_SLURM_LOOP.txt  
+OUTPUT FILE: $sample_blast.txt  
+  
+####4) extract information from BLAST output files into a summary table  
+SCRIPT: BLAST_summary.py  
+SCRIPT: BLAST_summary_loop.sh  
+OUTPUT FILE: ./BLAST_SUMM_TABLES/Betula_$sample_blast.csv  
+  
+####5) summarize output for 1030_1 (highest loci coverage sample)  
+SCRIPT: un-named.py  
+OUTPUT FILE: tax_id_1030_1.txt  
+SCRIPT: JGI_taxonomy_server_simple.sh  
+OUTPUT FILE: JGI_SIMPLE_TAXON_OUTPUT.txt  
+SCRIPT: un-named  
+OUTPUT: results pasted in the code  
+  
+<br>  
+
+###STEP 1  
+  
+####Get sample names from the ipyrad .ustr output file  
+  
+Let's get a list of the 181 samples and run this on all samples:  
+head -n 400 Betula_gsaf_181.ustr | cut -d' ' -f1 | sort | uniq > Betula_181_samps.txt  
+  
+Check to makes sure there are 181 samples:    
+$ wc -l Betula_181_samps.txt  
+181 Betula_181_samps.txt  
+  
+###STEP 2  
+  
+####Convert the ipyrad output .loci file to a .fasta file for each sample  
+  
+####AND make a Betula_loci_counts.txt file containing the loci counts for each sample.  
+  
+loci_to_fasta.sh  
+```{bash, eval=FALSE}
+#!/bin/bash
+
+# To run this bash script from command line:
+# sh loci_to_fasta.sh samples_file.txt loci_file.loci
+
+mkdir -p ./Betula_fasta
+while read sample; do
+  echo $sample
+  awk "/^$sample/" $2 | sed "s/^/>/" | sed -r -e "s/\s+/\n/g" | sed "s/-/N/g" > ./Betula_fasta/Betula_$sample.fa
+  wc -l ./Betula_fasta/Betula_$sample.fa >> ./Betula_fasta/Betula_loci_counts.txt
+done < $1
+```
+  
+Now run the bash script from command line:  
+sh loci_to_fasta.sh Betula_181_samps.txt Betula_gsaf_181.loci  
+  
+Just doing a check to see if the run worked:  
+$ wc -l Betula_loci_counts.txt  
+181 Betula_loci_counts.txt  
+  
+Let's see the highest counts:  
+#### NOTE: counts need to be divided by to for the actual loci count (there are two lines per sample in a .fa file)  
+$ sort -nr Betula_loci_counts.txt | head -n 10  
+12908 ./Betula_fasta/Betula_1030_1.fa  
+12872 ./Betula_fasta/Betula_8575c.fa  
+12846 ./Betula_fasta/Betula_8572d.fa  
+12800 ./Betula_fasta/Betula_8570a.fa  
+12790 ./Betula_fasta/Betula_1030_2.fa  
+12782 ./Betula_fasta/Betula_1031_5.fa  
+12746 ./Betula_fasta/Betula_8573b.fa  
+12734 ./Betula_fasta/Betula_8560c.fa  
+12730 ./Betula_fasta/Betula_8578b.fa  
+12714 ./Betula_fasta/Betula_8573a.fa  
+  
+###Step 3  
+  
+####BLAST search  
+BLAST all the samples (all the .fa files)  
+  
+BLAST_SLURM_LOOP.txt  **Just showing main body of this SLURM script**  
+```{bash, eval=FALSE}
+#
+# Run the program with our input
+for filename in ./*.fa;
+do
+    echo $filename
+    fname=$(basename "$filename" | cut -d '.' -f 1)
+    addname="_blast.txt"
+    ffname=$fname$addname
+    echo $ffname
+    blastn -db "nt" -query $filename -out ./$ffname -outfmt "7 qseqid staxids sskingdoms sscinames" -num_alignments 1 -evalue 0.00001
+done
+#
+
+```
+  
+###Step 4  
+  
+####extract information from BLAST output files into a summary table  
+  
+BLAST_summary.py  
+```{python, eval=FALSE, python.reticulate = FALSE}
+#!/usr/bin/env python
+
+import pandas as pd
+import sys
+import os
+
+def main():
+    '''This function is for making a summary dataframe from a BLAST serch. 
+    The column headers assumed here are: 'query_id', 'subject_tax_id', 'sskingdom', 'genus', 'species'.
+    These are formed from out outfmt of BLAST+ of query id, subject tax ids, subject super kingdoms, subject sci names'''
+
+    script = sys.argv[0]
+    my_file = sys.argv[1]
+
+    def ensure_dir(file_path):
+        directory = os.path.dirname(file_path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+    # Want list (l) of certain length (n), where N/A inserted if l is too short.
+    def some_function(l, n):
+        l.extend(['N/A'] * n)
+        del l[n:]
+
+    with open(my_file, 'r') as f1:
+        blast_summary = pd.DataFrame(columns=('query_id', 'subject_tax_id', 'sskingdom', 'genus', 'species'))
+        length = len(blast_summary.columns)
+        zero_count = 0
+        location = 0
+        get_line = 0
+
+        for line in f1:
+            if '0 hits found' in line:
+                zero_count += 1
+            elif 'hits found' in line:
+                num = line.split()[1]
+                get_line = 1               
+            elif (not line.startswith("#")) and get_line == 1:
+                entry = line.split()
+                new_entry = [x.strip(' ') for x in entry]
+                some_function(new_entry, n=length)
+                blast_summary.loc[location] = new_entry
+                location += 1
+                get_line = 0
+    base = os.path.basename(my_file)
+    my_base = os.path.splitext(base)[0]
+    blast_summary.insert(0,'zero_count', zero_count)
+    blast_summary.insert(0, 'sample', my_base) 
+    out_file = "./BLAST_SUMM_TABLES/" + my_base + ".csv"
+    print('Total_zero {} = {}'.format(my_base, zero_count))
+    blast_summary.to_csv(out_file, index=False)
+ 
+if __name__ == '__main__':
+    main()
+```
+  
+Run the following code which calls BLAST_summary.py from above within it:  
+  
+BLAST_summary_loop.sh  
+```{bash, eval=FALSE}
+#!/bin/bash
+
+mkdir -p BLAST_SUMM_TABLES
+for file in ./Betula_*_blast.txt;
+do
+  echo $file
+  fname=$(basename "$file" | cut -d. -f1)
+  python BLAST_summary.py $file
+done
+```
+
+OUTPUT is a new directory with a .csv summary file for each sample:  
+./BLAST_SUMM_TABLES/Betula_$sample_blast.csv files  
+
+
+####Step 5  
+####Summarization Table of sample 1030_1 (had highest allele count)  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import pandas as pd
+
+# Read in Betula_1030_1_blast.csv (sample with higest loci coverage)
+my_1030_1 = "/path/to/Betula_1030_1_blast.csv"
+the_1030_1 = pd.read_csv(my_1030_1)
+print(the_1030_1.head())
+print(the_1030_1.shape) # (1236, 7)
+'''
+                sample  zero_count query_id  subject_tax_id  sskingdom  \
+0  Betula_1030_1_blast        5218   1030_1          209804  Eukaryota   
+1  Betula_1030_1_blast        5218   1030_1           51240  Eukaryota   
+2  Betula_1030_1_blast        5218   1030_1            2711  Eukaryota   
+3  Betula_1030_1_blast        5218   1030_1         1233953  Eukaryota   
+4  Betula_1030_1_blast        5218   1030_1           58331  Eukaryota   
+
+     genus     species  
+0   Nardia   compressa  
+1  Juglans       regia  
+2   Citrus    sinensis  
+3   Betula  cordifolia  
+4  Quercus       suber  
+(1236, 7)
+'''
+# Get Bacteria and Eukaryota counts
+print(the_1030_1.groupby("sskingdom")['sskingdom'].count())
+'''
+sskingdom
+Bacteria        6
+Eukaryota    1230
+'''
+
+# Get Genera counts - show top 10 hits
+genus = pd.DataFrame(the_1030_1.groupby('genus')['genus'].count())
+genus.sort_values(by=['genus'],ascending=[False], inplace=True)
+print(genus.head(10))
+'''
+           genus
+genus           
+Juglans      363
+Quercus      318
+Betula       158
+Prunus        29
+Ziziphus      28
+Vitis         24
+Populus       19
+Citrus        17
+Theobroma     16
+Corylus       15
+'''
+
+# Since I did not include Phylum, Family, etc. within the BLAST,
+# take the taxon_id to JGI website to get that info.
+# Here, I get the taxon_ids to a file:
+tax_id_1030 = pd.DataFrame( the_1030_1.groupby(['subject_tax_id'])['subject_tax_id'].count()
+                      .reset_index(name='TALLY'))
+pd.DataFrame(tax_id_1030.sort_values(by=['TALLY'], ascending=[False], inplace=True))
+print(tax_id_1030.shape) # (109, 2)
+tax_id_1030_list = tax_id_1030['subject_tax_id'].tolist()
+print(len(tax_id_1030_list)) # 109
+# Now write the ids to a file with one id number per line
+with open(save_pfway + 'tax_id_1030_1.txt', 'w') as file:
+    for item in tax_id_1030_list:
+        file.write("%i\n" % item)
+```
+  
+#####Now bash script to run with JGI server to get the additional ranks for each unique taxon hit  
+JGI_taxonomy_server_simple.sh  
+```{bash, eval=FALSE}
+#!/usr/bin/env bash
+
+while read my_id;
+do
+  echo $my_id";"
+  echo -e $my_id";"$(curl https://taxonomy.jgi-psf.org/simple/sc/id/$my_id) >> JGI_SIMPLE_TAXON_OUTPUT.txt
+done < $1
+```
+  
+NOTE: tax_id_103_1.txt is just a file containing only the "subject_tax_id" column from the Betula_1030_1_blast.csv table aobve.  
+Example of first six lines:  
+51240  
+58331  
+3505  
+326968  
+29760  
+1233953  
+  
+Run from commandline:  
+bash JGI_taxonomy_server_simple.sh tax_id_1030_1.txt
+  
+##### And now summarize that output:  
+python script:  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import pandas as pd
+
+# JGI output is NOT consistent. Some samples have class, others not.
+# Too tired to write code. Just visual changes in a text editor (also added headers). Now import the file.
+Simple_JGI_table = pd.read_csv("/Users/carolrowe/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/JGI_SIMPLE_TAXON_OUTPUT.txt", sep='\t')
+print(Simple_JGI_table.head())
+print(Simple_JGI_table.shape) # (109, 10)
+'''
+   Sample  SUPERKINGDOM          KINGDOM          PHYLUM CLASS      ORDER  \
+0   51240  sk:Eukaryota  k:Viridiplantae  p:Streptophyta   NaN  o:Fagales   
+1   58331  sk:Eukaryota  k:Viridiplantae  p:Streptophyta   NaN  o:Fagales   
+2    3505  sk:Eukaryota  k:Viridiplantae  p:Streptophyta   NaN  o:Fagales   
+3  326968  sk:Eukaryota  k:Viridiplantae  p:Streptophyta   NaN  o:Rosales   
+4   29760  sk:Eukaryota  k:Viridiplantae  p:Streptophyta   NaN  o:Vitales   
+
+           FAMILY       GENUS            SPECIES SUBSPECIES  
+0  f:Juglandaceae   g:Juglans    s:Juglans regia        NaN  
+1      f:Fagaceae   g:Quercus    s:Quercus suber        NaN  
+2    f:Betulaceae    g:Betula   s:Betula pendula        NaN  
+3    f:Rhamnaceae  g:Ziziphus  s:Ziziphus jujuba        NaN  
+4      f:Vitaceae     g:Vitis   s:Vitis vinifera        NaN  
+'''
+# Merge with tax_id_1030 from previous python code above.
+joint = pd.merge(tax_id_1030, Simple_JGI_table, left_on='subject_tax_id', right_on='Sample')
+print(joint.shape) # (109, 12)
+
+# Get counts of phyla. Check to make sure ALL cells start with 'p:'
+phylum = joint['PHYLUM'].str.startswith('p:').sum()
+print(phylum) # 109
+
+phylum = joint.groupby("PHYLUM")["PHYLUM"].count()
+print(phylum)
+'''
+PHYLUM
+p:Proteobacteria      3
+p:Streptophyta      106
+'''
+# Ditto above with KINGDOM
+'''
+KINGDOM
+k:Viridiplantae    106
+'''
+# FAMILY
+family = joint.groupby('FAMILY')['FAMILY'].count()
+family.sort_values(ascending=False, inplace=True)
+print(family) # showing only the first ones thrugh value 3
+'''
+FAMILY
+f:Fabaceae             12
+f:Betulaceae            9
+f:Rosaceae              9
+f:Salicaceae            5
+f:Malvaceae             5
+f:Brassicaceae          5
+f:Poaceae               4
+f:Euphorbiaceae         4
+f:Cucurbitaceae         4
+f:Solanaceae            3
+f:Asteraceae            3
+f:Fagaceae              3
+f:Oleaceae              3
+f:Burkholderiaceae      3
+'''
+# GENERA:  top hits
+'''
+GENUS
+g:Prunus              5
+g:Betula              4
+g:Populus             4
+g:Vigna               3
+g:Corylus             3
+g:Quercus             3
+g:Olea                2
+g:Citrus              2
+g:Cucurbita           2
+g:Burkholderia        2
+g:Alnus               2
+g:Gossypium           2
+g:Triticum            2
+'''
+# SUPERKINGDOM
+'''
+SUPERKINGDOM
+sk:Eukaryota    106
+sk:Bacteria       3
+'''
+
+```
+  
+  
+## DAPC - Round 1  
+Here, we look at all samples to see:  
+1) which samples failed  
+2) confirm *B. alleghaniensis* as outgroup  
+3) general pattern of population structure  
+  
+First need to remove ipyrad's extra, empty columns:  
+cut -f1,6- Betula_gsaf.ustr > Betula_gsaf.stru  
+confirm num samples and num loci:  
+$ wc -l Betula_gsaf.stru  
+  416 Betula_gsaf.stru (208 samples)  
+$ head -n 1 Betula_gsaf.stru | wc -w  
+  4827 (4826 loci)  
+  
+Initial examination of the file: 23 samples were obvious failures.  
+Remove them from the .stru file: (-v means NOT matching, -E is extended-regex: so | means OR (rather than pipe))   
+$ grep -Ev '^(BP_15|BP_11|YB_B3_V|8556e|8557b|BP_12|BP_23|8568a|8573d|8566c|8564e|8557c|8566b|8567d|1030_3rep|8562a|1028_2|BP_01|8567e|8555e|8553e|1029_4|1030_3)' Betula_gsaf.stru > Betula_truncated.stru
+  
+R code:  
+```{r, eval=FALSE}
+library("ape")
+library("genetics")
+library("pegas")
+library("seqinr")
+library("ggplot2")
+library("adegenet")
+
+######### READ IN DATA  ############################
+Bet_gsaf_file <- "/path/to/Betula_diploids/Betula_truncated.stru"
+
+Bet_gsaf_obj1 <- read.structure(Bet_gsaf_file, n.ind = 185, n.loc = 4826, col.lab = 1, col.pop = 0, row.marknames = 0, onerowperind = FALSE, NA.char = '-9')
+
+################ K=3 ################################################
+N_3_grps <- find.clusters(x=Bet_gsaf_obj1, stat="BIC",choose.n.clust=TRUE, max.n.clust=20, n.iter=100000, n.start=100,scale=FALSE, truenames=TRUE) # retained 150 PCs and k=3
+
+N_3_grps$size # tells how many individuals in each cluster
+# 148 2 35
+
+# for n.da, if k <10, then use k-1 (2-1=1)
+# suggests n.pc <= N/3 (N is number samples), hence: 185/3 = 61.667
+test_N_3_dapc <- dapc(Bet_gsaf_obj1, pop=N_3_grps$grp, n.pc = 62, n.da = 2)
+summary(test_N_3_dapc) # same
+# 148 2 35
+
+mat <- tab(Bet_gsaf_obj1, NA.method="mean")
+
+xval_k3 <- xvalDapc(mat, N_3_grps$grp, n.pca.max = 300, training.set = 0.9, result = "groupMean", center = TRUE, scale = FALSE, n.pca = NULL, n.rep = 100, xval.plot = TRUE)
+xval_k3[2:6] # Number of PCs Achieving Lowest MSE = 10
+
+Bet_gsaf_k3_dapc <- dapc(Bet_gsaf_obj1, pop=N_3_grps$grp, n.pca = 10 , n.da = 2 )
+summary(Bet_dip_k3_dapc)
+#$post.grp.size
+#  1   2   3 
+#149   2  34 
+
+Bet_gsaf_k3_dapc$grp
+Bet_gsaf_k3_dapc$posterior # Yes, this is probability posterior assignment to cluster
+
+# Save cluster assignment file in case needed to make a plot.
+write.csv2(Bet_gsaf_k3_dapc$posterior, "/path/to/Betula_gsaf_k3_DAPC_assign.csv")
+
+# Plotting
+myCol3 <- c("lightgrey","red","purple")
+dev.new()
+scat3 <- scatter(Bet_gsaf_k3_dapc, posi.da=FALSE, bg="white", pch=17:22, scree.pca=FALSE, posi.pca=FALSE, col=myCol3)
+comp2 <- compoplot(Bet_gsaf_k3_dapc, posi="topright",txt.leg=paste("Cluster", 1:3),ncol=1, col = myCol3, cex.lab=1, cex.names = 0.4)
+
+########### K=4 and K=5 ###############################################
+# K=4: 8554e-e parse out as a group
+# K=5: 8552a-e parse out as a group 
+#       (Number of PCs Achieving Lowest MSE = 20)
+#       myCol5 <- c("purple","#000080","dodgerblue", "lightgrey", 'red')
+```
+  
+####Round1 Betula: BIC plot from DAPC analysis  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_Round1/Bet_Round1_BIC_DAPC.png)  
+  
+####Round1 Betula K=3: BIC plot from DAPC analysis  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_Round1/Bet_Round1_k3_scatt_DAPC.png)  
+  
+####Round1 Betula K=3: BIC plot from DAPC analysis  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_Round1/Bet_Round1_k3_str_DAPC.png)  
+  
+####Round1 Betula K=5: BIC plot from DAPC analysis  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_Round1/Bet_Round1_k5_scatt_DAPC.png)  
+  
+####Round1 Betula K=5: BIC plot from DAPC analysis  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_Round1/Bet_Round1_k5_str_DAPC.png)  
+  
+  
+    
+## DAPC - Round 2 w/ 181 samples - no outgroups  
+####See summary at the bottom  
+  
+R script:  
+```{r, eval=FALSE}
+library("ape")
+library("genetics")
+library("pegas")
+library("seqinr")
+library("ggplot2")
+library("adegenet")
+
+######### READ IN DATA  ############################
+stru_file <- '/path/to/file/Betula/CR_Betula/Betula_181_70pc.stru'
+
+Betula_obj1 <- read.structure(stru_file, n.ind = 181, n.loc = 3375, col.lab = 1, col.pop = 0, row.marknames = 0, onerowperind = FALSE, NA.char = '-9')
+
+indNames(Betula_obj1)
+#################  k=2 ###############################
+
+# Reatined 200 PCs and 2 clusters
+N_2_grps <- find.clusters(x=Betula_obj1, stat="BIC",choose.n.clust=TRUE, max.n.clust=20, n.iter=100000, n.start=100,scale=FALSE, truenames=TRUE) # k = 2
+
+N_2_grps$size # tells how many individuals in each cluster
+# 36 145
+N_2_grps$grp
+# output shows the 36 group 1 samples as:
+# ALB 1,2,3,5 (4)
+# all BP samples (20)
+# all MNSE samples (7)
+# all NB samples (5)
+
+# for n.da, if k <10, then use k-1 (2-1=1)
+# suggests n.pc <= N/3 (N is number samples), hence: 181/3 = 60.333
+test_N_2_dapc <- dapc(Betula_obj1, pop=N_2_grps$grp, n.pc = 60, n.da = 1)
+summary(test_N_2_dapc) # same
+# 36 145
+
+mat <- tab(Betula_obj1, NA.method="mean")
+
+xval_k2 <- xvalDapc(mat, N_2_grps$grp, n.pca.max = 300, training.set = 0.9, result = "groupMean", center = TRUE, scale = FALSE, n.pca = NULL, n.rep = 100, xval.plot = TRUE)
+xval_k2[2:6] # Number of PCs Achieving Lowest MSE = 60
+# NOTE: the number of PCs achieving the lowest MSE may vary from run to run as you are randomly
+# assigning samples to the training set and performing replicates
+Betula_k2_dapc <- dapc(Betula_obj1, pop=N_2_grps$grp, n.pca = 60, n.da = 1 )
+
+summary(Betula_k2_dapc)
+# 36 145
+
+#Betula_k2_dapc$grp
+Betula_k2_dapc$posterior # Save this file. This is probability posterior assignment to each cluster.
+write.csv2(Betula_k2_dapc$posterior, "Betula_181_70pc_k2_DAPC_assign.csv")
+
+Betula_k2_dapc # gives summary and other variables you can lool at
+'''
+	#################################################
+	# Discriminant Analysis of Principal Components #
+	#################################################
+class: dapc
+$call: dapc.genind(x = Betula_obj1, pop = N_2_grps$grp, n.pca = 60, 
+    n.da = 1)
+
+$n.pca: 60 first PCs of PCA used
+$n.da: 1 discriminant functions saved
+$var (proportion of conserved variance): 0.658
+
+$eig (eigenvalues): 5543  vector    length content                   
+1 $eig      1      eigenvalues               
+2 $grp      181    prior group assignment    
+3 $prior    2      prior group probabilities 
+4 $assign   181    posterior group assignment
+5 $pca.cent 6826   centring vector of PCA    
+6 $pca.norm 6826   scaling vector of PCA     
+7 $pca.eig  180    eigenvalues of PCA        
+
+  data.frame    nrow ncol content                                          
+1 $tab          181  60   retained PCs of PCA                              
+2 $means        2    60   group means                                      
+3 $loadings     60   1    loadings of variables                            
+4 $ind.coord    181  1    coordinates of individuals (principal components)
+5 $grp.coord    2    1    coordinates of groups                            
+6 $posterior    181  2    posterior membership probabilities               
+7 $pca.loadings 6826 60   PCA loadings of original variables               
+8 $var.contr    6826 1    contribution of original variables     
+
+'''
+# Selecting color for plots
+my2_Col <- c("#8DA0CB", "#66C2A5")   # blue, green
+
+# Scatter plot
+dev.new(width=6, height=4)
+scat2 <- scatter(Betula_k2_dapc, posi.da="topright", bg="white", pch=5:8, scree.pca=FALSE, col=my2_Col)
+
+# structure-like plot
+dev.new(width=8, height=6)
+comp2 <- compoplot(Betula_k2_dapc, posi="topright",txt.leg=paste("Cluster", 1:2),ncol=1, col = my2_Col, cex.lab=1, cleg = 0.9)
+
+# REPEAT analyses as above but with K=3 and then K=4
+```
+  
+###DAPC BIC plot (181 ingroup samples):  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_DAPC/Bet_181_70pc_BIC.png)  
+  
+###DAPC Scatter: K=2 (181 ingroup samples)  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_DAPC/Bet_181_70pc_scatter.png)  
+  
+###DAPC Scatter: K=4 (181 ingroup samples)  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_DAPC/Bet_181_70pc_k4_scatter.png) 
+  
+###DAPC: Individual assignment: K=4 (181 ingroup samples)  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_DAPC/Bet_181_70pc_k4_str.png)    
+  
+  
+###Summary of group assignments from DAPC (181 samples, no outgroups):  
+####K=2  
+**Group1**:  
+ALB 1,2,3,5 (Alberta,CANADA) (4 samples)  
+all BP (Skagway, AK) samples (20 samples)  
+all MNSE (Minnesota) samples (7 samples)  
+all NB (New Hampshire) samples (5 samples)  
+**Group2**:  
+Else, including the other 4 ALB samples and all of Alaska except Skagway samples.  
+  
+####K=4  
+**Cluster 1**:  
+8552a-e  (5 samples)  
+**Cluster 2**:  
+ALB 1,2,3,5 (Alberta,CANADA) (4 samples)  
+all BP (Skagway, AK) samples (20 samples)  
+all MNSE (Minnesota) samples (7 samples)  
+all NB (New Hampshire) samples (5 samples)  
+**Cluster 3**:  
+8555a-e (5 samples)  
+**Cluster 4**:  
+else, including the remaining 4 ALB samples  
+  
+  
+## STRUCTURE: Round 2 w/ 181 samples - no outgroups 
+Below is the main body of my slurm script for:  
+  
+Note: the sleep 3s is so that I get a different seed number for each rep. k is for looking at 2 through 6 possible clusters, and r is for doing 50 replicates within each cluster.  
+  
+STRUCTURE_SLURM.sh  
+```{bash, eval=FALSE}
+
+for k in {2..6} ;
+do
+    for r in {1..50} ;
+    do
+        $HOME/miniconda2/bin/structure  -i Betula_181_70pc.stru -m Bet_181_70pc_mainparams.txt -e Bet_181_70pc_extraparams.txt -K $k -o Bet_181_70oc_output_$k-$r &
+        sleep 3s
+    done
+done
+echo "All runs started"
+
+wait # Don't continue until background jobs have finished
+
+```
+Bet_181_70pc_maianparams.txt  
+  
+\#define NUMINDS 181  
+\#define NUMLOCI 3375  
+\#define PLOIDY  2  
+\#define LABEL   1  
+\#define POPDATA 0  
+\#define POPFLAG 0  
+\#define LOCDATA 0  
+\#define PHENOTYPE       0  
+\#define EXTRACOLS       0  
+\#define PHASED  0  
+\#define PHASEINFO       0  
+\#define BURNIN  100000  
+\#define NUMREPS 250000  
+\#define NOADMIX 0  
+  
+Bet_181_70pc_extraparams.txt  
+  
+\#define ANCESTDIST          1  
+\#define NOADMIX	0  
+  
+  
+Zip the output *_f files (zip new_zip_file_name.zip files_to_zip)  
+zip Bet_181_70pc_f.zip Bet_181_70oc_output_*_f  
+  
+Run with CLUMPAK  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_STRUCTURE/1531530561/job_1531530561_pipeline_summary.png)  
+  
+####STRUCTURE/CLUMPAK with individuals K=4:  
+python script:  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import toyplot
+import pandas as pd
+
+# Pathway to file:
+pfway4 = "/path/Betula_181_70pc_STRUCTURE/1531530561/K=4/CLUMPP.files/"
+
+# File containing STRUCTURE results:
+K4 = pd.read_csv(pfway4 + 'ClumppIndFile.output', delim_whitespace=True, header=None)
+# Select the four columns of possible interest
+K4 = K4.iloc[:,[0,2,5,6,7,8]]
+# Label these columns
+K4.columns = ["samp_index", '%Missing', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4']
+#print(K4.head())
+print(K4.shape) # (181, 6)
+
+# need to get sample names back in. Getting names from the stru file
+Bet_stru = pd.read_csv("./path/Betula_181_70pc.stru" ,delim_whitespace=True, header=None)
+Bet_names = pd.Series(Bet_stru[0].unique())
+print(len(Bet_names)) # 181
+K4["Sample"] = Bet_names.values
+K4_table = K4[['Sample', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4']]
+# SAVE this file for later use:
+K4_table.to_csv("/pathway/Bet_181_70pct_ClumppIndFile_named.csv", index=False)
+# Set sample to the index for graphing
+K4_table.set_index('Sample', inplace=True)
+#print(K4_table.head())
+# if you want a table that's saved as html where you can hover over the bars and get the actual assignment values, then use this function.
+# THIS FUNCTION IS FROM THE IPYRAD TUTORIAL WEBSITE: Cookbook: Parallelized STRUCTURE analyses on unlinked SNPs
+# THANK YOU Deren Eaton and anyone esle involved!!!!!!
+def hover(table):
+    hover = []
+    for row in range(table.shape[0]):
+        stack = []
+        for col in range(table.shape[1]):
+            label = "Name: {}\nGroup: {}\nProp: {}"\
+                .format(table.index[row], 
+                        table.columns[col],
+                        table.iloc[row, col])
+            stack.append(label)
+        hover.append(stack)
+    return list(hover)
+
+# LET'S PLTOT
+## further styling of plot with css 
+style = {"stroke":toyplot.color.near_black, 
+         "stroke-width": 2}
+
+## build barplots for K2_table and my_dapc_table
+ticklabels = [i for i in K4_table.index.tolist()]
+canvas = toyplot.Canvas(width=1200, height=500)
+axes1 = canvas.cartesian(grid=(1,1,0))
+
+axes1.bars(K4_table, title=hover(K4_table), style=style, color=["purple", "#000080", "red", "lightgrey"])
+
+# Add table labels for K4_table
+axes1.x.ticks.locator = toyplot.locator.Explicit(labels=ticklabels)
+axes1.x.ticks.labels.angle = -90
+axes1.x.ticks.show = True
+#axes1.x.ticks.labels.offset = 20
+axes1.x.ticks.labels.style = {"font-size": "10px"}
+axes1.x.spine.style = style
+axes1.y.show = True
+
+# Save
+import toyplot.pdf
+toyplot.pdf.render(canvas, "./path/Bet_181_70pc_K4_struc.pdf")
+
+```
+ 
+####SUMMARY - same as you see in the DAPC:  
+  
+####K=4  
+**blue cluster**:  
+8552a-e  (5 samples)  
+  
+**red cluster**:  
+ALB 1,2,3,5 (Alberta,CANADA) (4 samples)  
+all BP (Skagway, AK) samples (20 samples)  
+all MNSE (Minnesota) samples (7 samples)  
+all NB (New Hampshire) samples (5 samples)  
+8553b with 62% similarity  
+  
+**purple cluster**:  
+8555a-e (5 samples)  
+  
+**grey cluster**:  
+else, including the remaining 4 ALB samples  
+  
+&nbsp;  
+  
+####K=4 assignment plot for Betula 181 ingroup samples:  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_70pc_STRUCTURE/Bet_181_70pc_K4_struc.png)  
+  
+  
+###Structure plot - reorder samples by cluster assignmebt and name, label by geographic location  
+  
+```{python, eval=FALSE, python.reticulate = FALSE}
+# read in the table we created above
+K4_table = pd.read_csv("/path/to/Betula_181_70pc_STRUCTURE/1531530561/K=4/CLUMPP.files/Bet_181_70pct_ClumppIndFile_named.csv")
+print(K4_table.shape)
+print(K4_table.head())
+'''
+(181, 6)
+  Population  Sample  Clust_1  Clust_2  Clust_3  Clust_4
+0       1028  1028_1   0.0035   0.0222   0.0027   0.9716
+1       1028  1028_3   0.0035   0.0401   0.0000   0.9563
+2       1028  1028_4   0.0015   0.0238   0.0000   0.9746
+3       1028  1028_5   0.0010   0.0205   0.0000   0.9784
+4       1029  1029_1   0.0053   0.0223   0.0047   0.9678
+'''
+# Create a function to call the clusters
+def group_call(df):
+    if (df['Clust_4'] > 0.5):
+        return "Clust_4"
+    elif (df['Clust_3'] > 0.5):
+        return "Clust_3"
+    elif (df['Clust_2'] > 0.5):
+        return 'Clust_2'
+    elif (df['Clust_1'] > 0.5):
+        return "Clust_1"
+    else:
+        return "error"
+
+# Now add a colummn to the dataframe with the cluster calls
+K4_table['Group'] = K4_table.apply(group_call, axis=1)
+print(K4_table.head())
+'''
+  Population  Sample  Clust_1  Clust_2  Clust_3  Clust_4    Group
+0       1028  1028_1   0.0035   0.0222   0.0027   0.9716  Clust_4
+1       1028  1028_3   0.0035   0.0401   0.0000   0.9563  Clust_4
+2       1028  1028_4   0.0015   0.0238   0.0000   0.9746  Clust_4
+3       1028  1028_5   0.0010   0.0205   0.0000   0.9784  Clust_4
+4       1029  1029_1   0.0053   0.0223   0.0047   0.9678  Clust_4
+'''
+# Can check to make sure there were no samples falling intot the error label
+print(K4_table[K4_table['Group'] == 'error'])
+'''
+Empty DataFrame
+Columns: [Population, Sample, Clust_1, Clust_2, Clust_3, Clust_4, Group]
+Index: []
+'''
+
+# Doing a sort - first by group call and then by sample name
+K4_table = K4_table.sort_values(['Group', 'Sample'])
+# Save this to a csv file in case we need it later
+K4_table.to_csv("/path/to/1531530561/K=4/CLUMPP.files/Bet_181_70pc_K4_clust_call.csv", index=False)
+
+# Need to get associated geographic locations
+final_db = dp.read_csv("/path/to/Table_1_181.csv")
+print(final_db.shape)
+print(final_db.head())
+'''
+(181, 5)
+  sample       Collector(s) State/province    lat deg    long deg
+0  8573e  Cristina McKernan             AK  65.037011 -147.456456
+1  8573a  Cristina McKernan             AK  65.037011 -147.456456
+2  8573b  Cristina McKernan             AK  65.037011 -147.456456
+3  8573c  Cristina McKernan             AK  65.037011 -147.456456
+4  8563c  Cristina McKernan             AK  61.774702 -148.494285
+'''
+
+# Merge out dataframes
+K4_state = pd.merge(K4_table, final_db, left_on='Sample', right_on='sample', how='outer', indicator='Exist')
+print(K4_state.shape)
+
+print(K4_state.columns)
+
+print(K4_state.head())
+'''
+(181, 13)
+
+Index(['Population', 'Sample', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4',
+       'Group', 'sample', 'Collector(s)', 'State/province', 'lat deg',
+       'long deg', 'Exist'],
+      dtype='object')
+
+  Population Sample  Clust_1  Clust_2  Clust_3  Clust_4    Group sample  \
+0       8554  8554a   0.8521   0.0481      0.0   0.0998  Clust_1  8554a   
+1       8554  8554b   0.8521   0.0480      0.0   0.1000  Clust_1  8554b   
+2       8554  8554c   0.8515   0.0484      0.0   0.1000  Clust_1  8554c   
+3       8554  8554d   0.8520   0.0481      0.0   0.0999  Clust_1  8554d   
+4       8554  8554e   0.8451   0.0500      0.0   0.1049  Clust_1  8554e   
+
+        Collector(s) State/province    lat deg    long deg Exist  
+0  Cristina McKernan             AK  61.291778 -149.797552  both  
+1  Cristina McKernan             AK  61.291778 -149.797552  both  
+2  Cristina McKernan             AK  61.291778 -149.797552  both  
+3  Cristina McKernan             AK  61.291778 -149.797552  both  
+4  Cristina McKernan             AK  61.291778 -149.797552  both  
+'''
+
+# For curiosity, look at counts by grouping.....
+K4_state.groupby(['Group', 'State/province'])['sample'].count()
+'''
+Group    State/province
+Clust_1  AK                  5
+Clust_2  AK                  5
+Clust_3  AK                 21
+         Alberta             4
+         MN                  7
+         NH                  5
+Clust_4  AK                130
+         Alberta             4
+'''
+# Because the Skagway samples are Alaska samples, but grouped with the more eastern samples, I want to differentiate them
+# create a function to pull out the Skagway samples from the remaining Alaska samples
+def rename_location(df):
+    if (df['Collector(s)'] == 'Shelby Surdyk') | (df['Collector(s)'] == 'Jami Belt'):
+        return "Skagway"
+    elif (df['State/province'] == 'AK'):
+        return "Alaska"
+    else:
+        return df['State/province']
+    
+K4_state['Label'] = K4_state.apply(rename_location, axis=1)  
+
+# Now, I want to sort the samples in order of cluster: 1, 2, 4, then 3
+def alt_group_call(df):
+    if (df['Clust_4'] > 0.5):
+        return "CClust_4"
+    elif (df['Clust_3'] > 0.5):
+        return "DClust_3"
+    elif (df['Clust_2'] > 0.5):
+        return 'BClust_2'
+    elif (df['Clust_1'] > 0.5):
+        return "AClust_1"
+    else:
+        return "error"
+
+K4_state['alt_group'] = K4_state.apply(alt_group_call, axis=1)
+print(K4_state.head())
+'''
+  Population Sample  Clust_1  Clust_2  Clust_3  Clust_4    Group sample  \
+0       8554  8554a   0.8521   0.0481      0.0   0.0998  Clust_1  8554a   
+1       8554  8554b   0.8521   0.0480      0.0   0.1000  Clust_1  8554b   
+2       8554  8554c   0.8515   0.0484      0.0   0.1000  Clust_1  8554c   
+3       8554  8554d   0.8520   0.0481      0.0   0.0999  Clust_1  8554d   
+4       8554  8554e   0.8451   0.0500      0.0   0.1049  Clust_1  8554e   
+
+        Collector(s) State/province    lat deg    long deg Exist   Label  \
+0  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+1  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+2  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+3  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+4  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+
+  alt_group  
+0  AClust_1  
+1  AClust_1  
+2  AClust_1  
+3  AClust_1  
+4  AClust_1  
+'''
+# Sort samples in the order I want
+try_4 = K4_state.sort_values(['alt_group', 'Label'])
+# Now see what our groupings and counts are
+try_44.groupby(['alt_group', 'Label'])['sample'].count()
+'''
+alt_group  Label  
+AClust_1   Alaska       5
+BClust_2   Alaska       5
+CClust_4   Alaska     130
+           Alberta      4
+DClust_3   Alaska       1
+           Alberta      4
+           MN           7
+           NH           5
+           Skagway     20
+'''
+# When I plot the structure graph, I don't want the lone DClust_3 and Alaska sample by iteself. 
+# I want it in order after the 130 Alaska samples, and before the Alberta samples
+# Where is this sample?
+print(try_4[ (try_4['alt_group'] == 'DClust_3') & (try_4['Label']=='Alaska') ])
+'''
+   Population Sample  Clust_1  Clust_2  Clust_3  Clust_4    Group sample  \
+10       8553  8553b   0.0047   0.0527   0.6194   0.3232  Clust_3  8553b   
+
+         Collector(s) State/province    lat deg    long deg Exist   Label  \
+10  Cristina McKernan             AK  61.271519 -149.792446  both  Alaska   
+
+   alt_group  
+10  DClust_3  
+'''
+
+# We see the sample we want in a different order is 8553b and it is at index location 10
+# Rename so it sorts in the order we want: Sorting on "alt_group" and "Label" so change those names accordingly
+try_4.at[10, 'Label'] = 'Alazska'
+try_4.at[10, 'alt_group'] = 'CClust_4'
+
+# Resort
+try_44 = try_4.sort_values(['alt_group', 'Label'])
+
+# might as well save the table in case you need it again
+try_44.to_csv("/path/to/Bet_181_70pc_K4_clust_call_ll_etc.csv", index=False)
+
+
+# Before making the plot, select only needed columns, and move "Label" column as the index column
+kat = try_44[['Label', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4']]
+kat.set_index('Label', inplace=True)
+print(kat.head())
+'''
+        Clust_1  Clust_2  Clust_3  Clust_4
+Label                                     
+Alaska   0.8521   0.0481      0.0   0.0998
+Alaska   0.8521   0.0480      0.0   0.1000
+Alaska   0.8515   0.0484      0.0   0.1000
+Alaska   0.8520   0.0481      0.0   0.0999
+Alaska   0.8451   0.0500      0.0   0.1049
+'''
+
+
+# PLOT
+style = {"stroke":toyplot.color.near_black, 
+         "stroke-width": 2}
+style2 = {"stroke":toyplot.color.near_black, 
+         "stroke-width": 3}
+
+# Don't want labels at the tickmarks, so make empty labels
+# Number of labels has to match number of setting locations (my_loc)
+my_labels = ['','', '', '', '', '']
+
+# Setting locations where tickmarks will be
+my_loc = [-0.5, 140.5, 148.5, 155.5, 160.5, 180.5]
+
+# Set up the plot size, and only a single subplot
+canvas = toyplot.Canvas(width=1200, height=500)
+axes1 = canvas.cartesian(grid=(1,1,0))
+
+# Set color of the bars
+axes1.bars(kat, style=style, color=["#7bc8f6", "#3b719f", "#fd4659", "lightgrey"]) # lightblue, muted blue, watermelon, and lightgrey
+
+# Add table labels
+axes1.x.ticks.locator = toyplot.locator.Explicit(labels=my_labels, locations=my_loc)
+
+# Change angle of lables and offset from axis
+axes1.x.ticks.labels.angle = -45
+axes1.x.ticks.labels.offset = 10
+axes1.x.ticks.labels.style = {"font-size": "10px"}
+axes1.x.spine.style = style
+axes1.x.ticks.style = {"stroke":toyplot.color.near_black, "stroke-width": 2}
+axes1.x.show = True
+axes1.x.ticks.show = True
+axes1.x.spine.show = True
+
+axes1.x.ticks.location = "below"
+axes1.x.ticks.labels.show = False
+
+axes1.y.show = True
+
+# Add location labels
+canvas.text(500, 480, "Alaska", style={"font-size":"18px"}, angle=-0)
+canvas.text(935, 480, "Alb.", style={"font-size":"18px"}, angle=-0)
+canvas.text(990, 484, "Minn.", style={"font-size":"18px"}, angle=-45)
+canvas.text(1020, 484, "N.H.", style={"font-size":"18px"}, angle=-45)
+canvas.text(1090, 480, "Skagway", style={"font-size":"18px"})
+
+# Only way I could figure to make an arrow to point to sample 8553b
+# Set different label styles
+label_style={"font-size":"28px", "font-weight":"bold"}
+label_style2={"font-size":"32px", "font-weight":"bold"}
+canvas.text(915.5, 12, "____", style=label_style2, angle=-90)
+canvas.text(904, 40, ">", style=label_style, angle=-90)
+
+# Save the file
+import toyplot.pdf
+toyplot.pdf.render(canvas, "/path/to/CR_Bet_181_70pc_K4_struc.pdf")
+
+
+```
+
+ 
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/CR_Bet_181_70pc_K4_struc.png) 
+    
+  
+  
+## Zach's Pipeline
+
+###**Step 1**: parse barcodes  
+(~ 1 day and 2hrs. to run on our CHPC node)  
+  
+Zach's perl script:  
+**parse_barcodes768.pl**  
+  + Remove barcode sequences from fastq reads and place them in the name.  
+  + Remove adpater sequences from the 3' end.  
+  + Remove Qual scores corresponding to the removed barcode and adapter.  
+  + Sequences not matching any barcodes are written to a separate file (miderrors.txt).  
+  + This now includes a function for correcting barcodes that are off by 1.  
+  
+&nbsp;  
+  
+**INPUT FILES:**  
+Betula_Bcode_ZG.txt (Bcode file for GSAF run)  
+Betula_Test_Bcode_ZG.txt (Bcode file for test run USU)  
+  
+&nbsp;  
+  
+**OUTPUT FILES:**  
+miderrors_Betula_S1_L001_R1_001.fastq  
+parsed_Betula_S1_L001_R1_001.fastq  
+slurm-5669062.out-kp379 
+  
+&nbsp;  
+  
+####Example of files:  
+**Betula_Bcode_ZG.txt** (first 5 lines):  
+name,barcode,Sample  
+index_9nt_36,attctggaa,8573e  
+index_10nt_130,aagttgctaa,1028_3  
+index_8nt_37,aatccaga,ALB_4  
+index_9nt_37,agcaatgaa,8560d  
+  
+**miderrors_Betula_S1_L001_R1_001.fastq** (first 4 lines):  
+NCGAAGAGACCAGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTGAAAAAAAAAAATATCCTCAACATAGCTGTTGTTTCTAGTTACCTAGCTGGCCACAN  
+NGTCATTGTACCAGATCGGAAGAGCTCGTATGTCGTCTTCTGCTTGAAAAAAAAAAATGCAGCGCACACGTGTCCGGTTCCCGATAGGGAGATGTCGTCTN  
+CCTAGAGACCAGATAGGAAGAGCTCGTATGCNGTCTNCTGCNTGNNNANAAAAAAAAANAACATNNNNCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN  
+GACCGCGACCAGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTGAAAAAAAAAAAAGCACATATGCCGCATCCCCACCGAAAAAAGAAAGCGCGGGTGAAA  
+  
+**parsed_Betula_S1_L001_R1_001.fastq** (first 12 lines):  
+\@BP_06 -- 1  
+TTTGCAGATGAAGAGATGCCAAAGGGGCTTCTTACTTCCCAAACAGATCTTCCTACATCTGTATATAAACGCTGGTTTATCAAGAA  
++  
+FFFFFFFFFFFBFFFFFFFFFF\<FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\<  
+\@8574e -- 3  
+TTTGGACATTGATGCTTGCAGGTCGTTGAGTTTTCTAAGGTGGTTGGTTATTTATTAGTTTGGTGTTAGGCTCAACTGGTTAGGCCT  
++  
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF  
+\@8553e -- 4  
+TCAATGTCAGACACCCAAGCTGGAATTGCAGTGGTGATAGCAAGGCAATTTGAATCTCTTCTGGATAATGCATCTGCTACAATGTTT  
++  
+FFFFFFFFFF\<FFBBBBFFFFFFBFFFFF/BFFFFFFFFFFFFFFFFFFFFFF/F\<F/FFFFFF\<F/\<FFFF\<FFBBFF/BFFFFFF  
+  
+&nbsp;  
+  
+**slurm-5669062.out-kp379**  
+Here's an example of the first few lines from the output slurm:  
+10000  
+20000  
+30000  
+40000  
+50000  
+60000  
+70000  
+80000 
+  
+And the last few lines from the slurm output:  
+TTATGCATCACAATTC,919886  
+TTCAATTACAATTC,1094287  
+TTCAGCTAGACAATTC,1017730  
+TTCGTAGACAATTC,1386083  
+TTCTCATAACAATTC,1560135  
+TTGCGAACCAATTC,994953  
+TTGCGATCACAATTC,1605522  
+TTGGACGGCACAATTC,495291  
+Good mids count: 253839376  
+Bad mids count: 26998683  
+Number of seqs with potential MSE adapter in seq: 43636804  
+Seqs that were too short after removing MSE and beyond: 679969  
+  
+&nbsp;  
+  
+####SCRIPTS:  
+**Zach Gompert's parse_barcodes768.pl script:**  
+```{perl, eval=FALSE}
+#!/usr/bin/perl 
+# written by Zach Gompert
+#
+## This program removes barcode sequences from fastq reads and places them
+## in the name. This program also removes adpater sequences from the 3' end.
+## Qual scores corresponding to the removed barcode and adapter are removed 
+## as well. The reads are separted into separate files based on species and
+## enzymes (for the pines). This part of the code will not be necessary in 
+## most cases where each lane contains a single experiment. Sequences not
+## matching any barcodes are written to a separate file (miderrors.txt).
+
+## This now includes a function for correcting barcodes that are off by 1.
+
+## Version 1.0, 11ii13, includes consisten dash format and always grabs four rows of sequences
+#
+## parse_barcodes.jan.pl barcodes_manacus1.csv rawreads_flowcell1/UW_1.fastq
+
+use warnings;
+
+unless (scalar @ARGV > 1){
+    die "I need two arguments to run.";
+}
+my $barcodes = shift(@ARGV);
+my $infile = shift (@ARGV);
+
+open (INFILE, $infile) or die "Could not open the INFILE: $infile";
+open (MIDS, $barcodes) or die "Could not open MID file: $barcodes";
+
+print "$infile\n$barcodes\n";
+
+my %mids;
+my %midsctr;
+<MIDS>; ## get rid of top line in MIDS file
+while(<MIDS>){
+    chomp;
+    @line = split ',', $_;
+    $line[1] =~ tr/[a-z]/[A-Z]/; ## make barcodes uppercase
+    $bcode = "$line[1]"."CAATTC"; # add restriction site, not necessary if barcode + res. site is included
+    #$bcode = $line[1]; ## This version assumes CAATTC is already included as part of the barcode
+    $mids{$bcode} = $line[2];
+    $midsctr{$bcode} = 0; ## initialize counters to zero
+}
+close (MIDS) or die "Could not close MIDS\n";
+
+## make a matrix of each base in adaptor that includes mid
+## (16 columns, 10 bp mid + CAATTC)
+@midmat = ();
+$i = 0;
+foreach $m (sort keys %mids){
+    $midmat[$i] = [ split '', $m ];
+    $i++;
+}
+
+$infile =~ s/.*\/([\w.]+fastq)$/$1/;  ## simplify file name by
+#$infile =~ s/.*\/([\w.]+fastq\.a[a-z])$/$1/;  ## simplify file name by
+## dropping leading folder name
+open (SEQ, "> parsed_"."$infile") or 
+    die "Could not open SEQ\n";
+open (CRAP, "> miderrors_"."$infile") or die "Could not open CRAP\n";
+
+my %midcnt;
+
+my $mseprob = 0;
+my $seqcnt = 0;
+my $goodmid = 0;
+my $goodmidctr = 0;
+my $badmidctr = 0;
+my $adlen;
+my $adrem = 0;
+my @ad;
+my $bclen = 16; # 10 bc and 6 res. site
+my $qline;
+my $tooshort = 0;
+
+while (<INFILE>){
+    chomp;
+    ## new sequence starts here
+    $seqcnt++;
+    if(!($seqcnt % 10000)){
+	print "$seqcnt\n";
+    }
+    $_ = <INFILE>;
+    chomp($_);
+    if (s/(TTACAGATCGGAAGAG.*)//){ 
+##          CTTACAGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG
+	## potentially has Illpcr seq at end, so we lop this off
+	## 
+	@ad = split "", $1;
+	$adlen = @ad;
+	$mseprob++;
+    }
+    else {
+	$adlen = 0;
+    }
+    $line10 = substr($_, 0, $bclen); ## substr EXPR,OFFSET,LENGTH
+    $line9 = substr($_, 0, ($bclen - 1)); # 9 bp barcode
+    $line8 = substr($_, 0, ($bclen - 2)); # 8 bp barcode
+    if($mids{$line10}){ ## this is a barcode, which I have now pulled off
+	s/^$line10//;
+	if (/[ATCGN]/) { ## didn't remove it all, there is seq in $_
+	    print SEQ "@"."$mids{$line10}"." -- "."$seqcnt\n";
+	    print SEQ "$_\n";
+	    $goodmid = 1;
+	    $goodmidctr++;
+	    $midsctr{$line10}++;
+	}
+	$whichL = 10;
+    }
+    
+    elsif($mids{$line9}){ ## this is a barcode, which I have now pulled off
+	s/^$line9//;
+	if (/[ATCGN]/) { ## didn't remove it all, there is seq in $_
+	    print SEQ "@"."$mids{$line9}"." -- "."$seqcnt\n";
+	    print SEQ "$_\n";
+	    $goodmid = 1;
+	    $goodmidctr++;
+	    $midsctr{$line9}++;
+	}
+	$whichL = 9;
+    }
+    
+    elsif($mids{$line8}){ ## this is a barcode, which I have now pulled off
+	s/^$line8//;
+	if (/[ATCGN]/) { ## didn't remove it all, there is seq in $_
+	    print SEQ "@"."$mids{$line8}"." -- "."$seqcnt\n";
+	    print SEQ "$_\n";
+	    $goodmid = 1;
+	    $goodmidctr++;
+	    $midsctr{$line8}++;
+	}
+	$whichL = 8;
+    }
+    
+    elsif(length $line10 != $bclen){
+	$goodmid = 0;  ## this is a special case, where don't have
+	## enough remainging sequence to even test
+	## for a mid
+	$tooshort++;
+    }
+
+    else { ## potential mid error
+	($line10b, $n10) = correctmid($line10);
+	$minN = $n10;
+	$whichL = 10;
+	if ($minN > 1){
+	    ($line9b, $n9) = correctmid($line9);
+	    if ($n9 < $minN){
+		$minN = $n9;
+		$whichL = 9;
+	    }
+	    if ($minN > 1){
+		($line8b, $n8) = correctmid($line8);
+		if ($n8 < $minN){
+		    $minN = $n8;
+		    $whichL = 8;
+		}
+	    }
+	}
+	if ($minN > 1){ ## can't correct
+	    print CRAP "$_\n";
+	    $goodmid = 0;
+	    $badmidctr++;
+	}
+	else { ## has been corrected
+	    if ($whichL == 10){
+		$line = $line10b;
+		s/$line10//;
+	    }
+	    elsif ($whichL == 9){
+		$line = $line9b;
+		s/$line9//;
+	    }
+	    elsif ($whichL == 8){
+		$line = $line8b;
+		s/$line8//;
+	    }
+	    if (/[ATCGN]/) { ## didn't remove it all
+		print SEQ "@"."$mids{$line}"." -- "."$seqcnt\n";
+		print SEQ "$_\n";
+		$goodmid = 1;
+		$goodmidctr++;
+		$midsctr{$line}++;
+
+	    }
+	    else {
+		$goodmid = 0;
+	    }
+	}
+    }
+
+    $_ = <INFILE>;
+    chomp($_);
+    if (/^\+/ && $goodmid == 1){ 
+	print SEQ "$_\n";
+    }
+    $_ = <INFILE>;
+    chomp($_);
+    if ($goodmid == 1){ ## qual score, needs to be trimmed
+	if ($whichL == 10){
+	    $seqlength = (length $_) - $bclen - $adlen;
+	    $qline = substr($_, $bclen, $seqlength);
+	}
+	elsif ($whichL == 9){
+	    $seqlength = (length $_) - $bclen - $adlen + 1;
+	    $qline = substr($_, ($bclen - 1), $seqlength);
+	}
+	elsif ($whichL == 8){
+	    $seqlength = (length $_) - $bclen - $adlen + 2;
+	    $qline = substr($_, ($bclen - 2), $seqlength);
+	}
+	print SEQ "$qline\n";
+	$goodmid = 0;
+    }
+}
+foreach my $k (sort keys %midsctr){
+    print "$k,$midsctr{$k}\n";
+}
+
+print "Good mids count: $goodmidctr\n";
+print "Bad mids count: $badmidctr\n";
+print "Number of seqs with potential MSE adapter in seq: $mseprob\n";
+print "Seqs that were too short after removing MSE and beyond: $tooshort\n";
+
+close (SEQ) or die "Could not close SEQ\n";
+close (CRAP) or die "Could not close CRAP\n";
+
+##--------- sub routines -----------------##
+
+sub correctmid{
+    my @seq = split //, $_[0];
+    my @dist = ();
+    my $corrected;
+    my $bc = length($_[0]) - 1; # 1 less than barcode length
+    ## initialize distance vector
+    for my $i (0 .. $#midmat){
+	$dist[$i] = 0;
+    }
+
+    ## calc distances
+    foreach my $m (0..$#midmat){
+	foreach my $i (0..$bc){
+	    if (defined($midmat[$m][$i])){
+		unless($seq[$i] eq $midmat[$m][$i]){
+		    $dist[$m] = $dist[$m] + 1;
+		}
+	    }
+	    else {
+		$dist[$m] = $dist[$m] + 9; # can't be it, wrong length
+	    }		
+	}
+    }
+
+    ## which min
+    my $min = 100;
+    my $mindex = -1;
+    foreach my $m (0 .. $#dist){
+	if($min > $dist[$m]){
+	    $min = $dist[$m];
+	    $mindex = $m;
+	}
+    }
+    $corrected = join '',  @{$midmat[$mindex]} ;
+    return($corrected, $min);
+}
+
+```
+  
+&nbsp;  
+  
+Here's my SLURM script for running from the CHPC:   
+**ZG_pipline_SLURM.sh**   
+```{bash, eval=FALSE}
+#!/bin/bash
+#SBATCH --account=wolf-kp  # Using our own node, (or -A) 
+#SBATCH --partition=wolf-kp  # Which partition to use (or -p) 
+#SBATCH --time=168:00:00  # 14 day time limit on our node. Else, max is 72hrs. (or -t)
+#SBATCH --nodes=1  # Number of nodes (or -N). Default is 1
+#SBATCH --ntasks=1  # number of MPI tasks (or -n)
+#SBATCH --mail-user=carol.rowe666@gmail.com  # email address
+#SBATCH --mail-type=ALL  # Alerts sent when job begins, ends, or aborts
+#SBATCH -o slurm-%j.out-%N	 # name of the stdout, using the job number (%j) and the first node (%N)
+#SBATCH -e slurm-%j.err-%N	 # name of the stderr, using job and first node values
+#
+# Set up whatever package we need to run with
+module load perl
+#
+# Set temporary working (scratch) directory. Do NOT use $JOB_ID at the end. It'll mess up the .json file and subsequent steps in ipyrad witll fail
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/uufs/chpc.utah.edu/common/home/wolf-group1/rowe/Betula/Betula_ZG
+cp -r $WORKDIR/Betula_Test_Bcode_ZG.txt $SCRDIR/.
+cp -r $WORKDIR/parse_barcodes768.pl $SCRDIR/.
+WORKDIR2=/uufs/chpc.utah.edu/common/home/wolf-group1/rowe/RAW_DATA
+cp -r $WORKDIR2/Undetermined_S0_R1_001.fastq.gz $SCRDIR/.
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+gunzip -c Undetermined_S0_R1_001.fastq.gz > ./Undetermined_S0_R1_001.fastq 
+
+perl parse_barcodes768.pl Betula_Test_Bcode_ZG.txt Undetermined_S0_R1_001.fastq
+#
+
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+```
+  
+&nbsp;  
+  
+###**Step 2**: Split .fastq by individual  
+Time: approx. 3hrs 10 ins. on CHPC  
+  
+Zach's perl script:  
+**splitFastq_ms.pl**  
+    + Creates files for each individual from one or more fastq files.  
+    + Individuals ids are given in a separate file with one ID per line. 
+  
+&nbsp;  
+  
+**INPUT FILES:**  
+Betula_208_samples.txt  
+parsed_Betula_S1_L001_R1_001.fastq  
+  
+&nbsp;  
+  
+**OUTPUT FILES:**  
+.fastq file for each sample  
+  
+&nbsp;  
+  
+####Example of files:    
+**parsed_Betula_S1_L001_R1_001.fastq**  
+    + output file from Step 1  
+  
+**Betula_208_samples.txt**  
+Just made this file from my barcode file. Skip the first header line and then grab the last (or 3rd) field of each line.  
+tail -n +2 Betula_Bcode_ZG.txt | cut -d',' -f3 > Betula_208_samples.txt  
+Here's the first 4 lines of the file:  
+8573e  
+1028_3  
+ALB_4  
+8560d  
+   
+&nbsp;  
+  
+####SCRIPTS:  
+**Zach Gompert's splitFastq_ms.pl script:**  
+```{perl, eval=FALSE}
+#!/usr/bin/perl
+# written by Zach Gompert
+## Creates files for each individual from one or more fastq files. Individuals ids are given in a separate file with one ID per line.
+
+use warnings;
+
+$idfile = shift (@ARGV);
+open (IDS, $idfile) or die;
+while (<IDS>){
+    chomp;
+    $fh = "FQ"."$_";
+    open ($fh, "> $_".".fastq") or die "Could not write\n";
+    $files{$_} = $fh;
+}
+close (IDS);
+
+foreach $in (@ARGV){
+    open (IN, $in) or die;
+    while (<IN>){
+	chomp;
+	if (/^\@([A-Z0-9a-z\_]+)/){
+	    $id = $1;
+	    s/ \-\- /\-/;
+	    if (defined $files{$id}){
+		$flag = 1;
+		print {$files{$id}} "$_\n";
+	    }
+	    else{
+		$flag = 0;
+	    }
+	    foreach $i (0..2){
+		$line = <IN>;
+		if ($flag == 1){
+		    print {$files{$id}} "$line";
+		}	
+	    }	
+	}
+	else{
+	    print "Error -- $_\n";
+	}
+    }
+    close (IN);
+}
+foreach $id (keys %files){
+    close ($files{$id});
+}
+
+
+
+```
+  
+  
+Recieved the following error message:    
+$ cat slurm-6569592.err-kp379  
+Name "main::i" used only once: possible typo at splitFastq_ms.pl line 31.  
+However, the output files seem to look correct.  
+  
+&nbsp;  
+  
+Here's my SLURM script for running from the CHPC:   
+Includes ONLY the main body of the script (without the #SBATCH statements)  
+**ZG_pipline2_SLURM.sh**  
+```{bash, eval=FALSE}
+# Set up whatever package we need to run with
+module load perl
+#
+# Set temporary working (scratch) directory. Do NOT use $JOB_ID at the end. It'll mess up the .json file and subsequent steps in ipyrad witll fail
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/uufs/chpc.utah.edu/common/home/wolf-group1/rowe/Betula/Betula_ZG
+cp -r $WORKDIR/Betula_208_samples.txt $SCRDIR/.
+cp -r $WORKDIR/splitFastq_ms.pl $SCRDIR/.
+cp -r $WORKDIR/parsed_Betula_S1_L001_R1_001.fastq $SCRDIR/.
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+perl splitFastq_ms.pl Betula_208_samples.txt parsed_Betula_S1_L001_R1_001.fastq
+#
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+
+```
+ 
+&nbsp;  
+  
+###**Step 3**: Build reference genome  
+Going to build our own, *de novo* reference genome using the "DIPLOID" Alaska and Alberta samples (159 samples) as per the gbs2ploidy section.  
+  
+Zach's perl script:  
+**.pl**  
+    + Creates files for each individual from one or more fastq files.  
+    + Individuals ids are given in a separate file with one ID per line. 
+  
+&nbsp;  
+  
+**INPUT FILES:**  
+file_list.txt  
+  
+&nbsp;  
+  
+**OUTPUT FILES:**  
+
+  
+&nbsp;  
+  
+####Example of files:  
+**file_list.txt**  
+Obtained list using the Betula_diploid_Bcode.txt file:  
+\$ cut -f1 Betula_diploid_Bcode.txt > ZG_file_list.txt  
+Then add the .fastq extnesion to the name:  
+\$ sed -i 's/$/.fastq/' ZG_file_list.txt  
+\$ head -n 10 ZG_file_list.txt  
+8573e.fastq  
+8563c.fastq  
+1029_3.fastq  
+1031_4.fastq  
+1028_3.fastq  
+1030_1.fastq  
+8554c.fastq  
+8570c.fastq  
+8564a.fastq  
+8572e.fastq  
+  
+
+
+
+
+**parsed_Betula_S1_L001_R1_001.fastq**  
+  
+  
+https://manpages.debian.org/jessie-backports/vsearch/vsearch.1.en.html    
+vsearch  
+--cluster_fast: order that input sequences are processed/clustered  
+--threads: number of computation threads to use (<= to # of available CPU cores)  
+--iddef: pariwise identity definition  
+--id: the global clustering threshold; defined as the number of (matching columns) / (alignment length - terminal gaps). That definition can be modified by --iddef.    
+--consout: ouput cluster consensus sequences to FASTA file  
+--msaout: ouput multiple seq alignments to FASTA file  
+  
+  
+**VSEARCH Clustering options:**  
+--id real  
+Do not add the target to the cluster if the pairwise identity with the centroid is lower than real (value ranging from 0.0 to 1.0 included). The pairwise identity is defined as the number of (matching columns) / (alignment length - terminal gaps). That definition can be modified by --iddef.  
+  
+--cluster_fast filename  
+Clusterize the fasta sequences in filename, automatically sort by decreasing sequence length beforehand.  
+  
+--iddef 0|1|2|3|4  
+The pairwise identity is defined as the number of (matching columns) / (alignment length - terminal gaps). That definition can be modified by --iddef.  
+Change the pairwise identity definition used in --id. Values accepted are:  
+0. CD-HIT definition: (matching columns) / (shortest sequence length).  
+1. edit distance: (matching columns) / (alignment length).  
+2. edit distance excluding terminal gaps (same as --id).  
+3. Marine Biological Lab definition counting each extended gap (internal or terminal) as a single difference: 1.0 - [(mismatches + gaps)/(longest sequence length)]  
+4. BLAST definition, equivalent to --iddef 2 in a context of global pairwise alignment.  
+  
+--msaout filename  
+Output a multiple sequence alignment and a consensus sequence for each cluster to filename, in fasta format. Be warned that vsearch computes center star multiple sequence alignments using a fast method whose accuracy can decrease significantly when using low pairwise identity thresholds. The consensus sequence is constructed by taking the majority symbol (nucleotide or gap) from each column of the alignment. Columns containing a majority of gaps are skipped, except for terminal gaps.  
+
+EXAMPLE --msaout (15 lines):  
+  
+>*centroid=centroid=a099EDSC-4571662;seqs=2;;seqs=1;  
+CCACATTGCGGATTACAACAACAACAACAACATCATGAGCTTTTTGGAAGGGAGGTACCGCGTACCTAGCTAGGTGCGAC  
+TAGAATTCAGAA  
+>consensus  
+CCACATTGCGGATTACAACAACAACAACAACATCATGAGCTTTTTGGAAGGGAGGTACCGCGTACCTAGCTAGGTGCGAC  
+TAGAATTCAGAA  
+  
+>*centroid=centroid=a110KUFZ-10450467;seqs=2;;seqs=1;  
+AATAAAATTAGTATATGTGTCGTTTCCTGGCGTTTCCGTTTCATGACTCCCCCATTCCAGATTCCACCAGGGGAACCGTT  
+CCCGTTCCCGTT  
+>consensus  
+AATAAAATTAGTATATGTGTCGTTTCCTGGCGTTTCCGTTTCATGACTCCCCCATTCCAGATTCCACCAGGGGAACCGTT  
+CCCGTTCCCGTT  
+  
+Jeez, note that the sequences are NOT a single line!  
+ 
+  
+--consout filename  
+Output cluster consensus sequences to filename. For each cluster, a multiple alignment is computed, and a consensus sequence is constructed by taking the majority symbol (nucleotide or gap) from each column of the alignment. Columns containing a majority of gaps are skipped, except for terminal gaps.  
+  
+EXAMPLE: --consout (9 lines)   
+>centroid=centroid=centroid=a099EDSC-4571662;seqs=2;;seqs=1;;seqs=1;  
+CCACATTGCGGATTACAACAACAACAACAACATCATGAGCTTTTTGGAAGGGAGGTACCGCGTACCTAGCTAGGTGCGAC  
+TAGAATTCAGAA  
+>centroid=centroid=centroid=a110KUFZ-10450467;seqs=2;;seqs=1;;seqs=1;  
+AATAAAATTAGTATATGTGTCGTTTCCTGGCGTTTCCGTTTCATGACTCCCCCATTCCAGATTCCACCAGGGGAACCGTT  
+CCCGTTCCCGTT  
+>centroid=centroid=centroid=a110KUFZ-20564005;seqs=2;;seqs=1;;seqs=3;  
+ATTTTAGAATACGTGAACCATAGTGAAAGAGTATATTGATCTCTTATCCAATCCTTACAGATCGGAAGATCTCGTATGCC  
+GTCTTC  
+  
+--threads positive integer  
+Number of computation threads to use (1 to 256). The number of threads should be lesser or equal to the number of available CPU cores. The default is to use all available resources and to launch one thread per logical core.    
+  
+REPLACE MARTIN'S PYTHON CODE:  
+sed -n '/;;seqs=1;/,/;;seqs=^[1][0-9]\+\|;;seqs=^[2-9][0-9]*/p' fasta_play.fasta > temp.txt
+  
+  
+## gbs2ploidy  
+To run gbs2plidy, we first need to convert ipyrad's .vcf output file to the proper format. The format for gbs2ploidy is two columns for each sample and one row for each SNP. Homozygous sites and missing data are NA. Heterozygous sites have counts for each allele.  
+  
+For example:  
+  
+NA NA NA NA NA NA 67 1 NA NA  
+8 6 11 8 NA NA 3 3 NA NA  
+NA NA 11 8 NA NA NA NA NA NA  
+NA NA 11 8 NA NA NA NA NA NA  
+NA NA NA NA NA NA NA NA NA NA  
+13 1 NA NA NA NA NA NA NA NA  
+13 1 NA NA NA NA NA NA NA NA  
+  
+This would represent 5 samples (two columns for each sample, for a total of 10 columns) and 7 SNPs (there are 7 rows).  
+The first sample has a heterozygous SNP at the second SNP location (row 2) where there are counts of 8 and 6 for the heterozygous alleles. 
+  
+I have a python script written to convert the .vcf format to the gbs2ploidy input file format: **vcf2hetAlleleDepth.py**  
+This and a more detailed html file (which includes using gbs2ploidy) can be found in my github repository:  
+**https://github.com/carol-rowe666/vcf2hetAlleleDepth.git**  
+Please acknowledge Carol A. Rowe  
+  
+Example slurm script for vcf2hetAllelDepth.py  
+(example using with reference)  
+  
+**vcf2het_SLURM.sh** for running vcf2hetAlleleDepth.py script  
+```{bash, eval=FALSE}
+#!/bin/bash
+#SBATCH --account=your_acct  # Using our own node, (or -A)
+#SBATCH --partition=your_acct  # Which partition to use (or -p)
+#SBATCH --time=72:00:00  # 14 day time limit on our node. Else, max is 72hrs. (or -t)
+#SBATCH --nodes=1  # Number of nodes (or -N). Default is 1
+#SBATCH --ntasks=1  # number of MPI tasks (or -n)
+#SBATCH --mail-user=your_email  # email address
+#SBATCH --mail-type=ALL  # Alerts sent when job begins, ends, or aborts
+#SBATCH -o slurm-%j.out-%N	 # name of the stdout, using the job number (%j) and the first node (%N)
+#SBATCH -e slurm-%j.err-%N	 # name of the stderr, using job and first node values
+#
+# load the python module
+module load python/3.6.3
+#
+# # Set temporary working (scratch) directory.
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/path/to/your/files/Betula_181_70pc_outfiles
+cp -r $WORKDIR/vcf2hetAlleleDepth.py $SCRDIR/.
+cp -r $WORKDIR/Betula_181_70pc.vcf $SCRDIR/.
+
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+python vcf2hetAlleleDepth.py Betula_181_70pc.vcf
+#
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+```
+  
+  
+Next, use the 2 files generated from the vcf2hetAlleleDepth.py script to run gbs2ploidy.  
+  
+**gbs2ploidy_Rscript.R**  
+```{r, eval=FALSE}
+
+library("gbs2ploidy")
+
+# This csv file contains sample names. Header "id" with just sample names. 
+ids<-read.csv("./HAD_ID.csv")
+# READ IN the hetAlleleDepth TABLE:
+# this table should have no headers (otherwise, change header=T)
+# This has 181 samples with 13075 SNPs
+het<-as.matrix(read.table("/path/Betula_hetAlleleDepth.txt",header=F))
+num_cols <- ncol(het) 
+
+num_cols # 362 - because 2 cols per sample
+# a contains the a alleles, b is corresponding b alleles for each indivudual
+a<-seq(1,num_cols,2) # start at position 1 and go through all 362 columns and get every 2nd column position
+b<-seq(2,num_cols,2) # start at position 2 and go through all 362 columns and get every 2nd column position
+# Creating 2 tables: one with allele a and the other with allele b where rows are samples
+cov1<-het[,a]
+cov2<-het[,b]
+# Just as a confirmation that this looks correct....
+print(dim(het)) # 13075 362
+print(dim(cov1)) # 13075 181
+print(dim(cov2)) # 13075 181
+
+# "This functions uses Markov chain Monte Carlo to obtain Bayesian estimates of allelic proportions, which denote that proportion of heterozygous GBS SNPs with different allelic ratios."
+# https://rdrr.io/cran/gbs2ploidy/man/estprops.html
+propOut<-estprops(cov1=cov1,cov2=cov2,props = c(0.25, 0.33, 0.5, 0.66, 0.75), mcmc.nchain=3,mcmc.steps=1000,mcmc.burnin=500,mcmc.thin=5)
+
+saveRDS(propOut, file = "Aspen_propOut.Rds")
+```
+  
+  
+example slurm script to run on CHPC:  
+**gbs2ploidy_SLURM.sh**   
+```{bash, eval=FALSE}
+#!/bin/bash
+#SBATCH --account=your_acct  # Using our own node, (or -A)
+#SBATCH --partition=your_acct  # Which partition to use (or -p)
+#SBATCH --time=72:00:00  # 14 day time limit on our node. Else, max is 72hrs. (or -t)
+#SBATCH --nodes=1  # Number of nodes (or -N). Default is 1
+#SBATCH --ntasks=1  # number of MPI tasks (or -n)
+#SBATCH --mail-user=your_email  # email address
+#SBATCH --mail-type=ALL  # Alerts sent when job begins, ends, or aborts
+#SBATCH -o slurm-%j.out-%N	 # name of the stdout, using the job number (%j) and the first node (%N)
+#SBATCH -e slurm-%j.err-%N	 # name of the stderr, using job and first node values
+#
+# CHPC has gbs2ploidy and its dependencies set up under this module
+# Thank you to the help from CHPC!!
+module load R/3.5.2
+#
+# Set temporary working (scratch) directory.
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/path/to/your/gbs2ploidy/files
+cp -r $WORKDIR/HAD_ID.csv $SCRDIR/.
+cp -r $WORKDIR/hetAlleleDepth.txt $SCRDIR/.
+cp -r $WORKDIR/gbs2ploidy_Rscript.R $SCRDIR/.
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+Rscript gbs2ploidy_Rscript.R
+#
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+```
+
+Now, you can make some graphs. I transferred the Aspen_propOut.Rds file from CHPC to my laptop. Proceeded as follows:  
+  
+```{r, eval=FALSE}
+# Read your .Rds file into R
+propOut <- readRDS("/path/to/propOut.Rds")
+# Make sure the file read in correctly
+# look at the first of the tables
+propOut[[1]]
+typeof(propOut) # list
+num_samp <- length(propOut)
+print(num_samp)# 181
+'''
+             2.5%         25%         50%         75%      97.5%
+0.25 0.0002925203 0.002050659 0.004549854 0.009053202 0.02356183
+0.33 0.0022016881 0.011416429 0.020109945 0.033071854 0.05912140
+0.5  0.8093126070 0.854196149 0.877244209 0.898729810 0.93214170
+0.66 0.0094564043 0.040706960 0.065809495 0.087818011 0.12841981
+0.75 0.0038422496 0.015704810 0.027314705 0.040092944 0.06507558
+'''
+
+
+dev.new() # since I'm running this from RStudio
+
+# Set up graphs in 3 rows and 3 columns
+par(mfrow=c(3,3))
+
+# Note: can loop through all files: for(i in 1:num_samp){
+# Here, I show you how to select specific samples I used to produce the last output graph
+for(i in c(20,24,165)){
+  plot(propOut[[i]][,3],ylim=c(0,1),axes=FALSE,xlab="ratios",ylab="proportions")
+  axis(1,at=1:5,c("1:3","1:2","1:1","2:1","3:1"))
+  axis(2)
+  box()
+  segments(1:5,propOut[[i]][,1],1:5,propOut[[i]][,5])
+  title(main=paste("sample name =",ids[[1]][i]))
+}
+
+# Saved each output plot
+dev.off()
+```
+  
+ 
+### SUMMARY:  
+Either very distinct 1:1 ratio ("diploids"), or other, mixed ratios  
+BP: Skagway, AK (Surdyk & Belt) 25 samples: **MIXED**  
+8552-8578: Alaska (McKernan) 135 samples: **"DIPLOIDS"**  
+1028-1031: Alaska (Wolf) 20 samples: **"DIPLOIDS"**  
+Ken: Alaska (Barnes) 2 samples: **"DIPLOIDS"**  
+ALB: Alberta, Canada (Rai) 8 samples: **4 "DIPLOIDS" and 4 MIXED**  
+NB: New Hampshire (Goulet) 5 samples: **MIXED**  
+MNSE: Minnesota (Eggers) 7 samples: **MIXED**   
+YB: Outgroup 4 samples: **2 "DIPLOIDS" and 2 MIXED**  
+(mixed: YB_B2_A, YB_5B; "diploids": YB_1I, and YB_4D)
+  
+**Example gbs2ploidy output plots** (YB samples were run at lower MCMC values)  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Bet_estprop16.png)  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Bet_estprop19.png)   
+
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Bet_estprop_outs.png)
+   
+**Output ploidy plot for loop:  for(i in c(20,24,165)){**  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_ploidy_plot.png)  
+  
+**NOTES on ploidy:**  
+Allelic proportions of 1:1 are theoritically diploids.  
+Allelic proportions of 1:2 and 2:1 are theoritically triploids.  
+Allelic proportions of 1:3 and 3:1 are theoritically tetraploids.  
+  
+The higher the ploidy level, the greater the needed coverage to determine the ratios.  
+  
+"proportions" on the y-axis refers to posterior probability from Bayesian estimates.  
+"ratios" on the x-axis refers to the depth ratio, or allelic proportions.  
+Each point denotes the posterior medians while the vertical lines through the points show the 95% equal-tail probability intervales (ETPIs).  
+See Gompert and Mock 2017.  
+  
+  
+### Converting the .Rds file to a .csv file  
+I want to make some tables and am better working in python than in R  
+  
+```{r, eval=FALSE}
+
+# Read your .Rds file into R
+propOut <- readRDS("/path/to/propOut.Rds")
+
+# Read in the corresponding csv file containing sample names. Header "id" with just sample names. 
+ids<-read.csv("/path/to/HAD_ID.csv")
+
+# Loop through the .Rds list and then put it into a dataframe.
+# Creating two new columns: "names" and "sample"
+# "names" gets the existing ploidy column: 0.25, 0.33, 0.5, 0.66, 0.75 (This is otherwise in the index column, but I am going to delete the index.)
+# "sample gets the corresponding sample name taken from the HAD_ID.csv file"
+df_total = data.frame()
+for(i in 1:length(propOut)){
+  add_it <- propOut[[i]]
+  add_it2 <- as.data.frame(add_it)
+  add_it2$names <- rownames(add_it2)
+  add_it2$sample <- ids[[1]][i]
+  df_total <- rbind(df_total,add_it2)
+  rownames(df_total) <- NULL
+}
+
+dim(df_total) #905 rows correct - 181 samples x 5 rows each = 905
+# Save your file!
+write.csv(df_total, file = "/path/to/Betula_propOut.csv", row.names = FALSE)
+
+```
+ 
+ 
+Now swithing to python....
+  
+```{python, eval=FALSE, python.reticulate = FALSE}
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+ploidy = pd.read_csv("/path/to/Betula_propOut.csv")
+print(ploidy.shape) # 181 samples X 5 rows each = 905 rows
+print(ploidy.head())
+'''
+(905, 7)
+       2.5%       25%       50%       75%     97.5%  names  sample
+0  0.000293  0.002051  0.004550  0.009053  0.023562   0.25  1028_1
+1  0.002202  0.011416  0.020110  0.033072  0.059121   0.33  1028_1
+2  0.809313  0.854196  0.877244  0.898730  0.932142   0.50  1028_1
+3  0.009456  0.040707  0.065809  0.087818  0.128420   0.66  1028_1
+4  0.003842  0.015705  0.027315  0.040093  0.065076   0.75  1028_1
+'''
+# I can NOT figure why we need the 0.25 and 0.33 rows.
+# Zach Gompert included these, but after looking at nearly 1,000 samples, I have never seen anything from these points!!!
+# 0.25 and 0.33 points are always near the 0.0 proportion in the plots.
+# I am going to remove them.
+# NOTE: ASK GOMPERT OR MOCK IF THESE VALUES SHOULD BE COMBINED WITH 0.75 AND 0.66 RESPECTIVELY!!!
+ploidy = ploidy[(ploidy['names'] != 0.25) & (ploidy['names'] != 0.33)]
+print(ploidy.shape) # 181 samples X 3 rows each = 543 rows
+# Remove the 0.25% and 75% columns; I don't use them.
+ploidy.drop(['25%', '75%'], axis=1, inplace=True)
+print(ploidy.shape)
+print(ploidy.head())
+'''
+(543, 5)
+       2.5%       50%     97.5%  names  sample
+2  0.809313  0.877244  0.932142   0.50  1028_1
+3  0.009456  0.065809  0.128420   0.66  1028_1
+4  0.003842  0.027315  0.065076   0.75  1028_1
+7  0.754143  0.819832  0.879939   0.50  1028_3
+8  0.045551  0.100948  0.157368   0.66  1028_3
+'''
+# Get maximum median (50%) value for each sample
+# gropuby the samples then create a column (max_median) with the max value from each grouping.
+# the transform allows you to retain the entire dataframe
+ploidy['max_median'] = ploidy.groupby('sample')['50%'].transform('max')
+
+# Sorting so I can look over the values at either end to get a feel for the data
+# can sort with 'sample' and '50%' if you prefer
+ploidy = ploidy.sort_values(["max_median","50%"], ascending=False)
+ploidy.reset_index(drop=True, inplace=True)
+print(ploidy.shape)
+print(ploidy.head(10))
+'''
+(543, 6)
+       2.5%       50%     97.5%  names sample  max_median
+0  0.898647  0.954161  0.984383   0.50  8564c    0.954161
+1  0.000516  0.014231  0.060140   0.66  8564c    0.954161
+2  0.000210  0.004409  0.022951   0.75  8564c    0.954161
+3  0.882056  0.952015  0.986854   0.50  8576c    0.952015
+4  0.000524  0.018093  0.078331   0.66  8576c    0.952015
+5  0.000137  0.004514  0.023497   0.75  8576c    0.952015
+6  0.859811  0.947025  0.983613   0.50  8566d    0.947025
+7  0.000779  0.020977  0.093276   0.66  8566d    0.947025
+8  0.000133  0.005363  0.030225   0.75  8566d    0.947025
+9  0.881098  0.945303  0.982313   0.50  8561d    0.945303
+'''
+
+# Search for failed/ambigous samples: OVERLAP
+# Excellent description on determining overlap: https://stackoverflow.com/questions/3269434/whats-the-most-efficient-way-to-test-two-integer-ranges-for-overlap
+
+# Above, we sorted the 50% values within each sample.
+# Now, we will compare the "error" range of the greatest 50% value to that of the next highest 50%.
+
+# Get the maximum value from right (2.5% "error") sides from consecutive ranges within a sample
+ploidy['max_left'] = ploidy['2.5%'].where(  (ploidy['sample']==ploidy['sample'].shift(1)) & (ploidy['2.5%'] > ploidy['2.5%'].shift(1)), ploidy['2.5%'].shift(1).where ((ploidy['sample']==ploidy['sample'].shift(1)) & (ploidy['2.5%'].shift(1) > ploidy['2.5%']))  )
+
+# Get the minimum value from the left (97.5%) sides
+ploidy['min_right'] = ploidy['97.5%'].where(  (ploidy['sample']==ploidy['sample'].shift(1)) & (ploidy['97.5%'] < ploidy['97.5%'].shift(1)), ploidy['97.5%'].shift(1).where ((ploidy['sample']==ploidy['sample'].shift(1)) & (ploidy['97.5%'].shift(1) < ploidy['97.5%']))  )
+print(ploidy.head())
+'''
+       2.5%       50%     97.5%  names sample  max_median  max_left  min_right
+0  0.898647  0.954161  0.984383   0.50  8564c    0.954161       NaN        NaN
+1  0.000516  0.014231  0.060140   0.66  8564c    0.954161  0.898647   0.060140
+2  0.000210  0.004409  0.022951   0.75  8564c    0.954161  0.000516   0.022951
+3  0.882056  0.952015  0.986854   0.50  8576c    0.952015       NaN        NaN
+4  0.000524  0.018093  0.078331   0.66  8576c    0.952015  0.882056   0.078331
+'''
+# Now that we have our needed values, check for overlap
+# Overlap column: if <= 0, then the median points overlap.
+# Recall, this was already sorted by medians across AND within samples
+ploidy['overlap'] = ploidy['max_left'] - ploidy['min_right']
+print(ploidy.shape)
+print(ploidy.head())
+'''
+(543, 9)
+       2.5%       50%     97.5%  names sample  max_median  max_left  \
+0  0.898647  0.954161  0.984383   0.50  8564c    0.954161       NaN   
+1  0.000516  0.014231  0.060140   0.66  8564c    0.954161  0.898647   
+2  0.000210  0.004409  0.022951   0.75  8564c    0.954161  0.000516   
+3  0.882056  0.952015  0.986854   0.50  8576c    0.952015       NaN   
+4  0.000524  0.018093  0.078331   0.66  8576c    0.952015  0.882056   
+
+   min_right   overlap  
+0        NaN       NaN  
+1   0.060140  0.838508  
+2   0.022951 -0.022434  
+3        NaN       NaN  
+4   0.078331  0.803725  
+'''
+# Backfill overlap value for the max median in each sample. 
+# This reflects the overlap value between the highest 2 median points, and due to nature of above calc., NaN was entered for the highest median value
+ploidy['overlap'] = ploidy['overlap'].fillna(method='bfill')
+ploidy.head()
+'''
+	2.5%	       50%	    97.5%	 names	sample max_median	max_left min_right	overlap
+0	0.898647	0.954161	0.984383	0.50	8564c	0.954161	NaN	      NaN	      0.838508
+1	0.000516	0.014231	0.060140	0.66	8564c	0.954161	0.898647	0.060140	0.838508
+2	0.000210	0.004409	0.022951	0.75	8564c	0.954161	0.000516	0.022951	-0.022434
+3	0.882056	0.952015	0.986854	0.50	8576c	0.952015	NaN	      NaN	      0.803725
+4	0.000524	0.018093	0.078331	0.66	8576c	0.952015	0.882056	0.078331	0.803725
+
+'''
+# After looking at many distribution plots, I decided to add:
+# column to view "error range": diff between 97.5% and 2.5%.
+# column to account for BOTH the error range and the maximum median. 
+ploidy['error_range'] = ploidy['97.5%'] - ploidy['2.5%']
+ploidy['range_medmax'] = ploidy['error_range'] / ploidy['max_median']
+print(ploidy.shape) # (543, 11)
+
+# SAVE this for future use
+ploidy.to_csv('/path/to/Betula_propOut_overlap.csv', index=False)
+
+
+# Want to look at some plots per individual. Ploidy call will be determined by if the "error" ranges about the highest 2 median points overlap 
+# Select just the max median rows for each sample
+# Then make some plots!
+max_only = ploidy[ploidy['max_median'] == ploidy['50%']]
+print(max_only.shape) # one row for each sample
+print(max_only.head())
+'''
+(181, 11)
+        2.5%       50%     97.5%  names sample  max_median  max_left  \
+0   0.898647  0.954161  0.984383    0.5  8564c    0.954161       NaN   
+12  0.890845  0.944748  0.975814    0.5  8567a    0.944748       NaN   
+54  0.866335  0.916282  0.951090    0.5  8578b    0.916282       NaN   
+78  0.858001  0.908145  0.944873    0.5  8569e    0.908145       NaN   
+66  0.857527  0.910479  0.950117    0.5  8553a    0.910479       NaN   
+
+    min_right   overlap  error_range  range_medmax  
+0         NaN  0.838508     0.085736      0.089855  
+12        NaN  0.853030     0.084968      0.089938  
+54        NaN  0.807519     0.084755      0.092499  
+78        NaN  0.768285     0.086872      0.095659  
+66        NaN  0.802074     0.092590      0.101694  
+'''
+# Save this for future use too!
+max_only.to_csv('/path/to/Betula_MAX_propOut_overlap.csv', index=False)
+
+# plot away as you desire!
+# Should be looking for any weird outliers, etc. EXPLORE YOUR DATA!
+fig, ax = plt.subplots()
+sns.distplot(max_only['range_medmax'], bins=100, kde=False, rug=False, ax=ax)
+plt.suptitle("Dist. of range_medmax", fontsize = 20)
+plt.xlabel('error range / max median', fontsize=18)
+plt.ylabel('Count', fontsize=16)
+#plt.savefig("Dist_Range_medmax.png", dpi=600, bbox_inches='tight')
+
+fig, ax = plt.subplots()
+sns.distplot(max_only['overlap'], bins=100, kde=False, rug=False, ax=ax)
+plt.suptitle("Dist. of Overlap: gbs2ploidy", fontsize = 20)
+plt.xlabel('Ovderlap', fontsize=18)
+plt.ylabel('Count', fontsize=16)
+
+fig, ax = plt.subplots()
+sns.distplot(max_only['max_median'], bins=100, kde=False, rug=False, ax=ax)
+plt.suptitle("Dist. of Max Medians", fontsize = 20)
+plt.xlabel('Max_median', fontsize=18)
+plt.ylabel('Count', fontsize=16)
+
+# Note: play with the dataframes; slice 'em up; see what's what. Get a feel for your data.
+
+```
+
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_Dist_range_medma.png)  
+  
+ 
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_Dist_Overlap.png)   
+  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_Dist_MaxMeds.png)  
+  
+### Calling ploidy  
+####How you call ploidy will vary by project! You may be asking questions such that you categorize your ploidy calling in a different way.  
+I have gone through and looked at EVERY gbs2ploidy plot.  
+  
+If one were to make calls on observed pliody as per highest median point with no "error bar" overlap with the next median points and their "error" ranges:  
+DIPLOID       140  
+TETRAPLOID     21  
+AMBIGUOUS      15  
+TRIPLOID        5  
+
+HOWEVER:  
+1) The higher the ploidy level, the greater coverage you need per locus to determine true ploidy (i.e. distinguish one ploidy level from another).  
+2) Published data has shown Betula to include pentaploids.  
+
+THEREFORE:  
+I will use three pliody ratings: DIPLOID, OTHER, or AMBIGUOUS (where there is overlap with error ranges).  
+    
+    
+python continued...
+```{python, eval=FALSE, python.reticulate = FALSE}
+
+# here's my criteria for calling pliody for this project.
+def betula_ploidy_call(df):
+    if (df['overlap'] <= 0.0 ):
+        return "AMBIGUOUS"
+    elif (df['names'] == 0.50 ) & (df['overlap'] > 0.0):
+        return "DIPLOID"
+    elif (df['names'] == 0.66 ) & (df['overlap'] > 0.0):
+        return "NOT_DIPLOID"
+    elif (df['names'] == 0.75 ) & (df['overlap'] > 0.0):
+        return "NOT_DIPLOID"
+    else:
+        return "error"
+
+max_only['ploidy'] = max_only.apply(betula_ploidy_call, axis=1)
+print(max_only.head())
+'''
+        2.5%       50%     97.5%  names sample  max_median  max_left  \
+0   0.898647  0.954161  0.984383    0.5  8564c    0.954161       NaN   
+12  0.890845  0.944748  0.975814    0.5  8567a    0.944748       NaN   
+54  0.866335  0.916282  0.951090    0.5  8578b    0.916282       NaN   
+78  0.858001  0.908145  0.944873    0.5  8569e    0.908145       NaN   
+66  0.857527  0.910479  0.950117    0.5  8553a    0.910479       NaN   
+
+    min_right   overlap  error_range  range_medmax   ploidy  
+0         NaN  0.838508     0.085736      0.089855  DIPLOID  
+12        NaN  0.853030     0.084968      0.089938  DIPLOID  
+54        NaN  0.807519     0.084755      0.092499  DIPLOID  
+78        NaN  0.768285     0.086872      0.095659  DIPLOID  
+66        NaN  0.802074     0.092590      0.101694  DIPLOID  
+'''
+
+# Check to make sure nothing slipped through to the "error" category
+print(max_only[max_only['ploidy']=='FAIL'])
+'''
+Empty DataFrame
+Columns: [2.5%, 50%, 97.5%, names, sample, max_median, max_left, min_right, overlap, error_range, range_medmax, ploidy]
+Index: []
+'''
+# Get summary of what we have
+print(max_only['ploidy'].value_counts())
+'''
+DIPLOID        140
+NOT_DIPLOID     26
+AMBIGUOUS       15
+'''
+
+```
+  
+  
+### Merging dataframes together for 2 tables with the following columns:  
+1) Population, Sample, Group, het_count, Ploidy  
+2) Population, State/Province, Group, Ploidy, Count  
+  
+#### First, get the number of heterozygous loci  
+python continued...  
+```{python, eval=FALSE, python.reticulate = FALSE}
+# Still have the max_only table
+print(max_only.head())
+'''
+        2.5%       50%     97.5%  names sample  max_median  max_left  \
+0   0.898647  0.954161  0.984383    0.5  8564c    0.954161       NaN   
+12  0.890845  0.944748  0.975814    0.5  8567a    0.944748       NaN   
+54  0.866335  0.916282  0.951090    0.5  8578b    0.916282       NaN   
+78  0.858001  0.908145  0.944873    0.5  8569e    0.908145       NaN   
+66  0.857527  0.910479  0.950117    0.5  8553a    0.910479       NaN   
+
+    min_right   overlap  error_range  range_medmax   ploidy  
+0         NaN  0.838508     0.085736      0.089855  DIPLOID  
+12        NaN  0.853030     0.084968      0.089938  DIPLOID  
+54        NaN  0.807519     0.084755      0.092499  DIPLOID  
+78        NaN  0.768285     0.086872      0.095659  DIPLOID  
+66        NaN  0.802074     0.092590      0.101694  DIPLOID  
+'''
+
+# Recall: vcf2hetAlleleDepth.py produced 2 output files: hetAlleleDepth.txt and HAD_ID.csv (I renamed the files with "Betula_" prefix)
+
+# Read in the hetAllele
+hets = pd.read_csv("/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_hetAlleleDepth.txt", header=None, delim_whitespace=True)
+print(hets.shape) # 2 cols per sample: 181 x 2 = 362, and column for each SNP
+'''
+(13075, 362)
+'''
+# Read in the HAD_ID
+ids = pd.read_csv("/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Betula_HAD_ID.csv")
+print(ids.shape) # 181 samples X 5 rows each = 905 rows
+print(ids.head())
+'''
+(181, 1)
+       id
+0  1028_1
+1  1028_3
+2  1028_4
+3  1028_5
+4  1029_1
+'''
+
+# I want to label the columns in the hetAlleleDepth table to reflect the actual sample names. 
+# I have to get the sample names and then double each name to reflect the number of columns.
+
+# Get the sample names to a list
+id_list = ids['id'].tolist()
+
+# Now use itertools chain module to duplicate each name within that list
+from itertools import chain
+all_id = list(chain(*zip(id_list,id_list)))
+print(len(all_id)) # 362
+# print the first 10 items in the list so you can see the names got duplicated
+print(all_id[0:10])
+'''
+['1028_1', '1028_1', '1028_3', '1028_3', '1028_4', '1028_4', '1028_5', '1028_5', '1029_1', '1029_1']
+'''
+# Now assign those column names to our dataframe:
+hets.columns = [all_id]
+print(hets.iloc[0:5, 0:5])
+'''
+  1028_1 1028_1 1028_3 1028_3 1028_4
+0    NaN    NaN    NaN    NaN    NaN
+1    NaN    NaN    NaN    NaN    NaN
+2    NaN    NaN    NaN    NaN    NaN
+3    6.0    8.0   11.0    8.0    NaN
+4    NaN    NaN    8.0   11.0    NaN
+'''
+# Want number of heterozygous loci
+# Thus, we just count the number of non-NaN samples
+count_het = hets.count(axis=0)
+print(count_het.head())
+print(count_het.shape)
+'''
+1028_1    605
+1028_1    605
+1028_3    588
+1028_3    588
+1028_4    375
+'''
+# Put this into a dataframe
+ch = pd.DataFrame(count_het)
+ch.reset_index(inplace=True)
+ch.columns = ['Sample', 'het_count']
+ch.head()
+'''
+	Sample	het_count
+0	1028_1	605
+1	1028_1	605
+2	1028_3	588
+3	1028_3	588
+4	1028_4	375
+'''
+# Each sample has 2 rows, which should be identical
+# let's drop the duplicates
+result = ch.drop_duplicates(keep='first')
+print(result.shape) #(181, 2) - Good, got the 181 samples we expected. Hence, counts for each duplicate name were indeed the same
+print(result.head())
+'''
+   Sample  het_count
+0  1028_1        605
+2  1028_3        588
+4  1028_4        375
+6  1028_5        508
+8  1029_1        659
+'''
+# From max_only table above, get just 2 needed columns
+b_plod = max_only[['sample', 'ploidy']]
+print(b_plod.head())
+'''
+   sample   ploidy
+0   8564c  DIPLOID
+12  8567a  DIPLOID
+54  8578b  DIPLOID
+78  8569e  DIPLOID
+66  8553a  DIPLOID
+'''
+
+# Merge
+merge1 = pd.merge(result, b_plod, left_on='Sample', right_on='sample', how='outer', indicator='Exist')
+print(merge1.shape) # (181, 5)
+# these dataframes should have completely overlapped; i.e. the Exist column should all be "both"
+print(merge1[merge1['Exist']=='both'].shape[0]) # 181 - Great, all checks as should!
+# Doulble checking and assign to new dataframe name so we can then select just needed column for final table
+both = merge1[merge1['Exist']=='both']
+print(both.shape)
+print(both.head())
+'''
+(181, 3)
+   Sample  het_count  sample   ploidy Exist
+0  1028_1        605  1028_1  DIPLOID  both
+1  1028_3        588  1028_3  DIPLOID  both
+2  1028_4        375  1028_4  DIPLOID  both
+3  1028_5        508  1028_5  DIPLOID  both
+4  1029_1        659  1029_1  DIPLOID  both
+'''
+BOTH = both[['Sample', 'het_count', 'ploidy']]
+print(BOTH.shape)
+print(BOTH.head())
+'''
+   Sample  het_count   ploidy
+0  1028_1        605  DIPLOID
+1  1028_3        588  DIPLOID
+2  1028_4        375  DIPLOID
+3  1028_5        508  DIPLOID
+4  1029_1        659  DIPLOID
+'''
+
+# Save it:
+BOTH.to_csv("/path/to/Bet_ploid_numhet.csv", index=False)
+
+# Curious to see the distribution
+fig, ax = plt.subplots()
+sns.distplot(BOTH['het_count'], bins= 50, kde=False, rug=False, ax=ax)
+plt.suptitle("Heterozygous Loci per Individual", fontsize = 20)
+plt.xlabel('Number Heterozygous Loci', fontsize=18)
+plt.ylabel('Count', fontsize=16)
+plt.savefig("/path/to/Bet_het_loci_per_ind.png", dpi=600, bbox_inches='tight')
+
+```
+
+ 
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_gbs2ploidy/Bet_het_loci_per_ind.png)  
+  
+#### Make the tables  
+  
+python continued...  
+```{python, eval=FALSE, python.reticulate = FALSE}
+
+# See table we saved "try_44.to_csv("/path/to/Bet_181_70pc_K4_clust_call_ll_etc.csv", index=False)"
+# At bottom of "STRUCTURE: Round2 w/ 181 samples - no outgropus" tab
+
+try_44 = pd.read_csv("/path/to/Bet_181_70pc_K4_clust_call_ll_etc.csv")
+print(try_44.shape)
+print(try_44.head())
+'''
+(181, 15)
+  Population Sample  Clust_1  Clust_2  Clust_3  Clust_4    Group sample  \
+0       8554  8554a   0.8521   0.0481      0.0   0.0998  Clust_1  8554a   
+1       8554  8554b   0.8521   0.0480      0.0   0.1000  Clust_1  8554b   
+2       8554  8554c   0.8515   0.0484      0.0   0.1000  Clust_1  8554c   
+3       8554  8554d   0.8520   0.0481      0.0   0.0999  Clust_1  8554d   
+4       8554  8554e   0.8451   0.0500      0.0   0.1049  Clust_1  8554e   
+
+        Collector(s) State/province    lat deg    long deg Exist   Label  \
+0  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+1  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+2  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+3  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+4  Cristina McKernan             AK  61.291778 -149.797552  both  Alaska   
+
+  alt_group  
+0  AClust_1  
+1  AClust_1  
+2  AClust_1  
+3  AClust_1  
+4  AClust_1  
+'''
+# Select just needed columns
+want = try_44[['Population', 'Group', 'Sample']]
+# Then merge dataframes - racall above BOTH.to_csv("/path/to/Bet_ploid_numhet.csv", index=False)
+want_merge = pd.merge(want, BOTH, on='Sample', how='outer', indicator="Exist")
+print(want_merge.shape) # (181, 6)
+print(want_merge.head())
+'''
+(181, 6)
+  Population    Group Sample  het_count   ploidy Exist
+0       8554  Clust_1  8554a        587  DIPLOID  both
+1       8554  Clust_1  8554b        602  DIPLOID  both
+2       8554  Clust_1  8554c        431  DIPLOID  both
+3       8554  Clust_1  8554d        585  DIPLOID  both
+4       8554  Clust_1  8554e        606  DIPLOID  both
+'''
+# Make sure merged as expectd
+print(want_merge[want_merge['Exist']=='both'].shape)
+'''
+(181, 6)
+'''
+# Select desired columns
+table1 = want_merge[['Population', 'Sample', 'Group', 'het_count', 'ploidy']]
+print(table1.shape)
+print(table1.head())
+'''
+(181, 5)
+  Population Sample    Group  het_count   ploidy
+0       8554  8554a  Clust_1        587  DIPLOID
+1       8554  8554b  Clust_1        602  DIPLOID
+2       8554  8554c  Clust_1        431  DIPLOID
+3       8554  8554d  Clust_1        585  DIPLOID
+4       8554  8554e  Clust_1        606  DIPLOID
+'''
+# SAVE IT!!!
+table1.to_csv("/path/to/Bet_pop_ploid_numhet.csv", index=False)
+
+
+# Now, the next table.  
+want2 = try_44[['alt_group', 'Label', 'Sample', 'State/province']]
+merge2 = pd.merge(want2, table1, on='Sample', how='outer')
+print(merge2.head())
+'''
+	alt_group	Label	Sample	State/province	Population	Group	het_count	ploidy
+0	AClust_1	Alaska	8554a	AK	8554	Clust_1	587	DIPLOID
+1	AClust_1	Alaska	8554b	AK	8554	Clust_1	602	DIPLOID
+2	AClust_1	Alaska	8554c	AK	8554	Clust_1	431	DIPLOID
+3	AClust_1	Alaska	8554d	AK	8554	Clust_1	585	DIPLOID
+4	AClust_1	Alaska	8554e	AK	8554	Clust_1	606	DIPLOID
+'''
+# groupby and get counts of samples within the merge
+merge2_grp = merge2.groupby(['Population', 'Group','ploidy', 'Label', 'alt_group', 'State/province'], as_index=False)['Sample'].count()
+
+print(merge2_grp.head())
+'''
+	Population	Group	ploidy	Label	alt_group	State/province	Sample
+0	1028	Clust_4	DIPLOID	Alaska	CClust_4	AK	4
+1	1029	Clust_4	DIPLOID	Alaska	CClust_4	AK	4
+2	1030	Clust_4	DIPLOID	Alaska	CClust_4	AK	4
+3	1031	Clust_4	DIPLOID	Alaska	CClust_4	AK	5
+4	8552	Clust_2	DIPLOID	Alaska	BClust_2	AK	5
+'''
+# Sort, then select needed rows and relable the columsn
+merge2_sort = merge2_grp.sort_values(['alt_group', 'Label', 'Population'])
+table2 = merge2_sort[['Population','State/province',  'Group', 'ploidy','Sample']]
+table2.columns = ['Population', 'State/Province', 'Group', 'Ploidy', 'n']
+print(table.head(10))
+'''
+	Population	State/Province	Group	Ploidy	n
+8	8554	AK	Clust_1	DIPLOID	5
+4	8552	AK	Clust_2	DIPLOID	5
+0	1028	AK	Clust_4	DIPLOID	4
+1	1029	AK	Clust_4	DIPLOID	4
+2	1030	AK	Clust_4	DIPLOID	4
+3	1031	AK	Clust_4	DIPLOID	5
+6	8553	AK	Clust_4	AMBIGUOUS	1
+7	8553	AK	Clust_4	DIPLOID	2
+9	8555	AK	Clust_4	AMBIGUOUS	1
+10	8555	AK	Clust_4	DIPLOID	3
+'''
+# Save it
+table2.to_csv("/path/to/Bet_pop_ploid_numhet3.csv", index=False)
+
+```
+
+  
+    
+  
+  
+## DAPC: Betula diploids ONLY  
+Get number samples (from command line):  
+$ wc -l Betula_diploids.stru  
+  294 Betula_diploids.stru (2 rows per sample: 147 samples)  
+Get number loci:  
+$ head -n 1 Betula_diploids.stru | wc -w  
+    9995  (minus 1 for name column = 9994 samples)  
+    
+R code:  
+```{r, eval=FALSE}
+library("ape")
+library("genetics")
+library("pegas")
+library("seqinr")
+library("ggplot2")
+library("adegenet")
+
+######### READ IN DATA  ############################
+Bet_dip_file <- "/path/to/Betula_diploids/Betula_diploids.stru"
+
+Bet_dip_obj1 <- read.structure(Bet_dip_file, n.ind = 147, n.loc = 9994, col.lab = 1, col.pop = 0, row.marknames = 0, onerowperind = FALSE, NA.char = '-9')
+
+################## K=2 #############################################
+# NK=2: pulled out the five 8552a-e samples from the remaining.  
+# Ran K=2 as below: k=2, n.da=1, Number of PCs Achieving Lowest MSE = 80!! (same as below)
+
+################ K=3 ################################################
+N_3_grps <- find.clusters(x=Bet_dip_obj1, stat="BIC",choose.n.clust=TRUE, max.n.clust=20, n.iter=100000, n.start=100,scale=FALSE, truenames=TRUE) # retained 150 PCs and k=3
+
+N_3_grps$size # tells how many individuals in each cluster
+# 137 5 5 
+
+# for n.da, if k <10, then use k-1 (2-1=1)
+# suggests n.pc <= N/3 (N is number samples), hence: 147/3 = 49
+test_N_3_dapc <- dapc(Bet_dip_obj1, pop=N_3_grps$grp, n.pc = 49, n.da = 2)
+summary(test_N_3_dapc) # same
+# 137 5 5 
+
+mat <- tab(Bet_dip_obj1, NA.method="mean")
+
+xval_k3 <- xvalDapc(mat, N_3_grps$grp, n.pca.max = 300, training.set = 0.9, result = "groupMean", center = TRUE, scale = FALSE, n.pca = NULL, n.rep = 100, xval.plot = TRUE)
+xval_k3[2:6] # Number of PCs Achieving Lowest MSE = 80
+# WOW. 80?! OBVIOUSLY NOT LIKING K=3
+# have to keep n.pca at 49, as that's the highest value I can enter.
+Bet_dip_k3_dapc <- dapc(Bet_dip_obj1, pop=N_3_grps$grp, n.pca = 49, n.da = 2 )
+summary(Bet_dip_k3_dapc)
+# 137 5 5 
+
+Bet_dip_k3_dapc$grp
+Bet_dip_k3_dapc$posterior # Yes, this is probability posterior assignment to cluster
+# Save cluster assignment file in case needed to make a plot.
+write.csv2(Bet_dip_k3_dapc$posterior, "/path/to/Betula_dip_k4_DAPC_assign.csv")
+
+# Plotting
+myCol3 <- c("lightgrey","purple","#000080")
+dev.new()
+scat3 <- scatter(Bet_dip_k3_dapc, posi.da=FALSE, bg="white", pch=17:22, scree.pca=FALSE, posi.pca=FALSE, col=myCol3)
+comp2 <- compoplot(Bet_dip_k3_dapc, posi="topright",txt.leg=paste("Cluster", 1:3),ncol=1, col = myCol3, cex.lab=1, cex.names = 0.4)
+
+########### K=4 ###############################################
+# Ran as above except:
+# k=4, n.da=3, Number of PCs Achieving Lowest MSE = 10, myCol4 <- c("lightgrey","red", "#000080","purple")
+# for output: N_4_grps$size 91 46 5 5 (gps of 5: 8552a-e and 8554a-e. Else, mix: not really seeing any pattern)
+
+```
+  
+####BIC graph from DAPC for Betula "diploids"  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dips_DAPC/Bet_dip_BIC_zoom_DAPC.png)  
+  
+####K=3 scatter plot for Betula "diploids"  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dips_DAPC/Bet_dip_k3_scatter_DAPC.png)  
+  
+####K=3 sample assinment plot for Betula "diploids"  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dips_DAPC/Bet_dip_k3_str_DAPC.png)  
+  
+  
+## STRUCTURE: Betula diploids ONLY & % Missing by K regression   
+Here's the main body of the SLURM.sh file used to run structure (took ~ 6days 5.5hrs to run on CHPC):  
+```{bash, eval=FALSE}
+echo "Running commands..."
+
+for k in {2..6} ;
+do
+    for r in {1..50} ;
+    do
+        $HOME/miniconda2/bin/structure  -i Betula_dips.stru -m Bet_dip_mainparams.txt -e Bet_dip_extraparams.txt -K $k -o Bet_dip_output_$k-$r &
+        sleep 3s
+    done
+done
+echo "All runs started"
+
+wait # Don't continue until background jobs have finished
+
+```
+  
+$ cat Bet_dip_mainparams.txt  
+\#define NUMINDS 147  
+\#define NUMLOCI 9994  
+\#define PLOIDY  2  
+\#define LABEL   1  
+\#define POPDATA 0  
+\#define POPFLAG 0  
+\#define LOCDATA 0  
+\#define PHENOTYPE       0  
+\#define EXTRACOLS       0  
+\#define PHASED  0  
+\#define PHASEINFO       0  
+\#define BURNIN  150000  
+\#define NUMREPS 300000  
+  
+$ cat Bet_dip_extraparams.txt  
+\#define ANCESTDIST	1  
+\#define NOADMIX	0  
+  
+
+Using:  
+CLUMPAK:  http://clumpak.tau.ac.il/index.html  
+  
+"CLUMPAK: a program for identifying clustering modes and packaging population structure inferences across K". Kopelman, Naama M; Mayzel, Jonathan; Jakobsson, Mattias; Rosenberg, Noah A; Mayrose, Itay. Molecular Ecology Resources 15(5): 1179-1191, doi: 10.1111/1755-0998.12387  
+  
+  
+Here's the summary:  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dips_STRUCTURE/1537556746/Bet_dips_STR_summary.png)  
+
+Pull into python so I can make my own plots:  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import pandas as pd
+import toyplot
+
+pfway = "/path/to/1537556746/K=2/CLUMPP.files/"
+# File containing STRUCTURE results:
+K2 = pd.read_csv('./1537556746/K=2/CLUMPP.files/ClumppIndFile.output', delim_whitespace=True, header=None)
+# Select the four columns of possible interest
+K2 = K2.iloc[:,[0,2,5,6]]
+# Label these columns
+K2.columns = ["samp_index", '%Missing', 'Clust_1', 'Clust_2']
+print(K2.head())
+'''
+  samp_index %Missing  Clust_1  Clust_2
+0           1      (5)    0.974    0.026
+1           2      (6)    0.976    0.024
+2           3     (30)    0.984    0.016
+3           4     (15)    0.985    0.015
+4           5      (4)    0.949    0.051
+'''
+
+# need to get sample names back in. Getting names from the stru file
+Bet_dip_stru = pd.read_csv("/path/to/Betula_diploids.stru" ,delim_whitespace=True, header=None)
+Bet_dip_names = pd.Series(Bet_dip_stru[0].unique())
+print(len(Bet_dip_names)) # 147
+# adding the sample names as a column to our K2 dataframe
+K2["Sample"] = Bet_dip_names.values
+# Just selecting the columns I need to make the graph
+K2_table = K2[['Sample', 'Clust_1', 'Clust_2']]
+# Set sample to the index for graphing
+K2_table.set_index('Sample', inplace=True)
+print(K2_table.head())
+'''
+        Clust_1  Clust_2
+Sample                  
+1028_1    0.974    0.026
+1028_3    0.976    0.024
+1028_4    0.984    0.016
+1028_5    0.985    0.015
+1029_1    0.949    0.051
+'''
+# comparing to the K=4 table (k=3 had 3 possible outcomes. K=4 only had 1 possible k assignment outcome)
+# File containing STRUCTURE results:
+K4 = pd.read_csv('./1537556746/K=4/ClumppIndFile.output', delim_whitespace=True, header=None)
+# Select the four columns of possible interest
+K4 = K4.iloc[:,[0,2,5,6,7,8]]
+# Label these columns
+K4.columns = ["samp_index", '%Missing', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4']
+#print(K4.head())
+K4["Sample"] = Bet_dip_names.values
+# Select just columns I want
+K4_table = K4[['Sample', 'Clust_1', 'Clust_2', 'Clust_3', 'Clust_4']]
+# Set sample to the index for graphing
+K4_table.set_index('Sample', inplace=True)
+print(K4_table.head())
+'''
+        Clust_1  Clust_2  Clust_3  Clust_4
+Sample                                    
+1028_1   0.8548   0.0143   0.0409   0.0901
+1028_3   0.8098   0.0487   0.0359   0.1056
+1028_4   0.8702   0.0147   0.0221   0.0930
+1028_5   0.9259   0.0030   0.0209   0.0502
+1029_1   0.7649   0.0370   0.0860   0.1121
+'''
+# if you want a table that's saved as html where you can hover over the bars and get the actual assignment values, then use this function.
+# THIS FUNCTION IS FROM THE IPYRAD TUTORIAL WEBSITE: Cookbook: Parallelized STRUCTURE analyses on unlinked SNPs
+# THANK YOU Deren Eaton and anyone esle involved!!!!!!
+def hover(table):
+    hover = []
+    for row in range(table.shape[0]):
+        stack = []
+        for col in range(table.shape[1]):
+            label = "Name: {}\nGroup: {}\nProp: {}"\
+                .format(table.index[row], 
+                        table.columns[col],
+                        table.iloc[row, col])
+            stack.append(label)
+        hover.append(stack)
+    return list(hover)
+
+# LET'S PLTOT
+## further styling of plot with css 
+style = {"stroke":toyplot.color.near_black, 
+         "stroke-width": 2}
+
+## build barplots for K2_table and my_dapc_table
+ticklabels = [i for i in K2_table.index.tolist()]
+canvas = toyplot.Canvas(width=1200, height=500)
+axes1 = canvas.cartesian(grid=(2,1,0))
+# for publication, used white and darkgrey for "#66C2A5", "#8DA0CB" respectively
+# NO, back to color but changed colors
+# 'lightgreen':           '#90EE90'
+# 'navy':                 '#000080'
+axes1.bars(K4_table, title=hover(K4_table), style=style, color=["#90EE90", "#000080", "red", "purple"])
+axes2 = canvas.cartesian(grid=(2,1,1))
+axes2.bars(K2_table, title=hover(K2_table), style=style, color=["#90EE90", "red"]) #"#90EE90", "#000080"
+
+# Add table labels for K2_table
+axes1.x.ticks.locator = toyplot.locator.Explicit(labels=ticklabels)
+axes1.x.ticks.labels.angle = -90
+axes1.x.ticks.show = True
+axes1.x.ticks.labels.offset = 20
+axes1.x.ticks.labels.style = {"font-size": "10px"}
+axes1.x.spine.style = style
+axes1.y.show = True
+
+# Add table Labels for my_dapc_table
+axes2.x.ticks.locator = toyplot.locator.Explicit(labels=ticklabels)
+axes2.x.ticks.labels.show = False
+axes2.x.ticks.show = True
+axes2.x.ticks.location = 'below'
+axes2.x.show = True
+axes2.x.spine.style = style
+axes2.x.spine.show = True
+axes2.x.spine.position = 'high'
+axes2.y.show = True
+import toyplot.pdf
+toyplot.pdf.render(canvas, "./path/Bet_dip_K2_K4.pdf")
+
+```
+  
+### STRUCTURE/CLUMPAK output  
+Looked at K=2 through K=6  
+####K=2  
+The 2 outgroup Betula alleghaniensis samples (YB_ samples) come out immediately.  
+Note, sample 8553b displays 28.6% simmilarity to the outgroup samples.  
+  
+####K=4  
+Two more groups appear:  
+8552a-e  
+8555a-e  
+These samples, along with several others, are located near Ankorage, AK.  
+**8553b** with 49% similarity with outgroup "diploids" (YB_1I and YB_4D)  
+  
+####K=6  
+At K=6, the four 8553 samples appear as a group.  
+  
+&nbsp;  
+  
+####K=4 (top) and K=2 (bottom) for Betula diploid-like samples:  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dip_K2_K4.png)
+  
+### Is %Missing from STRUCTURE output associated wtih the K grouping? NO  
+Note: The %Missing from STRUCTURE output does NOT seem to have any association with the coverage as seen from the ipyrad summary output. 
+Not sure how (%Miss) is calculated within STRUCTURE.  
+  
+Example output from STRUCTURE:  
+Inferred ancestry of individuals:  
+        Label (%Miss) Pop:  Inferred clusters  
+  1      Z12    (0)    3 :  0.140 0.779 0.081   
+  2      Z13    (0)    3 :  0.110 0.862 0.027   
+  3      Z14    (0)    3 :  0.062 0.741 0.197   
+  4      Z15    (0)    3 :  0.551 0.257 0.192   
+  
+python script:  
+```{python,eval=FALSE, python.reticulate = FALSE}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Using the K2 dataframe from above
+# note the %Missing column has values in ()
+# want just the number
+# getting value between () and make integer
+part1 = K2['%Missing'].str.split('(', expand=True)
+part2 = part1[1].str.split(')', expand=True)
+part2[[0]] = part2[[0]].astype(int)
+# add the part2 back to K2
+K2['pct_missing'] = part2[0]
+print(K2.head())
+'''
+   samp_index %Missing  Clust_1  Clust_2  Sample  pct_missing
+0           1      (5)    0.974    0.026  1028_1            5
+1           2      (6)    0.976    0.024  1028_3            6
+2           3     (30)    0.984    0.016  1028_4           30
+3           4     (15)    0.985    0.015  1028_5           15
+4           5      (4)    0.949    0.051  1029_1            4
+'''
+# histogram of missing:
+missing_fig, missing_ax = plt.subplots() 
+missing_ax.hist(K2['pct_missing'], bins=40)
+missing_ax.set_xlabel('Percent Missing') # label x axis
+missing_ax.set_ylabel('Frequency') # label y axis
+missing_fig.suptitle("Distribution of % Missing from STRUCTURE", y=1.02, fontsize=20)
+
+missing_fig.tight_layout() # keeps the labels from getting squished
+# Save it
+missing_fig.savefig("./path/Bet_dip_pct_missing_dist.png", bbox_inches="tight")
+
+# Here are the samples with > 40 percent missing
+many_missing = K2.loc[K2['pct_missing'] > 40]
+print(many_missing)
+'''
+     samp_index %Missing  Clust_1  Clust_2  Sample  pct_missing
+5             6     (66)   0.9480   0.0520  1029_2           66
+23           24     (64)   0.7140   0.2860   8553b           64
+31           32     (64)   0.9790   0.0210   8555a           64
+35           36     (46)   0.9820   0.0180   8556a           46
+63           64     (86)   0.9820   0.0180   8562c           86
+72           73     (76)   0.9890   0.0110   8564b           76
+79           80     (49)   0.9840   0.0160   8565e           49
+81           82     (41)   0.9760   0.0240   8566d           41
+100         101     (64)   0.9840   0.0160   8571a           64
+112         113     (87)   0.9700   0.0300   8573c           87
+129         130     (41)   0.9770   0.0230   8577a           41
+142         143     (84)   0.9800   0.0200   ALB_8           84
+145         146     (70)   0.0182   0.9818   YB_1I           70
+146         147     (83)   0.0041   0.9959   YB_4D           83
+'''
+# Look at the %Missing regressed with Clust_2 of dataframe K2
+reg_plot = sns.regplot(x="pct_missing", y="Clust_2", data=K2)
+reg_plot.figure.savefig("./path/Bet_dip_regres_missing_Clust2.png")
+```
+
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dip_pct_missing_dist.png)
+  
+###Regression Plot: %Missing with Clust_2 from dataframe K2
+Looks like very weak association. HOWEVER, I think that is due to 2 outlier samples.  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_diploids/Bet_dip_regres_missing_Clust2.png)
+  
+## 86 percent clustering threshold: 
+#### SUMMARY  
+SAME AS AT 90 PERCENT CLUSTERING THRESHOLD  
+Just compared the DAPC analysis here. Sine it's the same, I did NOT continue with STRUCTURE. 
+
+ipyrad params files exact same except for clustering threshold.  
+  
+##### The analysis:  
+Remove empty columns from .stru file ipyrad created:  
+cut -f1,6- Bet_181_86pct.ustr > Bet_181_86pct.stru  
+  
+Get number of samples:  
+wc -l Bet_181_86pct.stru  
+\> 362 Bet_181_86pct.stru (2 rows per sample = 181 samples)  
+  
+Get number of SNPs ("loci"):  
+head -n 1 Bet_181_86pct.stru | wc -w  
+\> 3364 (minus 1 for column of names = 3363 loci)  
+  
+  
+python script....  
+```{python, eval=FALSE, python.reticulate = FALSE}
+library("ape")
+library("genetics")
+library("pegas")
+library("seqinr")
+library("ggplot2")
+library("adegenet")
+
+######### READ IN DATA  ############################
+my_file <-  '/path/to/Betula_181_86pct/Bet_181_86pct.stru'
+Betula_86pct_obj1 <- read.structure(my_file, n.ind = 181, n.loc = 3363, col.lab = 1, col.pop = 0, row.marknames = 0, onerowperind = FALSE, NA.char = '-9')
+
+my_grps <- find.clusters(x=Betula_86pct_obj1, stat="BIC",choose.n.clust=TRUE, max.n.clust=20, n.iter=100000, n.start=100,scale=FALSE, truenames=TRUE)
+# SEE the BIC graph below
+
+my_grps$size # tells how many individuals in each cluster
+# 36 145
+test1_dapc <- dapc(Betula_86pct_obj1, pop=my_grps$grp, n.pc = 61, n.da = 1)
+summary(test1_dapc) # 36 145
+
+mat <- tab(Betula_86pct_obj1, NA.method="mean")
+xval <- xvalDapc(mat, my_grps$grp, n.pca.max = 300, training.set = 0.9, result = "groupMean", center = TRUE, scale = FALSE, n.pca = NULL, n.rep = 50, xval.plot = TRUE)
+
+xval[2:6] # Number of PCs Achieving Lowest MSE = 40
+k2_PC40_dapc <- dapc(Betula_86pct_obj1, pop=my_grps$grp, n.pc = 40, n.da = 1 )
+
+summary(k2_PC40_dapc)
+myCol <- c("#66C2A5", "#FC8D62")
+scatter(k2_PC40_dapc, posi.da="bottomleft", bg="white", pch=17:22, scree.pca=TRUE, posi.pca="topleft", col=myCol)
+# groups are same as all the other DAPC and STRUCTURE analyses
+
+
+
+#Let's look at K=4:  
+my4_grps <- find.clusters(x=Betula_86pct_obj1, stat="BIC",choose.n.clust=TRUE, max.n.clust=30, n.iter=100000, n.start=100,scale=FALSE, truenames=TRUE) # retain 150 PCs and 4 clusters
+
+my4_grps$size # tells how many individuals in each cluster
+# 5 135  36   5
+test4_dapc <- dapc(Betula_86pct_obj1, pop=my4_grps$grp, n.pc = 61, n.da = 2)
+summary(test4_dapc) # 5 135  36   5 
+
+xval <- xvalDapc(mat, my4_grps$grp, n.pca.max = 200, training.set = 0.9, result = "groupMean", center = TRUE, scale = FALSE, n.pca = NULL, n.rep = 50, xval.plot = TRUE)
+
+xval[2:6] # Number of PCs Achieving Lowest MSE = 40
+k4_PC40_dapc <- dapc(Betula_86pct_obj1, pop=my4_grps$grp, n.pc = 40 , n.da = 2 )
+summary(k4_PC40_dapc)
+#### SCATTER PLOT k =4 ########
+myCol <- c("purple", "lightgrey", "red","#000080")
+dev.new()
+scatter(k4_PC40_dapc, posi.da=FALSE, bg="white", pch=17:22, scree.pca=FALSE, posi.pca=FALSE, col=myCol)
+# See image below
+dev.new()
+compoplot(k4_PC40_dapc, posi="top",txt.leg=paste("Cluster", 1:4),ncol=1, col = myCol, cex.lab=1, cex.names = 0.4)
+# See image below
+
+```
+  
+#### BIC  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_86pct/BIC_Bet_181_86pct.png)  
+  
+####Scatter K=4  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_86pct/Bet_181_86pct_k4_scatter.png)  
+  
+#### Individual assignment plot for the 181 ingroup Betula samples with 86% clustering threshold:    
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_181_86pct/Bet_181_86pct_k4_str_plot.png)
+ 
+  
+## MAPS - Basemap  
+#### Get latitude, longitude, and cluster assignments by population.  
+First convert my table to include all information I need.  
+NOTE: Not mapping individuals. Mapping populations.  
+Have table with lat and long by individual. Have table with Cluster assignment by individual.  
+Merge these tables and then group by population. The lat., long., and cluster assignments will be averages across the samples within each population. 
+  
+python code:    
+```{python, eval=FALSE, python.reticulate = FALSE}
+import pandas as pd
+
+# Get file containing latitude and longitude information
+ll_path = '/path/to/file/'
+ll = pd.read_csv(ll_path + 'Betula_185_LL_Knum.csv')
+print(ll.head())
+print(ll.shape) # (90, 5)
+'''
+  Population  Lab_ID   lat_deg   long_deg  PLOIDY
+0       1028  1028_1  64.01245 -145.51803  diploid
+1       1028  1028_3  63.99394 -145.51911  diploid
+2       1028  1028_4  63.98376 -145.53539  diploid
+3       1028  1028_5  63.98411 -145.54982  diploid
+4       1029  1029_1  61.34553 -145.30808  diploid
+'''
+
+# Get the Clummp output file (ClumppIndFile) for K=4 
+#(used text editor to add population column before importing here)
+K4_file = "path/to/K=4/CLUMPP.files/Bet_181_70pct_ClumppIndFile_named.csv"
+K4 = pd.read_csv(K4_file)
+print(K4.head())
+'''
+  Population  Sample  Clust_1  Clust_2  Clust_3  Clust_4
+0       1028  1028_1   0.0035   0.0222   0.0027   0.9716
+1       1028  1028_3   0.0035   0.0401   0.0000   0.9563
+2       1028  1028_4   0.0015   0.0238   0.0000   0.9746
+3       1028  1028_5   0.0010   0.0205   0.0000   0.9784
+4       1029  1029_1   0.0053   0.0223   0.0047   0.9678
+'''
+# Get average cluster assignment for each population.
+K4_grp = pd.DataFrame(K4.groupby("Population")["Clust_1", "Clust_2", "Clust_3", "Clust_4"].mean())
+K4_grp.reset_index(inplace=True)
+print(K4_grp.head())
+print(K4_grp.shape) # (36, 5)
+'''
+  Population   Clust_1   Clust_2   Clust_3   Clust_4
+0       1028  0.002375  0.026650  0.000675  0.970225
+1       1029  0.007450  0.030800  0.002325  0.959450
+2       1030  0.001350  0.025375  0.000050  0.973225
+3       1031  0.006260  0.049360  0.000020  0.944360
+4       8552  0.000560  0.939020  0.000000  0.060500
+'''
+# Get average lat and long by population.
+ll_grp = pd.DataFrame(ll.groupby("Population")['lat_deg', 'long_deg'].mean())
+ll_grp.reset_index(inplace=True)
+#print(ll_grp.head())
+print(ll_grp.shape) # (36, 3)
+
+# Merge the two tables and pull only wanted columns
+K4_merged = pd.merge(ll_grp, K4_grp, on="Population", how="right")
+K4_ll_merge = K4_merged[['Population', 'lat_deg', 'long_deg', 'Clust_1', "Clust_2", 'Clust_3', 'Clust_4']]
+print(K4_ll_merge.head())
+print(K4_ll_merge.shape) # (36, 7)
+'''
+  Population    lat_deg    long_deg   Clust_1   Clust_2   Clust_3   Clust_4
+0       1028  63.993565 -145.530587  0.002375  0.026650  0.000675  0.970225
+1       1029  61.322850 -145.300373  0.007450  0.030800  0.002325  0.959450
+2       1030  61.798878 -148.008320  0.001350  0.025375  0.000050  0.973225
+3       1031  60.486630 -150.001176  0.006260  0.049360  0.000020  0.944360
+4       8552  61.270022 -149.805318  0.000560  0.939020  0.000000  0.060500
+'''
+
+# Save to file!
+K4_ll_merge.to_csv("/path/to/Bet_181_70pct_latlong_K4str_merge.csv", index=False)
+# Note. Used a text editor to then add a column with number of samples per population.
+# May not need that info. But added it just in case.
+```
+  
+&nbsp;  
+  
+#### Now make Map of ALL populations  
+  
+Note: Using python 2.7 with Basemap  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import mpl_toolkits
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+import pandas as pd
+from PIL import Image
+import numpy as np
+import math
+
+K4_ll_merge = pd.read_csv("/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Bet_181_70pct_latlong_K4str_merge.csv")
+print(K4_ll_merge.head())
+print(K4_ll_merge.shape) # (36, 8)
+'''
+  Population    lat_deg    long_deg   Clust_1   Clust_2   Clust_3   Clust_4  \
+0       1028  63.993565 -145.530587  0.002375  0.026650  0.000675  0.970225   
+1       1029  61.322850 -145.300373  0.007450  0.030800  0.002325  0.959450   
+2       1030  61.798878 -148.008320  0.001350  0.025375  0.000050  0.973225   
+3       1031  60.486630 -150.001176  0.006260  0.049360  0.000020  0.944360   
+4       8552  61.270022 -149.805318  0.000560  0.939020  0.000000  0.060500   
+
+   Sample_count  
+0             5  
+1             4  
+2             4  
+3             5  
+4             5  
+
+'''
+
+# *********** GET MAP BOUNDARIES FOR CREATING YOUR MAP *******************
+# Here, I am getting the boundaries of my map of interest from input .csv file
+# Adding as a fudge-factor (+/- 1) so points aren't on edge of map
+# llclon = lower left corner longitude, llclat = lower left corner latitude, 
+# urclon = upper rt corner long., urclat = upper right corner lat.
+llclon = min(K4_ll_merge['long_deg'] -6)
+print(llclon) # -161.8223199
+llclat = min(K4_ll_merge['lat_deg'] - 4)
+print(llclat) # 39.767874
+urclon = max(K4_ll_merge['long_deg'] + 4)
+print(urclon) # -68.375292
+urclat = max(K4_ll_merge['lat_deg'] + 4)
+print(urclat) # 69.2600535
+
+
+# This is about the center of my map
+lat0 = (max(K4_ll_merge['lat_deg']) - min(K4_ll_merge['lat_deg']))/2
+long0 = (max(K4_ll_merge['long_deg']) - min(K4_ll_merge['long_deg'])) / 2
+
+
+# Set fig size and boundaries
+fig = plt.figure() # ht x width
+#Custom adjust of the subplots
+plt.subplots_adjust(left=0,right=1,top=1,bottom=0,wspace=0.15,hspace=0.05)
+ax = plt.subplot(111)
+
+
+# *********** INITIALIZING YOUR MAP WITH YOUR BOUNDARIES *****************************
+# Creating the initial map using my lat/longs as above:
+# resolution: l = low, i = intermediate, h = high, f = full
+map = Basemap(llcrnrlon=llclon,llcrnrlat=llclat,urcrnrlon=urclon,urcrnrlat=urclat, resolution='h', projection='robin', epsg=4326)
+
+# ***********  DRAW SOME MAP ELEMENTS TO YOUR MAP ********************
+#map.drawrivers(color='blue')
+map.drawstates(linewidth=0.4, color='gray', zorder=1)
+#map.drawcoastlines(linewidth=0.5, color='gray')
+map.drawcountries(linewidth=0.4, color='gray', zorder=1)
+
+# *********** ADDING TOPOGRAPHY TO YOUR MAP ******************
+# When using python Basemap to plot maps, a nice background would be a big plus. 
+# But when using map.bluemarble(), map.etopo(), or map.shadedrelief(), we can not zoom in to a smaller region, 
+# since it will generate a blur image. The best way to create a high resolution background image 
+#(either topography, street map, etc.) is using arcgisimage method. See example list below.
+
+# Drawing ArcGIS Basemap (only works with cylc projections??) ONTO YOUR BASEMAP PROJECTION/SIZE
+# Examples of what each map looks like can be found here:
+# http://kbkb-wx-python.blogspot.com/2016/04/python-basemap-background-image-from.html
+maps = ['ESRI_Imagery_World_2D',    # 0
+        'ESRI_StreetMap_World_2D',  # 1
+        'NatGeo_World_Map',         # 2
+        'NGS_Topo_US_2D',           # 3
+        'Ocean_Basemap',            # 4
+        'USA_Topo_Maps',            # 5
+        'World_Imagery',            # 6
+        'World_Physical_Map',       # 7
+        'World_Shaded_Relief',      # 8
+        'World_Street_Map',         # 9
+        'World_Terrain_Base',       # 10
+        'World_Topo_Map'            # 11
+        ]
+print "drawing image from arcGIS server...",
+# Alter the xpixels to get better and better resolution! ypixels will default based on xpixels value
+map.arcgisimage(service=maps[8], xpixels=2000, verbose=False)
+print "...finished"
+
+
+# Set colors for using in the pie-charts
+colors = ["grey", "red", "purple", "blue"] # red is FC ["#66C2A5", "#8DA0CB", "#FC8D62"]
+
+# Follwing function is from website:
+# http://www.geophysique.be/2010/11/15/matplotlib-basemap-tutorial-05-adding-some-pie-charts/
+# by Thomas Lecocq at the Royal Observatory of Belgium 15 November 2010
+def draw_pie(ax,ratios=[0.4,0.3,0.3], X=0, Y=0, size = 1000):
+    N = len(ratios)
+
+    xy = []
+
+    start = 0.
+    for ratio in ratios:
+        x = [0] + np.cos(np.linspace(2*math.pi*start,2*math.pi*(start+ratio), 30)).tolist()
+        y = [0] + np.sin(np.linspace(2*math.pi*start,2*math.pi*(start+ratio), 30)).tolist()
+        xy1 = zip(x,y)
+        xy.append(xy1)
+        start += ratio
+
+    for i, xyi in enumerate(xy):
+        map.scatter([X],[Y] , marker=(xyi,0), s=size, facecolor=colors[i] )  
+
+
+
+# *********  GETTING YOUR Lebels and LAT/LONG POINTS TO PLOT ONTO MAP AND PLOTTING THEM *****************
+# Getting Population labels, lat, long, and offsets 
+pt_names = K4_ll_merge['Population'].values
+LAT = K4_ll_merge['lat_deg'].values
+LONG = K4_ll_merge['long_deg'].values
+
+
+# DRAW PIE CHARTS: using drawpie function here to draw the pie charts to map
+for ind in K4_ll_merge.index:
+    X,Y = map(K4_ll_merge['long_deg'][ind],K4_ll_merge["lat_deg"][ind])
+    draw_pie(map, [ K4_ll_merge["Clust_1"][ind], K4_ll_merge['Clust_2'][ind], K4_ll_merge["Clust_3"][ind], K4_ll_merge["Clust_4"][ind]], X, Y, size=300)    
+
+
+# ADDING LABELS WITH DIFFERENT COLORS BASED UPON SPECIES
+count = 0
+for sample in pt_names:
+    print(sample)
+    x,y = map(LONG[count], LAT[count])
+    if sample == "MNSE":
+        new_name = "MN"
+        plt.annotate(new_name, fontsize = 13, weight='bold', xy=(x - 1, y + 1.3))
+        count += 1
+    elif sample == "ALB":
+        new_name = "Alberta"
+        plt.annotate(new_name, fontsize = 13, weight='bold', xy=(x - 1, y + 1.3))
+        count += 1
+    elif sample == "NB":
+        new_name = "NH"
+        plt.annotate(new_name, fontsize = 13, weight='bold', xy=(x - 1, y + 1.3))
+        count += 1
+    elif sample == "BP":
+        new_name = "Skagway, AK"
+        plt.annotate(new_name, fontsize = 13, weight='bold', xy=(x - 1, y + 1.3))
+        count += 1
+    else:
+        count += 1
+
+plt.show()
+# Don't forget to save the image!
+
+```
+  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_ALL_map.png)  
+  
+&nbsp;  
+  
+#### Continue code above to zoom in on the "different" populations near Anchorage, AK  
+
+```{python, eval=FALSE, python.reticulate = FALSE}
+
+Alaska1 = K4_ll_merge.loc[~K4_ll_merge['Population'].isin(['ALB', "MNSE", 'NB', 'BP'])]
+print(Alaska.shape) # (32, 8)
+
+Alaska = Alaska1.round(2).copy()
+print(Alaska)
+# *********** GET MAP BOUNDARIES FOR CREATING YOUR MAP *******************
+# Here, I am getting the boundaries of my map of interest from input .csv file
+# Adding as a fudge-factor (+/- 1) so points aren't on edge of map
+# llclon = lower left corner longitude, llclat = lower left corner latitude, 
+# urclon = upper rt corner long., urclat = upper right corner lat.
+
+llclon = -150.0
+urclon = -149.7
+llclat = 61.1
+urclat = 61.4
+
+# Set fig size and boundaries
+fig = plt.figure() # ht x width
+#Custom adjust of the subplots
+plt.subplots_adjust(left=0,right=1,top=1,bottom=0,wspace=0.15,hspace=0.05)
+ax = plt.subplot(111)
+
+
+# *********** INITIALIZING YOUR MAP WITH YOUR BOUNDARIES *****************************
+# Creating the initial map using my lat/longs as above:
+# resolution: l = low, i = intermediate, h = high, f = full
+map = Basemap(llcrnrlon=llclon,llcrnrlat=llclat,urcrnrlon=urclon,urcrnrlat=urclat, resolution='l', projection='robin', epsg=4326)
+
+# ***********  DRAW SOME MAP ELEMENTS TO YOUR MAP ********************
+#map.drawrivers(color='blue')
+map.drawstates(linewidth=0.4, color='gray', zorder=1)
+#map.drawcoastlines(linewidth=0.5, color='gray')
+map.drawcountries(linewidth=0.4, color='gray', zorder=1)
+
+# *********** ADDING TOPOGRAPHY TO YOUR MAP ******************
+# When using python Basemap to plot maps, a nice background would be a big plus. 
+# But when using map.bluemarble(), map.etopo(), or map.shadedrelief(), we can not zoom in to a smaller region, 
+# since it will generate a blur image. The best way to create a high resolution background image 
+#(either topography, street map, etc.) is using arcgisimage method. See example list below.
+
+# Drawing ArcGIS Basemap (only works with cylc projections??) ONTO YOUR BASEMAP PROJECTION/SIZE
+# Examples of what each map looks like can be found here:
+# http://kbkb-wx-python.blogspot.com/2016/04/python-basemap-background-image-from.html
+maps = ['ESRI_Imagery_World_2D',    # 0
+        'ESRI_StreetMap_World_2D',  # 1
+        'NatGeo_World_Map',         # 2
+        'NGS_Topo_US_2D',           # 3
+        'Ocean_Basemap',            # 4
+        'USA_Topo_Maps',            # 5
+        'World_Imagery',            # 6
+        'World_Physical_Map',       # 7
+        'World_Shaded_Relief',      # 8
+        'World_Street_Map',         # 9
+        'World_Terrain_Base',       # 10
+        'World_Topo_Map'            # 11
+        ]
+print "drawing image from arcGIS server...",
+# Alter the xpixels to get better and better resolution! ypixels will default based on xpixels value
+map.arcgisimage(service=maps[8], xpixels=2000, verbose=False)
+print "...finished"
+
+
+# Set colors for using in the pie-charts
+colors = ["grey", "red", "purple", "blue"] # red is FC ["#66C2A5", "#8DA0CB", "#FC8D62"]
+
+
+# *********  GETTING YOUR Lebels and LAT/LONG POINTS TO PLOT ONTO MAP AND PLOTTING THEM *****************
+# Getting Population labels, lat, long, and offsets 
+pt_names = Alaska['Population'].values
+print(len(pt_names))
+LAT = Alaska['lat_deg'].values
+print(len(LAT))
+LONG = Alaska['long_deg'].values
+Clust_3 = Alaska["Clust_3"].values
+
+# DRAW PIE CHARTS: using drawpie function here to draw the pie charts to map
+for ind in Alaska.index:
+    X,Y = map(Alaska['long_deg'][ind],Alaska["lat_deg"][ind])
+    draw_pie(map, [ Alaska["Clust_1"][ind], Alaska['Clust_2'][ind], Alaska["Clust_3"][ind], Alaska["Clust_4"][ind]], X, Y, size=500)    
+
+Anchorage_lat = 61.2181
+Anchorage_long = -149.9003
+x,y = map(Anchorage_long, Anchorage_lat)
+plt.annotate("Anchorage, AK", fontsize = 19, weight='bold', xy=(x + 0.01, y))
+#plt.text(x + 0.5, y + 0.5, "Anchorage,AK", s=10)
+map.plot(x, y, 'ko', markersize=10, )
+
+plt.show()
+# Don't forget to save your image!
+```
+  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Betula_AnchorageAK_map_zoom.png)
+  
+  
+## MAPS - Cartopy  
+Run from MacBook Air with OS Mojave 10.14.4  
+  
+1) Basemap is depricated, so let's switch over to Cartopy  
+2) Want 2 maps: one with all samples and the other with just Alaska samples
+3) Want these maps plain (no topography)      
+
+### Note: will be using scalebar.py from the internet  
+(https://stackoverflow.com/questions/32333870/how-can-i-show-a-km-ruler-on-a-cartopy-matplotlib-plot)  
+  
+**scalebar.py**  
+```{python, eval=FALSE, python.reticulate = FALSE}
+import numpy as np
+import cartopy.crs as ccrs
+import cartopy.geodesic as cgeo
+
+
+def _axes_to_lonlat(ax, coords):
+    """(lon, lat) from axes coordinates."""
+    display = ax.transAxes.transform(coords)
+    data = ax.transData.inverted().transform(display)
+    lonlat = ccrs.PlateCarree().transform_point(*data, ax.projection)
+
+    return lonlat
+
+
+def _upper_bound(start, direction, distance, dist_func):
+    """A point farther than distance from start, in the given direction.
+
+    It doesn't matter which coordinate system start is given in, as long
+    as dist_func takes points in that coordinate system.
+
+    Args:
+        start:     Starting point for the line.
+        direction  Nonzero (2, 1)-shaped array, a direction vector.
+        distance:  Positive distance to go past.
+        dist_func: A two-argument function which returns distance.
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    """
+    if distance <= 0:
+        raise ValueError(f"Minimum distance is not positive: {distance}")
+
+    if np.linalg.norm(direction) == 0:
+        raise ValueError("Direction vector must not be zero.")
+
+    # Exponential search until the distance between start and end is
+    # greater than the given limit.
+    length = 0.1
+    end = start + length * direction
+
+    while dist_func(start, end) < distance:
+        length *= 2
+        end = start + length * direction
+
+    return end
+
+
+def _distance_along_line(start, end, distance, dist_func, tol):
+    """Point at a distance from start on the segment  from start to end.
+
+    It doesn't matter which coordinate system start is given in, as long
+    as dist_func takes points in that coordinate system.
+
+    Args:
+        start:     Starting point for the line.
+        end:       Outer bound on point's location.
+        distance:  Positive distance to travel.
+        dist_func: Two-argument function which returns distance.
+        tol:       Relative error in distance to allow.
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    """
+    initial_distance = dist_func(start, end)
+    if initial_distance < distance:
+        raise ValueError(f"End is closer to start ({initial_distance}) than "
+                         f"given distance ({distance}).")
+
+    if tol <= 0:
+        raise ValueError(f"Tolerance is not positive: {tol}")
+
+    # Binary search for a point at the given distance.
+    left = start
+    right = end
+
+    while not np.isclose(dist_func(start, right), distance, rtol=tol):
+        midpoint = (left + right) / 2
+
+        # If midpoint is too close, search in second half.
+        if dist_func(start, midpoint) < distance:
+            left = midpoint
+        # Otherwise the midpoint is too far, so search in first half.
+        else:
+            right = midpoint
+
+    return right
+
+
+def _point_along_line(ax, start, distance, angle=0, tol=0.01):
+    """Point at a given distance from start at a given angle.
+
+    Args:
+        ax:       CartoPy axes.
+        start:    Starting point for the line in axes coordinates.
+        distance: Positive physical distance to travel.
+        angle:    Anti-clockwise angle for the bar, in radians. Default: 0
+        tol:      Relative error in distance to allow. Default: 0.01
+
+    Returns:
+        Coordinates of a point (a (2, 1)-shaped NumPy array).
+    """
+    # Direction vector of the line in axes coordinates.
+    direction = np.array([np.cos(angle), np.sin(angle)])
+
+    geodesic = cgeo.Geodesic()
+
+    # Physical distance between points.
+    def dist_func(a_axes, b_axes):
+        a_phys = _axes_to_lonlat(ax, a_axes)
+        b_phys = _axes_to_lonlat(ax, b_axes)
+
+        # Geodesic().inverse returns a NumPy MemoryView like [[distance,
+        # start azimuth, end azimuth]].
+        return geodesic.inverse(a_phys, b_phys).base[0, 0]
+
+    end = _upper_bound(start, direction, distance, dist_func)
+
+    return _distance_along_line(start, end, distance, dist_func, tol)
+
+
+def scale_bar(ax, location, length, metres_per_unit=1000, unit_name='km',
+              tol=0.01, angle=0, color='black', linewidth=3, text_offset=0.005,
+              ha='center', va='bottom', plot_kwargs=None, text_kwargs=None,
+              **kwargs):
+    """Add a scale bar to CartoPy axes.
+
+    For angles between 0 and 90 the text and line may be plotted at
+    slightly different angles for unknown reasons. To work around this,
+    override the 'rotation' keyword argument with text_kwargs.
+
+    Args:
+        ax:              CartoPy axes.
+        location:        Position of left-side of bar in axes coordinates.
+        length:          Geodesic length of the scale bar.
+        metres_per_unit: Number of metres in the given unit. Default: 1000
+        unit_name:       Name of the given unit. Default: 'km'
+        tol:             Allowed relative error in length of bar. Default: 0.01
+        angle:           Anti-clockwise rotation of the bar.
+        color:           Color of the bar and text. Default: 'black'
+        linewidth:       Same argument as for plot.
+        text_offset:     Perpendicular offset for text in axes coordinates.
+                         Default: 0.005
+        ha:              Horizontal alignment. Default: 'center'
+        va:              Vertical alignment. Default: 'bottom'
+        **plot_kwargs:   Keyword arguments for plot, overridden by **kwargs.
+        **text_kwargs:   Keyword arguments for text, overridden by **kwargs.
+        **kwargs:        Keyword arguments for both plot and text.
+    """
+    # Setup kwargs, update plot_kwargs and text_kwargs.
+    if plot_kwargs is None:
+        plot_kwargs = {}
+    if text_kwargs is None:
+        text_kwargs = {}
+
+    plot_kwargs = {'linewidth': linewidth, 'color': color, **plot_kwargs,
+                   **kwargs}
+    text_kwargs = {'ha': ha, 'va': va, 'rotation': angle, 'color': color,
+                   **text_kwargs, **kwargs}
+
+    # Convert all units and types.
+    location = np.asarray(location)  # For vector addition.
+    length_metres = length * metres_per_unit
+    angle_rad = angle * np.pi / 180
+
+    # End-point of bar.
+    end = _point_along_line(ax, location, length_metres, angle=angle_rad,
+                            tol=tol)
+
+    # Coordinates are currently in axes coordinates, so use transAxes to
+    # put into data coordinates. *zip(a, b) produces a list of x-coords,
+    # then a list of y-coords.
+    ax.plot(*zip(location, end), transform=ax.transAxes, **plot_kwargs)
+
+    # Push text away from bar in the perpendicular direction.
+    midpoint = (location + end) / 2
+    offset = text_offset * np.array([-np.sin(angle_rad), np.cos(angle_rad)])
+    text_location = midpoint + offset
+
+    # 'rotation' keyword argument is in text_kwargs.
+    ax.text(*text_location, f"{length} {unit_name}", rotation_mode='anchor',
+            transform=ax.transAxes, **text_kwargs)
+```
+
+  
+  
+### On to making the maps...    
+```{python, eval=FALSE, python.reticulate = FALSE}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import cartopy.crs as ccrs
+import cartopy.feature as cfeat
+from scalebar import scale_bar # make sure the scalebar.py is in the same directory you are currently working from
+
+# pull in file we created in the basemap section
+ll = pd.read_csv("/path/to/Bet_181_70pct_latlong_K4str_merge.csv")
+print(ll.shape)
+print(ll)
+'''
+(36, 8)
+	Population	lat_deg	long_deg	Clust_1	Clust_2	Clust_3	Clust_4	Sample_count
+0	1028	63.993565	-145.530587	0.002375	0.026650	0.000675	0.970225	5
+1	1029	61.322850	-145.300373	0.007450	0.030800	0.002325	0.959450	4
+2	1030	61.798878	-148.008320	0.001350	0.025375	0.000050	0.973225	4
+3	1031	60.486630	-150.001176	0.006260	0.049360	0.000020	0.944360	5
+4	8552	61.270022	-149.805318	0.000560	0.939020	0.000000	0.060500	5
+5	8553	61.271519	-149.792446	0.003900	0.039575	0.154850	0.801675	4
+6	8554	61.291778	-149.797552	0.850560	0.048520	0.000000	0.100920	5
+7	8555	61.180625	-149.849781	0.019050	0.032975	0.017925	0.930025	4
+8	8556	61.235099	-149.272399	0.004050	0.061925	0.000000	0.934000	4
+9	8557	61.322354	-149.589906	0.001033	0.022733	0.000000	0.976167	3
+10	8558	61.370851	-149.508415	0.001600	0.024820	0.000020	0.973540	5
+11	8559	61.403261	-149.457054	0.006800	0.024600	0.000000	0.968560	5
+12	8560	61.276457	-149.825116	0.003660	0.033260	0.000000	0.963120	5
+13	8561	61.276457	-149.825116	0.003240	0.030960	0.000000	0.965800	5
+14	8562	61.462315	-149.356491	0.002575	0.022300	0.000250	0.974900	4
+15	8563	61.774702	-148.494285	0.002660	0.029620	0.001080	0.966660	5
+16	8564	61.790000	-148.450004	0.009750	0.028550	0.000075	0.961650	4
+17	8565	62.296623	-150.077887	0.004360	0.042360	0.000020	0.953240	5
+18	8566	62.591982	-150.239728	0.010633	0.028300	0.000000	0.961033	3
+19	8567	62.875759	-155.822320	0.004933	0.024867	0.000100	0.970100	3
+20	8568	64.702589	-148.657560	0.002375	0.040975	0.000125	0.956525	4
+21	8569	64.731146	-147.326601	0.015400	0.024720	0.008360	0.951420	5
+22	8570	64.531241	-147.008024	0.000680	0.024020	0.000000	0.975280	5
+23	8571	64.417690	-146.895477	0.002240	0.034500	0.000220	0.963060	5
+24	8572	64.913641	-147.705101	0.004060	0.023540	0.000020	0.972340	5
+25	8573	65.037011	-147.456456	0.003825	0.033450	0.000300	0.962450	4
+26	8574	65.155813	-147.345189	0.006320	0.026400	0.000060	0.967220	5
+27	8575	65.260053	-146.770674	0.008560	0.025300	0.000040	0.966080	5
+28	8576	60.442465	-149.979909	0.022800	0.025540	0.000440	0.951260	5
+29	8577	60.455307	-149.974574	0.003180	0.030860	0.000280	0.965720	5
+30	8578	60.483925	-149.952252	0.006340	0.034620	0.000200	0.958840	5
+31	ALB	53.490700	-114.029962	0.004237	0.033037	0.496400	0.466313	8
+32	BP	59.473375	-135.332476	0.003970	0.001835	0.984870	0.009325	20
+33	Ken	61.285327	-142.528100	0.038200	0.023300	0.001350	0.937100	2
+34	MNSE	46.375098	-93.759212	0.009543	0.004229	0.986143	0.000100	7
+35	NB	43.767874	-72.375292	0.010440	0.004520	0.985000	0.000040	5
+'''
+
+# Get a subset of the table with just Alaska samples
+# That's all samples in rows 0-30 plus the BP (Skagway) samples
+# Start with rows 0-31
+AK_ll = ll.iloc[0:31, :]
+print(AK_ll.shape) # should have 31 rows
+'''
+(31, 8)
+'''
+# Grab the BP samples and then merge with the AK_ll samples
+AK_BP = ll.iloc[32:33, :]
+print(AK_BP)
+'''
+  Population    lat_deg    long_deg  Clust_1   Clust_2  Clust_3   Clust_4  \
+32         BP  59.473375 -135.332476  0.00397  0.001835  0.98487  0.009325   
+
+    Sample_count  
+32            20  
+'''
+ALL_AK = pd.concat([AK_BP, AK_ll], ignore_index=True)
+print(ALL_AK.shape) # now have the 32 Alaska rows
+'''
+(32, 8)
+'''
+
+# For mapping, I am using the map features from Natural Earth Features
+land_hires = cfeat.NaturalEarthFeature('physical', 'land', '10m',edgecolor='k', facecolor='white', linewidth=0.2)
+# (try the code with and without the use of variable land_hires. Don't really need this! Or can play with linewidth...)
+# Make the map
+fig = plt.figure(figsize=(12,12))
+ax = fig.add_subplot(1,1,1, projection=ccrs.LambertConformal())
+#ax.add_feature(land_hires)
+#ax.add_feature(cfeat.LAND.with_scale('50m'), color='white')
+ax.add_feature(cfeat.OCEAN.with_scale('50m'))
+ax.add_feature(cfeat.COASTLINE.with_scale('50m'), linewidth=0.5)
+ax.add_feature(cfeat.BORDERS.with_scale('50m'), linestyle=':')
+ax.add_feature(cfeat.LAKES, alpha=0.5)
+ax.add_feature(cfeat.RIVERS)
+ax.set_extent([-162, -140, 53, 75], crs = ccrs.PlateCarree())
+
+scale_bar(ax, (0.15, 0.05), 5_00, color='black')
+# zorder used to make sure plots are in the foreground and not behind the land color
+for row in range(ALL_AK.shape[0]):
+    if ALL_AK.loc[row,'Population'] == 'BP':
+        ax.scatter(ALL_AK.loc[row,'long_deg'],ALL_AK.loc[row,'lat_deg'] , marker='o',edgecolor='#0cff0c',s=30, c='#0cff0c', transform=ccrs.PlateCarree(), zorder=3 )
+    else:
+        ax.scatter(ALL_AK.loc[row,'long_deg'],ALL_AK.loc[row,'lat_deg'] , marker='o',edgecolor='#0cff0c', s=30, c='#0cff0c', transform=ccrs.PlateCarree(), zorder=3 )
+
+# can save as png or pdf as desired
+plt.savefig("/path/to/AK_Betula_map.pdf",bbox_inches='tight', dpi=700)
+
+```
+  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/AK_Betula_map2.png)  
+  
+  
+### continue to make the map with all samples...  
+```{python,eval=FALSE, python.reticulate = FALSE}
+fig = plt.figure(figsize=(12,12))
+ax = fig.add_subplot(1,1,1, projection=ccrs.LambertConformal())
+#ax.add_feature(cfeat.LAND, zorder=0)
+ax.add_feature(cfeat.OCEAN.with_scale('50m'), alpha=0.8)
+ax.add_feature(cfeat.COASTLINE.with_scale('50m'), linewidth=0.1, zorder=2)
+ax.add_feature(cfeat.BORDERS.with_scale('50m'), linewidth=0.4, alpha=0.8)
+ax.add_feature(cfeat.LAKES, alpha=0.5)
+ax.add_feature(cfeat.RIVERS)
+ax.add_feature(cfeat.STATES.with_scale('10m'), linewidth=0.4, alpha=0.3)
+
+ax.set_extent([-162, -68.4, 39.8, 69.3], crs = ccrs.PlateCarree())
+
+scale_bar(ax, (0.15, 0.05), 5_00, color='black')
+for row in range(ll.shape[0]):
+    ax.scatter(ll.loc[row,'long_deg'],ll.loc[row,'lat_deg'] , marker='o',edgecolor='#0cff0c',s=30, c='#0cff0c', transform=ccrs.PlateCarree(), zorder=3 )
+
+# can save as png or pdf as desired
+plt.savefig("/path/to/ALL_Betula_map.pdf",bbox_inches='tight', dpi=700)
+```
+  
+    
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/ALL_Betula_map2.png)  
+    
+  
+## Jaccard Similarity  
+Will use the .vcf output file to obtain allele information for each individual at each SNP. Then, for each unique sample pairwise combination, determine the Jaccard Similarity Index for each SNP. Make a pairwise similarity matrix with the **mean** Jaccard Similarity Index between individuals. (Missing data removed for calculating means.)  
+
+I have a python script written to convert the .vcf format to the Jaccard similarity index dataframe: **vcf2Jaccard.py**  
+This and a more detailed html file can be found in my github repository:  
+**https://github.com/carol-rowe666/vcf2Jaccard.git**  
+Please acknowledge: Carol A. Rowe  
+  
+eample to run script on CHPC:  
+###Asp_vcf2Jaccard_SLURM.sh:  
+```{bash, eval=FALSE}
+#!/bin/bash
+#SBATCH --account=your_acct  # Using our own node, (or -A)
+#SBATCH --partition=your_acct  # Which partition to use (or -p)
+#SBATCH --time=72:00:00  # 14 day time limit on our node. Else, max is 72hrs. (or -t)
+#SBATCH --nodes=1  # Number of nodes (or -N). Default is 1
+#SBATCH --ntasks=1  # number of MPI tasks (or -n)
+#SBATCH --mail-user=your_email  # email address
+#SBATCH --mail-type=ALL  # Alerts sent when job begins, ends, or aborts
+#SBATCH -o slurm-%j.out-%N	 # name of the stdout, using the job number (%j) and the first node (%N)
+#SBATCH -e slurm-%j.err-%N	 # name of the stderr, using job and first node values
+#
+# load the python module
+module load python/3.6.3
+#
+# Set temporary working (scratch) directory.
+SCRDIR=/scratch/local/$USER/
+mkdir -p $SCRDIR
+#
+# Set path to working directory and copy needed files to the scratch
+WORKDIR=/path/to/your/vcf2ploidy/py_and_vcf/files
+cp -r $WORKDIR/Betula_181_70pc.vcf $SCRDIR/.
+cp -r $WORKDIR/vcf2Jaccard.py $SCRDIR/.
+#
+# Change working directory to the scratch direcotry
+cd $SCRDIR
+#
+# Run the program with our input
+python vcf2Jaccard.py Betula_181_70pc.vcf -o Betula_Jaccard.csv
+#
+# use rsyn here instead of cp. -a=archive mode and recursive, -v=verbose, -z=compress file data, -h=human-readable
+rsync -avzh ./* $WORKDIR
+cd $WORKDIR
+#
+rm -rf $SCRDIR
+```
+  
+###Distribution of mean Jaccard similarity coefficients:  
+### Run from MacBook Air with OS Mojave 10.14.4  
+```{python, eval=FALSE, python.reticulate=FALSE}
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Read in file and make sure looks correct
+jacc = pd.read_csv("Betula_Jaccard.csv")
+jacc = jacc.set_index('Unnamed: 0')
+print(jacc.shape)
+print(jacc.iloc[0:6,0:6])
+'''
+(181, 181)
+            1028_1    1028_3    1028_4    1028_5    1029_1    1029_2
+Unnamed: 0                                                          
+1028_1         NaN  0.950558  0.949670  0.952631  0.944870  0.943466
+1028_3         NaN       NaN  0.955106  0.956832  0.946717  0.951793
+1028_4         NaN       NaN       NaN  0.954037  0.949491  0.949796
+1028_5         NaN       NaN       NaN       NaN  0.946082  0.949502
+1029_1         NaN       NaN       NaN       NaN       NaN  0.947493
+1029_2         NaN       NaN       NaN       NaN       NaN       NaN
+'''
+
+# Wnat to see distrubution of mean Jaccard values
+# Fisrt, get all non-missing values into a list
+jacc_list = []
+for column in jacc.columns:
+    non_na_list = list(jacc[column].dropna()) 
+    jacc_list.extend(non_na_list)
+print(len(jacc_list))
+print(jacc_list[0:5])
+'''
+16290
+[0.950558006748, 0.949670253384, 0.955105973025, 0.9526305571729999, 0.9568321973389999]
+'''
+# put it back into a data frame
+values_df = pd.DataFrame({'vals':jacc_list})
+print(values_df.shape)
+print(values_df.head())
+'''
+(16290, 1)
+       vals
+0  0.950558
+1  0.949670
+2  0.955106
+3  0.952631
+4  0.956832
+'''
+
+# Make a distribution plot
+fig, ax = plt.subplots(figsize=(15,8))
+sns.distplot(values_df, kde=False, rug=False, bins=300, ax=ax)
+plt.suptitle("Distribution of Mean Jaccard Similarity Indeces", fontsize = 24)
+plt.xlabel('Mean Jaccard Similarity Index', fontsize=18)
+plt.ylabel('Counts', fontsize=16)
+
+plt.savefig("Dist_mean_Jacc_all.png", dpi=600, bbox_inches='tight')
+
+```
+
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Dist_mean_Jacc_all.png)  
+ 
+###Distribution of SNP counts:  
+python continued...  
+```{python, eval=FALSE, python.reticulate=FALSE}
+# Now look at the distrubution of non_mnissing SNPs for the pairwise samples
+SNP = pd.read_csv("SNP_tally.csv")
+SNP = SNP.set_index('Unnamed: 0')
+print(SNP.shape)
+print(SNP.iloc[0:5,0:5])
+'''
+(181, 181)
+            1028_1   1028_3  1028_4   1028_5   1029_1
+Unnamed: 0                                           
+1028_1         NaN  11559.0  8643.0  10302.0  11763.0
+1028_3         NaN      NaN  8650.0  10270.0  11686.0
+1028_4         NaN      NaN     NaN   7963.0   8652.0
+1028_5         NaN      NaN     NaN      NaN  10451.0
+1029_1         NaN      NaN     NaN      NaN      NaN
+'''
+# As before, get all non_NA values to a list and then back to a dataframe
+SNP_list = []
+for column in SNP.columns:
+    SNP1 = list(SNP[column].dropna()) 
+    SNP_list.extend(SNP1)
+print(len(SNP_list))
+SNP_df = pd.DataFrame({'vals':SNP_list})
+print(SNP_df.shape)
+print(SNP_df.head())
+'''
+16290
+(16290, 1)
+      vals
+0  11559.0
+1   8643.0
+2   8650.0
+3  10302.0
+4  10270.0
+'''
+
+# Plot
+fig, ax = plt.subplots(figsize=(15,8))
+sns.distplot(SNP_df, kde=False, rug=False, bins=500, ax=ax)
+plt.suptitle("Distribution of SNPs for Pairwise Samples", fontsize = 24)
+plt.xlabel('Number of SNPs', fontsize=18)
+plt.ylabel('Counts', fontsize=16)
+
+plt.savefig("Dist_SNPs_all.png", dpi=400, bbox_inches='tight')
+
+```
+  
+  
+![](/Users/carol/Dropbox/Paul_and_Carol_Shared/Betula/CR_Betula/Dist_SNPs_all.png)  
+  
+  
+### Interested in Distribuitons between:  
+###1) Clust_4 to Clust_4 (structure grey to grey)  
+###2) Clust_3 to Clust_3 (structure red to red)  
+###3) Clust_4 to Clust_3 (structure grey to red)  
+###4) Clust_4 to Clust_2 (structure grey to dark blue)  
+###5) Clust_4 to Clust_1 (structure grey to light blue)  
+  
+Since samples BP_25 and 8553b contained a sginificant component from more than one cluster, we will remove them from this section of the analyses. Our goal is to compare the different clusters, using their mean Jaccard similarity scores, to determine which clusters are more similar. To do this, we also need to compare clusters to themselves (to determine baseline means), as well as across clusters.  
+  
+  
+```{python, eval=FALSE, python.reticulate=FALSE}
+
+# read in the output table from structure
+K4_table = pd.read_csv("/path/to/1531530561/K=4/CLUMPP.files/Bet_181_70pct_ClumppIndFile_named.csv")
+print(K4_table.shape)
+print(K4_table.head())
+'''
+(181, 6)
+  Population  Sample  Clust_1  Clust_2  Clust_3  Clust_4
+0       1028  1028_1   0.0035   0.0222   0.0027   0.9716
+1       1028  1028_3   0.0035   0.0401   0.0000   0.9563
+2       1028  1028_4   0.0015   0.0238   0.0000   0.9746
+3       1028  1028_5   0.0010   0.0205   0.0000   0.9784
+4       1029  1029_1   0.0053   0.0223   0.0047   0.9678
+'''
+# Assign cluters
+def group_call(df):
+    if (df['Clust_4'] > 0.5):
+        return "Clust_4"
+    elif (df['Clust_3'] > 0.5):
+        return "Clust_3"
+    elif (df['Clust_2'] > 0.5):
+        return 'Clust_2'
+    elif (df['Clust_1'] > 0.5):
+        return "Clust_1"
+    else:
+        return "error"
+
+K4_table['Group'] = K4_table.apply(group_call, axis=1)
+print(K4_table.head())
+'''
+	Population	Sample	Clust_1	Clust_2	Clust_3	Clust_4	Group
+0	1028	1028_1	0.0035	0.0222	0.0027	0.9716	Clust_4
+1	1028	1028_3	0.0035	0.0401	0.0000	0.9563	Clust_4
+2	1028	1028_4	0.0015	0.0238	0.0000	0.9746	Clust_4
+3	1028	1028_5	0.0010	0.0205	0.0000	0.9784	Clust_4
+4	1029	1029_1	0.0053	0.0223	0.0047	0.9678	Clust_4
+
+'''
+# Save table for future use
+K4_table.to_csv("/path/to/1531530561/K=4/CLUMPP.files/Bet_181_70pc_K4_clust_call.csv", index=False)
+
+# grab just the sample and group assignment columns
+clu = K4_table[['Sample', 'Group']]
+print(clu.shape) # 181 rows and 2 columns
+'''
+(181, 2)
+'''
+# recall the jaccard table from above:
+print(jacc.shape)
+print(jacc.iloc[0:6,0:6])
+'''
+(181, 182)
+  Unnamed: 0  1028_1    1028_3    1028_4    1028_5    1029_1
+0     1028_1     NaN  0.950558  0.949670  0.952631  0.944870
+1     1028_3     NaN       NaN  0.955106  0.956832  0.946717
+2     1028_4     NaN       NaN       NaN  0.954037  0.949491
+3     1028_5     NaN       NaN       NaN       NaN  0.946082
+4     1029_1     NaN       NaN       NaN       NaN       NaN
+5     1029_2     NaN       NaN       NaN       NaN       NaN
+'''
+
+# Merge the jaccard table and the cluster assignments
+ja_clu = pd.merge(clu, jacc, left_on='Sample', right_on='Unnamed: 0', how='outer', indicator='Exist')
+ja_clu.shape
+ja_clu.iloc[0:7,0:10]
+'''
+(181, 185)
+	Sample	Group	Unnamed: 0	1028_1	1028_3	1028_4	1028_5	1029_1	1029_2	1029_3
+0	8554a	Clust_1	8554a	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+1	8554b	Clust_1	8554b	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+2	8554c	Clust_1	8554c	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+3	8554d	Clust_1	8554d	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+4	8554e	Clust_1	8554e	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+5	8552a	Clust_2	8552a	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+6	8552b	Clust_2	8552b	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+
+'''
+
+# Drop the Unamed: 0 and Exist columns.
+ja_clu.drop(['Unnamed: 0', 'Exist'], axis=1, inplace=True)
+print(ja_clu.shape) # (181, 183)
+
+# If you are concerned that we have all the NaN values, that's because or the sorting of the columns to rows
+# You could sort them, or just print out a different section of the dataframe to confirm that we have not lost the Jaccard values
+print(ja_clu.iloc[175:180,175:180])
+'''
+     MNSE_05   MNSE_06   MNSE_07      NB_1      NB_2
+175  0.911922  0.900673  0.906751  0.904719  0.912096
+176  0.912987  0.900051  0.905827  0.903750  0.911746
+177  0.909433  0.897190  0.903794  0.901552  0.909515
+178  0.915593  0.902977  0.910581  0.911140  0.907738
+179  0.913014  0.901335  0.909319  0.905521  0.913755
+'''
+
+# REMOVE: BP_25 and 8553b
+#First drop the columns with those labels
+ja_clu.drop(['BP_25', '8553b'], axis=1, inplace=True)
+print(ja_clu.shape) # (181, 181)
+# Then drop the rows
+ja_clu = ja_clu[ (ja_clu['Sample'] != 'BP_25') & (ja_clu['Sample'] != '8553b')] 
+print(ja_clu.shape) # (179, 181) - 179 rows and 181 columns; remember the two extra columns are: 'Sample' and 'Group'
+
+
+# REPLACE SAMPLE NAMES WITH GROUP NAMES
+# Safest way to change the column sample names to their respective Group name is to first create a dictionary of sample to corresponding group name
+# To do this, first pat the samples and correspoinding goups to lists, then make the dictionary
+sample = clu['Sample'].values.tolist()
+group = clu['Group'].values.tolist()
+sample.insert(0,"Group")
+group.insert(0,"Group")
+sample.insert(0,"Sample")
+group.insert(0,"Sample")
+print(len(sample))
+print(len(group))
+print(sample[0:7])
+print(group[0:7])
+'''
+183
+183
+['Sample', 'Group', '8554a', '8554b', '8554c', '8554d', '8554e']
+['Sample', 'Group', 'Clust_1', 'Clust_1', 'Clust_1', 'Clust_1', 'Clust_1']
+'''
+# Zip lists into a dictionary so that assignments of sample to cluster always remain intact
+# zip in order of sample and then group because we want to change names FROM sample TO group
+df_names = dict(zip(sample, group))
+ja_clu = ja_clu.rename(columns=df_names)
+print(ja_clu.iloc[0:5,0:5])
+'''
+  Sample    Group  Clust_4  Clust_4  Clust_4
+0  8554a  Clust_1      NaN      NaN      NaN
+1  8554b  Clust_1      NaN      NaN      NaN
+2  8554c  Clust_1      NaN      NaN      NaN
+3  8554d  Clust_1      NaN      NaN      NaN
+4  8554e  Clust_1      NaN      NaN      NaN
+'''
+# Still have "Group" and 'Sample' columns
+# We'll want to drop the Sample column
+ja_clu.drop('Sample', axis=1, inplace=True)
+print(ja_clu.shape)
+print(ja_clu.iloc[0:5,0:5])
+'''
+(179, 180)
+     Group  Clust_4  Clust_4  Clust_4  Clust_4
+0  Clust_1      NaN      NaN      NaN      NaN
+1  Clust_1      NaN      NaN      NaN      NaN
+2  Clust_1      NaN      NaN      NaN      NaN
+3  Clust_1      NaN      NaN      NaN      NaN
+4  Clust_1      NaN      NaN      NaN      NaN
+'''
+
+# Before going further, I will make a copy of the dataframe. If I mess up, I don't want to have to repeat all the steps to get back to this point
+JA_CLUE = ja_clu.copy()
+
+# function to compare clusters where we get columns of clust_A and rows of clust_B
+# if clust_A and clust_B is the SAME, then this would be all you need
+def compare_AB_groups(df, clust_A, clust_B):
+    clust_A = str(clust_A)
+    clust_B = str(clust_B)
+    #print(df.iloc[0:5,0:5])
+    # Part 1: get cols of clust_A and rows of clust_B
+    # get columns of A
+    A_cols = df[['Group', clust_A]]
+    #print(A_cols.shape)
+    # get rows of B
+    AcolsBrows = A_cols[ A_cols['Group'] == clust_B ]
+    AcolsBrows = AcolsBrows.set_index('Group')
+    #print(AcolsBrows.shape)
+    AcolsBrows.index.name = None
+    # Now, put the non-NaN values to a list
+    part1_list = []
+    for i in range(len(AcolsBrows.columns)):
+        val_1= AcolsBrows.iloc[:,i].dropna().values.tolist()
+        part1_list.extend(val_1)
+    print(f'{clust_A} contains {AcolsBrows.shape[1]} samples')
+    print(f'There are {len(part1_list)} values in the list of {clust_A} columns and {clust_B} rows')
+    print('')
+    return (part1_list, AcolsBrows.shape[1])
+
+# Now put compare_AB_groups function into yet another function
+# if clust_A and clust_B are NOT the same, then use the above function:
+# compare_AB_groups: where we get columns of clust_A and rows of clust_B
+# BUT also need the compliment of columns of clust_B and rows of clust_A
+def compare_groups(df, clust_A, clust_B):
+    clust_A = str(clust_A)
+    clust_B = str(clust_B)
+    print(f'Comparing {clust_A} with {clust_B}.')
+    print('')
+    if clust_A != clust_B:
+        list_Acols_Brows, A_count = compare_AB_groups(df, clust_A, clust_B)
+        list_Bcols_Arows, B_count = compare_AB_groups(df, clust_B, clust_A)
+        combo_list = list_Acols_Brows + list_Bcols_Arows
+        print('')
+        #put to dataframe for making plots etc.
+        values_df = pd.DataFrame({'vals':combo_list})
+        expected_num = int( (A_count * B_count))
+        actual_num = int(values_df.shape[0])
+        if values_df.shape[0] != expected_num:
+            print(f"You should have {expected_num} values but only have {values_df.shape[0]}")
+        else:
+            print(f"You have the expected number of values: {expected_num}")
+
+    else:
+        AA_list, A_count = compare_AB_groups(df, clust_A, clust_B)
+        values_df = pd.DataFrame({'vals': AA_list})
+
+        expected_num = int(( (A_count * A_count) - A_count ) / 2)
+        actual_num = int(values_df.shape[0])
+        if values_df.shape[0] != expected_num:
+            print(f"You should have {expected_num} values but only have {values_df.shape[0]}")
+        else:
+            print(f"You have the expected number of values: {expected_num}")
+    print(values_df.describe())
+    return values_df
+
+
+# Now run for your desired comparisons:
+clust34 = compare_groups(ja_clu, 'Clust_3', 'Clust_4')
+'''
+Comparing Clust_3 with Clust_4.
+
+Clust_3 contains 35 samples
+There are 4629 values in the list of Clust_3 columns and Clust_4 rows
+
+Clust_4 contains 134 samples
+There are 61 values in the list of Clust_4 columns and Clust_3 rows
+
+
+You have the expected number of values: 4690
+              vals
+count  4690.000000
+mean      0.906688
+std       0.006933
+min       0.889378
+25%       0.901645
+50%       0.905165
+75%       0.910423
+max       0.939433
+'''
+# And plot if you wish
+fig, ax = plt.subplots(figsize=(15,8))
+sns.distplot(clust34_df, kde=False, rug=False, bins=30, ax=ax)
+# Changed the xlim since there wasn't much to see below 0.9
+# play with xlim and ylim to zoom in and out on your plot
+ax.set_xlim(0.85,1.01)
+#ax.set_ylim(0,1000)
+#ax.set_xticks(range(1,32))
+plt.suptitle("Distribution of Mean Jaccard Similarity Indeces: Grey vs Red", fontsize = 24)
+plt.xlabel('Mean Jaccard Similarity Index', fontsize=18)
+plt.ylabel('Counts', fontsize=16)
+# save plot if you want
+
+# NOTE: NOT SHOWING THE OUTPUT PLOT AS IT IS NOT WORTHWHILE
+```
+  
+  
+### OUTPUTS of cluster comparisons:  
+####(Grey to Grey)  
+Comparing Clust_4 with Clust_4.  
+  
+Clust_4 contains 134 samples  
+There are 8911 values in the list of Clust_4 columns and Clust_4 rows  
+  
+You have the expected number of values: 8911  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              vals  
+count  8911.000000  
+mean      0.951818  
+std       0.003054  
+min       0.939755  
+25%       0.949913  
+50%       0.951698  
+75%       0.953551  
+max       0.998125  
+  
+####(Red to Red)  
+Comparing Clust_3 with Clust_3.  
+  
+Clust_3 contains 35 samples  
+There are 595 values in the list of Clust_3 columns and Clust_3 rows  
+  
+You have the expected number of values: 595  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             vals  
+count  595.000000  
+mean     0.946157  
+std      0.004888  
+min      0.935138  
+25%      0.942371  
+50%      0.945643  
+75%      0.949433  
+max      0.960394  
+    
+####(Grey to Red)  
+Comparing Clust_3 with Clust_4.  
+  
+Clust_3 contains 35 samples  
+There are 4629 values in the list of Clust_3 columns and Clust_4 rows  
+  
+Clust_4 contains 134 samples  
+There are 61 values in the list of Clust_4 columns and Clust_3 rows  
+  
+You have the expected number of values: 4690  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              vals  
+count  4690.000000  
+mean      0.906688  
+std       0.006933  
+min       0.889378  
+25%       0.901645  
+50%       0.905165  
+75%       0.910423  
+max       0.939433  
+  
+ 
+####(Grey to Dark Blue)  
+Comparing Clust_4 with Clust_2.  
+  
+Clust_4 contains 134 samples  
+There are 585 values in the list of Clust_4 columns and Clust_2 rows  
+  
+Clust_2 contains 5 samples  
+There are 85 values in the list of Clust_2 columns and Clust_4 rows  
+  
+You have the expected number of values: 670  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             vals  
+count  670.000000  
+mean     0.952349  
+std      0.002338  
+min      0.940253  
+25%      0.950906  
+50%      0.952382  
+75%      0.953745  
+max      0.960808  
+  
+####(Grey to Light Blue)  
+Comparing Clust_4 with Clust_1.  
+  
+Clust_4 contains 134 samples  
+There are 570 values in the list of Clust_4 columns and Clust_1 rows  
+  
+Clust_1 contains 5 samples  
+There are 100 values in the list of Clust_1 columns and Clust_4 rows  
+  
+You have the expected number of values: 670  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             vals  
+count  670.000000  
+mean     0.952956  
+std      0.002212  
+min      0.946478  
+25%      0.951543  
+50%      0.953097  
+75%      0.954289  
+max      0.962810    
+  
